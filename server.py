@@ -6,16 +6,29 @@ PORT = 5000
 
 class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
+        # Enhanced cache control headers for live preview
         self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
         self.send_header('Pragma', 'no-cache')
         self.send_header('Expires', '0')
+        # CORS headers for better development experience
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
         super().end_headers()
 
     def do_GET(self):
         # Handle root path
         if self.path == '/':
             self.path = '/index.html'
+        
+        # Log requests for debugging
+        print(f"Serving: {self.path}")
+        
         return super().do_GET()
+
+    def log_message(self, format, *args):
+        # Enhanced logging to show which files are being served
+        return super().log_message(format, *args)
 
 def run_server():
     handler = MyHTTPRequestHandler
