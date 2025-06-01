@@ -437,13 +437,14 @@ a:hover {
 }
 
 .service-card {
-    background: white;
+    background: hsl(var(--secondary));
     padding: var(--spacing-2xl);
     border-radius: var(--border-radius-lg);
     box-shadow: 0 4px 20px hsl(var(--shadow) / 0.1);
     text-align: center;
     transition: var(--transition);
     position: relative;
+    z-index: 1;
 }
 
 .service-card:hover {
@@ -501,7 +502,7 @@ a:hover {
 /* Why Choose Us */
 .why-choose-us {
     padding: var(--spacing-3xl) 0;
-    background: white;
+    background: hsl(var(--secondary));
 }
 
 .features-grid {
@@ -540,10 +541,12 @@ a:hover {
 }
 
 .testimonial-card {
-    background: white;
+    background: hsl(var(--secondary));
     padding: var(--spacing-2xl);
     border-radius: var(--border-radius-lg);
     box-shadow: 0 4px 20px hsl(var(--shadow) / 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 .testimonial-content {
@@ -869,11 +872,11 @@ a:hover {
 /* Package Comparison */
 .package-comparison {
     padding: var(--spacing-3xl) 0;
-    background: white;
+    background: hsl(var(--secondary));
 }
 
 .comparison-table {
-    background: white;
+    background: hsl(var(--secondary));
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     box-shadow: 0 4px 20px hsl(var(--shadow) / 0.1);
@@ -1019,11 +1022,13 @@ a:hover {
 }
 
 .portfolio-card {
-    background: white;
+    background: hsl(var(--secondary));
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     box-shadow: 0 4px 20px hsl(var(--shadow) / 0.1);
     transition: var(--transition);
+    position: relative;
+    z-index: 1;
 }
 
 .portfolio-card:hover {
