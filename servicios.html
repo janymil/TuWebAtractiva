@@ -3,39 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios - Tu Web Atractiva | Diseño Web Profesional Perú</title>
-    <meta name="description" content="Descubre nuestros servicios de diseño web: Web Simple desde S/99, Landing Pages, Rediseño Web, Google Mi Negocio y más. Planes para todas las empresas.">
-    <meta name="keywords" content="servicios diseño web Perú, páginas web económicas, landing pages, rediseño web, Google Mi Negocio">
+    <title>Servicios - Tu Web Atractiva</title>
+    <meta name="description" content="Servicios de diseño web profesional en Perú. Web Simple, Landing Pages, Rediseño Web y más. Precios accesibles para pequeñas empresas.">
     
-    <!-- Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Custom CSS -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="generated-icon.png">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html">
-                    <img src="images/logo.svg" alt="Tu Web Atractiva Logo">
-                    <span>Tu Web Atractiva</span>
-                </a>
+                <img src="images/logo.svg" alt="Tu Web Atractiva">
+                <span>Tu Web Atractiva</span>
             </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="index.html" class="nav-link">Inicio</a>
-                <a href="servicios.html" class="nav-link active">Servicios</a>
-                <a href="ejemplos.html" class="nav-link">Ejemplos</a>
-                <a href="contacto.html" class="nav-link">Contacto</a>
-                <a href="https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20sus%20servicios%20web" class="nav-cta" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="servicios.html" class="nav-link active">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="ejemplos.html" class="nav-link">Ejemplos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://wa.me/51999999999" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                </li>
+            </ul>
+            <div class="nav-controls">
                 <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
                     <i class="fas fa-moon moon-icon"></i>
                     <i class="fas fa-sun sun-icon"></i>
@@ -57,485 +70,269 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-detail">
+    <!-- Services Grid -->
+    <section class="services-grid-section">
         <div class="container">
-            
-            <!-- Web Simple -->
-            <div id="web-simple" class="service-detail">
-                <div class="service-detail-content">
-                    <div class="service-detail-text">
-                        <h2>Web Simple</h2>
-                        <div class="price-tag">Desde S/99</div>
-                        <p class="service-description">
-                            Página web profesional de 1-3 páginas, perfecta para presentar tu negocio de manera efectiva. 
-                            Ideal para profesionales independientes, pequeños negocios y emprendedores que necesitan 
-                            presencia online rápida y económica.
-                        </p>
-                        
-                        <div class="service-features">
-                            <h3>¿Qué incluye?</h3>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Hasta 3 páginas (Inicio, Servicios, Contacto)</li>
-                                <li><i class="fas fa-check"></i> Diseño responsivo (móvil y desktop)</li>
-                                <li><i class="fas fa-check"></i> Formulario de contacto funcional</li>
-                                <li><i class="fas fa-check"></i> Botón de WhatsApp integrado</li>
-                                <li><i class="fas fa-check"></i> Optimización básica SEO</li>
-                                <li><i class="fas fa-check"></i> Google Maps (si aplica)</li>
-                                <li><i class="fas fa-check"></i> Galería de fotos</li>
-                                <li><i class="fas fa-check"></i> Entrega en 3-5 días</li>
-                            </ul>
-                        </div>
-
-                        <div class="ideal-for">
-                            <h3>Ideal para:</h3>
-                            <div class="ideal-tags">
-                                <span>Psicólogos</span>
-                                <span>Abogados</span>
-                                <span>Consultores</span>
-                                <span>Médicos</span>
-                                <span>Profesores</span>
-                                <span>Técnicos</span>
-                            </div>
-                        </div>
-
-                        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20Web%20Simple" class="btn btn-primary" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Solicitar Web Simple
-                        </a>
+            <div class="services-grid-new">
+                
+                <!-- Web Simple -->
+                <div class="service-card-new" id="web-simple">
+                    <div class="service-image-new">
+                        <svg viewBox="0 0 200 120" class="service-icon">
+                            <rect width="200" height="120" fill="#f8f9fa" rx="8"/>
+                            <rect x="15" y="15" width="170" height="20" fill="#C4302B" rx="4"/>
+                            <circle cx="25" cy="25" r="3" fill="white"/>
+                            <rect x="35" y="22" width="50" height="6" fill="white" rx="2"/>
+                            
+                            <rect x="15" y="50" width="80" height="25" fill="#e9ecef" rx="4"/>
+                            <rect x="105" y="50" width="80" height="25" fill="#e9ecef" rx="4"/>
+                            
+                            <rect x="15" y="85" width="170" height="4" fill="#dee2e6" rx="2"/>
+                            <rect x="15" y="95" width="130" height="4" fill="#dee2e6" rx="2"/>
+                            <rect x="15" y="105" width="110" height="4" fill="#dee2e6" rx="2"/>
+                        </svg>
                     </div>
-                    <div class="service-detail-image">
-                        <div class="mockup-container">
-                            <i class="fas fa-laptop-code"></i>
-                            <p>Vista previa de Web Simple</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Landing Pages -->
-            <div id="landing-pages" class="service-detail">
-                <div class="service-detail-content reverse">
-                    <div class="service-detail-text">
-                        <h2>Landing Pages</h2>
-                        <div class="price-tag">Desde S/149</div>
-                        <p class="service-description">
-                            Páginas de aterrizaje optimizadas para convertir visitantes en clientes. Diseñadas 
-                            específicamente para campañas publicitarias, promociones especiales o lanzamientos 
-                            de productos/servicios.
-                        </p>
-                        
-                        <div class="service-features">
-                            <h3>¿Qué incluye?</h3>
-                            <ul>
-                                <li><i class="fas fa-check"></i> 1 página optimizada para conversión</li>
-                                <li><i class="fas fa-check"></i> Diseño enfocado en call-to-action</li>
-                                <li><i class="fas fa-check"></i> Formulario de captura de leads</li>
-                                <li><i class="fas fa-check"></i> Integración con WhatsApp Business</li>
-                                <li><i class="fas fa-check"></i> Botones de redes sociales</li>
-                                <li><i class="fas fa-check"></i> Testimonios y reseñas</li>
-                                <li><i class="fas fa-check"></i> Contador de urgencia (opcional)</li>
-                                <li><i class="fas fa-check"></i> Análiticas básicas incluidas</li>
-                            </ul>
-                        </div>
-
-                        <div class="ideal-for">
-                            <h3>Ideal para:</h3>
-                            <div class="ideal-tags">
-                                <span>Cursos Online</span>
-                                <span>Promociones</span>
-                                <span>Eventos</span>
-                                <span>Productos</span>
-                                <span>Servicios</span>
-                                <span>Captación</span>
-                            </div>
-                        </div>
-
-                        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20Landing%20Pages" class="btn btn-primary" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Solicitar Landing Page
-                        </a>
-                    </div>
-                    <div class="service-detail-image">
-                        <div class="mockup-container">
-                            <i class="fas fa-rocket"></i>
-                            <p>Vista previa de Landing Page</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Rediseño Web -->
-            <div id="rediseno-web" class="service-detail">
-                <div class="service-detail-content">
-                    <div class="service-detail-text">
-                        <h2>Rediseño Web</h2>
-                        <div class="price-tag">Desde S/199</div>
-                        <p class="service-description">
-                            Moderniza tu sitio web existente con diseños actuales, mejor funcionalidad y 
-                            optimización para móviles. Dale una nueva vida a tu presencia online y mejora 
-                            la experiencia de tus usuarios.
-                        </p>
-                        
-                        <div class="service-features">
-                            <h3>¿Qué incluye?</h3>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Análisis de tu sitio actual</li>
-                                <li><i class="fas fa-check"></i> Nuevo diseño moderno y atractivo</li>
-                                <li><i class="fas fa-check"></i> Optimización para móviles</li>
-                                <li><i class="fas fa-check"></i> Mejora de velocidad de carga</li>
-                                <li><i class="fas fa-check"></i> Actualización de contenido</li>
-                                <li><i class="fas fa-check"></i> Nuevas funcionalidades</li>
-                                <li><i class="fas fa-check"></i> SEO mejorado</li>
-                                <li><i class="fas fa-check"></i> Migración segura</li>
-                            </ul>
-                        </div>
-
-                        <div class="ideal-for">
-                            <h3>Ideal para:</h3>
-                            <div class="ideal-tags">
-                                <span>Sitios Antiguos</span>
-                                <span>Poco Tráfico</span>
-                                <span>No Responsivo</span>
-                                <span>Actualización</span>
-                                <span>Rebranding</span>
-                                <span>Mejoras</span>
-                            </div>
-                        </div>
-
-                        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Rediseño%20Web" class="btn btn-primary" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Solicitar Rediseño
-                        </a>
-                    </div>
-                    <div class="service-detail-image">
-                        <div class="mockup-container">
-                            <i class="fas fa-paint-brush"></i>
-                            <p>Antes y después del rediseño</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Creación de Contenido -->
-            <div id="creacion-contenido" class="service-detail">
-                <div class="service-detail-content reverse">
-                    <div class="service-detail-text">
-                        <h2>Creación de Contenido</h2>
-                        <div class="price-tag">Desde S/79</div>
-                        <p class="service-description">
-                            Contenido profesional y atractivo para tu página web. Textos optimizados para SEO, 
-                            descripción de servicios, biografías profesionales y contenido que conecte con 
-                            tu audiencia peruana.
-                        </p>
-                        
-                        <div class="service-features">
-                            <h3>¿Qué incluye?</h3>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Redacción profesional de textos</li>
-                                <li><i class="fas fa-check"></i> Optimización para SEO local</li>
-                                <li><i class="fas fa-check"></i> Descripción de servicios</li>
-                                <li><i class="fas fa-check"></i> Biografía profesional</li>
-                                <li><i class="fas fa-check"></i> Llamadas a la acción efectivas</li>
-                                <li><i class="fas fa-check"></i> Contenido para redes sociales</li>
-                                <li><i class="fas fa-check"></i> Investigación de palabras clave</li>
-                                <li><i class="fas fa-check"></i> Hasta 3 revisiones</li>
-                            </ul>
-                        </div>
-
-                        <div class="ideal-for">
-                            <h3>Ideal para:</h3>
-                            <div class="ideal-tags">
-                                <span>Nuevos Negocios</span>
-                                <span>Profesionales</span>
-                                <span>Actualización</span>
-                                <span>SEO Local</span>
-                                <span>Marketing</span>
-                                <span>Ventas</span>
-                            </div>
-                        </div>
-
-                        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Creación%20de%20Contenido" class="btn btn-primary" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Solicitar Contenido
-                        </a>
-                    </div>
-                    <div class="service-detail-image">
-                        <div class="mockup-container">
-                            <i class="fas fa-pen-fancy"></i>
-                            <p>Contenido profesional</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Google Mi Negocio -->
-            <div id="google-mi-negocio" class="service-detail">
-                <div class="service-detail-content">
-                    <div class="service-detail-text">
-                        <h2>Google Mi Negocio</h2>
-                        <div class="price-tag">Desde S/79</div>
-                        <p class="service-description">
-                            Optimiza tu presencia local en Google para que los clientes de tu zona te encuentren 
-                            fácilmente. Configuración completa y optimización de tu perfil de Google Mi Negocio.
-                        </p>
-                        
-                        <div class="service-features">
-                            <h3>¿Qué incluye?</h3>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Creación/optimización del perfil</li>
-                                <li><i class="fas fa-check"></i> Descripción atractiva del negocio</li>
-                                <li><i class="fas fa-check"></i> Selección de categorías relevantes</li>
-                                <li><i class="fas fa-check"></i> Configuración de horarios</li>
-                                <li><i class="fas fa-check"></i> Carga de fotos profesionales</li>
-                                <li><i class="fas fa-check"></i> Configuración de servicios/productos</li>
-                                <li><i class="fas fa-check"></i> Instrucciones para gestionar reseñas</li>
-                                <li><i class="fas fa-check"></i> Guía de buenas prácticas</li>
-                            </ul>
-                        </div>
-
-                        <div class="ideal-for">
-                            <h3>Ideal para:</h3>
-                            <div class="ideal-tags">
-                                <span>Negocios Locales</span>
-                                <span>Restaurantes</span>
-                                <span>Consultorios</span>
-                                <span>Tiendas</span>
-                                <span>Servicios</span>
-                                <span>Talleres</span>
-                            </div>
-                        </div>
-
-                        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Google%20Mi%20Negocio" class="btn btn-primary" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Optimizar Mi Negocio
-                        </a>
-                    </div>
-                    <div class="service-detail-image">
-                        <div class="mockup-container">
-                            <i class="fas fa-search"></i>
-                            <p>Presencia en Google</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mantenimiento -->
-            <div id="mantenimiento" class="service-detail">
-                <div class="service-detail-content reverse">
-                    <div class="service-detail-text">
-                        <h2>Mantenimiento Web</h2>
-                        <div class="price-tag">Desde S/49/mes</div>
-                        <p class="service-description">
-                            Mantén tu sitio web actualizado, seguro y funcionando correctamente. Servicio mensual 
-                            que incluye actualizaciones, copias de seguridad y soporte técnico continuo.
-                        </p>
-                        
-                        <div class="service-features">
-                            <h3>¿Qué incluye?</h3>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Actualizaciones mensuales</li>
-                                <li><i class="fas fa-check"></i> Copias de seguridad automáticas</li>
-                                <li><i class="fas fa-check"></i> Monitoreo de seguridad</li>
-                                <li><i class="fas fa-check"></i> Optimización de velocidad</li>
-                                <li><i class="fas fa-check"></i> Soporte técnico por WhatsApp</li>
-                                <li><i class="fas fa-check"></i> Cambios menores de contenido</li>
-                                <li><i class="fas fa-check"></i> Reporte mensual de estado</li>
-                                <li><i class="fas fa-check"></i> Certificado SSL incluido</li>
-                            </ul>
-                        </div>
-
-                        <div class="ideal-for">
-                            <h3>Ideal para:</h3>
-                            <div class="ideal-tags">
-                                <span>Todos los Sitios</span>
-                                <span>Seguridad</span>
-                                <span>Actualizaciones</span>
-                                <span>Tranquilidad</span>
-                                <span>Soporte</span>
-                                <span>Respaldo</span>
-                            </div>
-                        </div>
-
-                        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Mantenimiento%20Web" class="btn btn-primary" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Contratar Mantenimiento
-                        </a>
-                    </div>
-                    <div class="service-detail-image">
-                        <div class="mockup-container">
-                            <i class="fas fa-tools"></i>
-                            <p>Mantenimiento continuo</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hosting y Dominio -->
-            <div id="hosting-dominio" class="service-detail">
-                <div class="service-detail-content">
-                    <div class="service-detail-text">
-                        <h2>Hosting y Dominio</h2>
-                        <div class="price-tag">Desde S/99/año</div>
-                        <p class="service-description">
-                            Alojamiento web confiable y dominios .pe o .com para tu negocio. Servicio completo 
-                            que incluye configuración, migración y soporte técnico especializado.
-                        </p>
-                        
-                        <div class="service-features">
-                            <h3>¿Qué incluye?</h3>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Dominio .pe o .com (1 año)</li>
-                                <li><i class="fas fa-check"></i> Hosting SSD de alta velocidad</li>
-                                <li><i class="fas fa-check"></i> Certificado SSL gratuito</li>
-                                <li><i class="fas fa-check"></i> Correos corporativos (5 cuentas)</li>
-                                <li><i class="fas fa-check"></i> Panel de control cPanel</li>
-                                <li><i class="fas fa-check"></i> Copias de seguridad diarias</li>
-                                <li><i class="fas fa-check"></i> Soporte técnico 24/7</li>
-                                <li><i class="fas fa-check"></i> Migración gratuita</li>
-                            </ul>
-                        </div>
-
-                        <div class="ideal-for">
-                            <h3>Ideal para:</h3>
-                            <div class="ideal-tags">
-                                <span>Sitios Nuevos</span>
-                                <span>Migración</span>
-                                <span>Confiabilidad</span>
-                                <span>Velocidad</span>
-                                <span>Seguridad</span>
-                                <span>Soporte</span>
-                            </div>
-                        </div>
-
-                        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Hosting%20y%20Dominio" class="btn btn-primary" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Contratar Hosting
-                        </a>
-                    </div>
-                    <div class="service-detail-image">
-                        <div class="mockup-container">
-                            <i class="fas fa-server"></i>
-                            <p>Hosting confiable</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Optimización Móvil -->
-            <div id="optimizacion-movil" class="service-detail">
-                <div class="service-detail-content reverse">
-                    <div class="service-detail-text">
-                        <h2>Optimización Móvil</h2>
-                        <div class="price-tag">Desde S/99</div>
-                        <p class="service-description">
-                            Asegura que tu sitio web se vea y funcione perfectamente en todos los dispositivos móviles. 
-                            Optimización específica para smartphones y tablets, considerando que el 90% de usuarios 
-                            peruanos navegan desde móviles.
-                        </p>
-                        
-                        <div class="service-features">
-                            <h3>¿Qué incluye?</h3>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Análisis de compatibilidad móvil</li>
-                                <li><i class="fas fa-check"></i> Optimización de diseño responsive</li>
-                                <li><i class="fas fa-check"></i> Mejora de velocidad en móviles</li>
-                                <li><i class="fas fa-check"></i> Optimización de imágenes</li>
-                                <li><i class="fas fa-check"></i> Botones táctiles amigables</li>
-                                <li><i class="fas fa-check"></i> Menú móvil mejorado</li>
-                                <li><i class="fas fa-check"></i> Pruebas en diferentes dispositivos</li>
-                                <li><i class="fas fa-check"></i> Reporte de mejoras realizadas</li>
-                            </ul>
-                        </div>
-
-                        <div class="ideal-for">
-                            <h3>Ideal para:</h3>
-                            <div class="ideal-tags">
-                                <span>Sitios No Responsivos</span>
-                                <span>Baja Conversión</span>
-                                <span>Problemas Móvil</span>
-                                <span>Actualización</span>
-                                <span>UX Móvil</span>
-                                <span>Google Móvil</span>
-                            </div>
-                        </div>
-
-                        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20el%20servicio%20de%20Optimización%20Móvil" class="btn btn-primary" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Optimizar para Móvil
-                        </a>
-                    </div>
-                    <div class="service-detail-image">
-                        <div class="mockup-container">
-                            <i class="fas fa-mobile-alt"></i>
-                            <p>Optimización móvil</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Package Comparison -->
-    <section class="package-comparison">
-        <div class="container">
-            <h2 class="section-title">Compara Nuestros Paquetes</h2>
-            
-            <div class="comparison-table">
-                <div class="comparison-header">
-                    <div class="feature-column">Características</div>
-                    <div class="package-column">
+                    <div class="service-content-new">
                         <h3>Web Simple</h3>
-                        <div class="price">S/99</div>
+                        <p>Páginas web profesionales de una sola página perfectas para pequeños negocios que necesitan presencia digital rápida.</p>
+                        <div class="service-price-new">
+                            <span class="price-amount">S/ 650</span>
+                            <span class="price-period">pago único</span>
+                        </div>
+                        <ul class="service-features-new">
+                            <li>Diseño responsivo para móviles</li>
+                            <li>WhatsApp Business integrado</li>
+                            <li>SEO básico optimizado</li>
+                            <li>Hosting gratis por 1 año</li>
+                            <li>Formulario de contacto</li>
+                        </ul>
+                        <div class="service-actions-new">
+                            <a href="https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20Web%20Simple" class="btn btn-primary" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Solicitar
+                            </a>
+                            <a href="ejemplos.html" class="btn btn-outline-sm">Ver Ejemplos</a>
+                        </div>
                     </div>
-                    <div class="package-column popular">
-                        <h3>Landing Page</h3>
-                        <div class="price">S/149</div>
-                        <span class="popular-badge">Más Popular</span>
+                </div>
+
+                <!-- Rediseño Web -->
+                <div class="service-card-new" id="rediseno-web">
+                    <div class="service-image-new">
+                        <svg viewBox="0 0 200 120" class="service-icon">
+                            <rect width="90" height="100" x="10" y="10" fill="#f8f9fa" rx="4" stroke="#dee2e6" stroke-width="1"/>
+                            <rect x="15" y="15" width="80" height="10" fill="#6c757d" rx="2"/>
+                            <rect x="15" y="30" width="40" height="35" fill="#e9ecef" rx="2"/>
+                            <rect x="60" y="30" width="35" height="35" fill="#e9ecef" rx="2"/>
+                            
+                            <path d="M110 70 L125 55 L190 55 L190 110 L125 110 Z" fill="#C4302B" opacity="0.9"/>
+                            <text x="157" y="82" text-anchor="middle" fill="white" font-size="8" font-weight="bold">NUEVO</text>
+                            
+                            <rect width="90" height="100" x="100" y="10" fill="#ffffff" rx="4" stroke="#C4302B" stroke-width="2"/>
+                            <rect x="105" y="15" width="80" height="10" fill="#C4302B" rx="2"/>
+                            <rect x="105" y="30" width="80" height="25" fill="#e9ecef" rx="2"/>
+                            <rect x="105" y="60" width="80" height="4" fill="#6c757d" rx="1"/>
+                            <rect x="105" y="70" width="50" height="4" fill="#6c757d" rx="1"/>
+                        </svg>
                     </div>
-                    <div class="package-column">
-                        <h3>Rediseño</h3>
-                        <div class="price">S/199</div>
+                    <div class="service-content-new">
+                        <h3>Rediseño Web</h3>
+                        <p>Moderniza tu sitio web existente con diseño actual, mejor funcionalidad y optimización para móviles.</p>
+                        <div class="service-price-new">
+                            <span class="price-amount">S/ 850</span>
+                            <span class="price-period">pago único</span>
+                        </div>
+                        <ul class="service-features-new">
+                            <li>Análisis completo del sitio actual</li>
+                            <li>Nuevo diseño moderno</li>
+                            <li>Migración de contenido</li>
+                            <li>Optimización de velocidad</li>
+                            <li>Backup completo incluido</li>
+                        </ul>
+                        <div class="service-actions-new">
+                            <a href="https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20Rediseño%20Web" class="btn btn-primary" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Solicitar
+                            </a>
+                            <a href="ejemplos.html" class="btn btn-outline-sm">Ver Ejemplos</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="comparison-row">
-                    <div class="feature">Número de páginas</div>
-                    <div class="value">1-3 páginas</div>
-                    <div class="value">1 página</div>
-                    <div class="value">Según sitio actual</div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature">Diseño responsivo</div>
-                    <div class="value"><i class="fas fa-check"></i></div>
-                    <div class="value"><i class="fas fa-check"></i></div>
-                    <div class="value"><i class="fas fa-check"></i></div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature">Optimización conversión</div>
-                    <div class="value">Básica</div>
-                    <div class="value"><i class="fas fa-check"></i></div>
-                    <div class="value"><i class="fas fa-check"></i></div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature">SEO básico</div>
-                    <div class="value"><i class="fas fa-check"></i></div>
-                    <div class="value"><i class="fas fa-check"></i></div>
-                    <div class="value"><i class="fas fa-check"></i></div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature">Tiempo de entrega</div>
-                    <div class="value">3-5 días</div>
-                    <div class="value">2-4 días</div>
-                    <div class="value">5-7 días</div>
-                </div>
-
-                <div class="comparison-actions">
-                    <div class="action">
-                        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20Web%20Simple" class="btn btn-outline" target="_blank">Elegir Plan</a>
+                <!-- Creación de Contenido -->
+                <div class="service-card-new" id="creacion-contenido">
+                    <div class="service-image-new">
+                        <svg viewBox="0 0 200 120" class="service-icon">
+                            <rect width="200" height="120" fill="#f8f9fa" rx="8"/>
+                            
+                            <!-- Document icon -->
+                            <rect x="50" y="20" width="100" height="80" fill="white" rx="4" stroke="#dee2e6" stroke-width="2"/>
+                            <rect x="60" y="30" width="80" height="6" fill="#C4302B" rx="2"/>
+                            <rect x="60" y="42" width="60" height="4" fill="#6c757d" rx="1"/>
+                            <rect x="60" y="50" width="70" height="4" fill="#6c757d" rx="1"/>
+                            <rect x="60" y="58" width="50" height="4" fill="#6c757d" rx="1"/>
+                            
+                            <!-- Images placeholder -->
+                            <rect x="60" y="70" width="30" height="20" fill="#e9ecef" rx="2"/>
+                            <rect x="95" y="70" width="30" height="20" fill="#e9ecef" rx="2"/>
+                            
+                            <!-- Pen icon -->
+                            <circle cx="160" cy="35" r="12" fill="#28a745"/>
+                            <path d="M155 30 L165 40" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
                     </div>
-                    <div class="action">
-                        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20Landing%20Page" class="btn btn-primary" target="_blank">Elegir Plan</a>
+                    <div class="service-content-new">
+                        <h3>Creación de Contenido</h3>
+                        <p>Textos profesionales, imágenes optimizadas y contenido SEO para que tu web destaque.</p>
+                        <div class="service-price-new">
+                            <span class="price-amount">S/ 450</span>
+                            <span class="price-period">pago único</span>
+                        </div>
+                        <ul class="service-features-new">
+                            <li>Redacción profesional</li>
+                            <li>Imágenes optimizadas</li>
+                            <li>Contenido SEO optimizado</li>
+                            <li>Revisión y corrección</li>
+                            <li>Adaptación al público objetivo</li>
+                        </ul>
+                        <div class="service-actions-new">
+                            <a href="https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20Creación%20de%20Contenido" class="btn btn-primary" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Solicitar
+                            </a>
+                            <a href="ejemplos.html" class="btn btn-outline-sm">Ver Ejemplos</a>
+                        </div>
                     </div>
-                    <div class="action">
-                        <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20Rediseño" class="btn btn-outline" target="_blank">Elegir Plan</a>
+                </div>
+
+                <!-- Landing Pages -->
+                <div class="service-card-new" id="landing-pages">
+                    <div class="service-image-new">
+                        <svg viewBox="0 0 200 120" class="service-icon">
+                            <rect width="200" height="120" fill="#f8f9fa" rx="8"/>
+                            <rect x="30" y="20" width="140" height="15" fill="#C4302B" rx="7"/>
+                            <rect x="50" y="45" width="100" height="5" fill="#6c757d" rx="2"/>
+                            <rect x="40" y="55" width="120" height="5" fill="#6c757d" rx="2"/>
+                            
+                            <rect x="40" y="70" width="120" height="18" fill="#28a745" rx="9"/>
+                            <rect x="70" y="75" width="60" height="8" fill="white" rx="2"/>
+                            
+                            <rect x="20" y="95" width="160" height="20" fill="#e9ecef" rx="4"/>
+                        </svg>
+                    </div>
+                    <div class="service-content-new">
+                        <h3>Landing Pages</h3>
+                        <p>Páginas de aterrizaje diseñadas específicamente para convertir visitantes en clientes potenciales.</p>
+                        <div class="service-price-new">
+                            <span class="price-amount">S/ 450</span>
+                            <span class="price-period">pago único</span>
+                        </div>
+                        <ul class="service-features-new">
+                            <li>Diseño enfocado en conversión</li>
+                            <li>Formulario de captura de leads</li>
+                            <li>Call-to-action optimizados</li>
+                            <li>Integración con Google Analytics</li>
+                            <li>A/B testing básico</li>
+                        </ul>
+                        <div class="service-actions-new">
+                            <a href="https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20Landing%20Pages" class="btn btn-primary" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Solicitar
+                            </a>
+                            <a href="ejemplos.html" class="btn btn-outline-sm">Ver Ejemplos</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Mi Negocio -->
+                <div class="service-card-new" id="google-mi-negocio">
+                    <div class="service-image-new">
+                        <svg viewBox="0 0 200 120" class="service-icon">
+                            <rect width="200" height="120" fill="#f8f9fa" rx="8"/>
+                            
+                            <!-- Google Maps style -->
+                            <rect x="15" y="15" width="170" height="90" fill="#e8f4f8" rx="4"/>
+                            <path d="M40 45 Q50 35 60 45 T80 45" stroke="#C4302B" stroke-width="2" fill="none"/>
+                            <circle cx="80" cy="45" r="6" fill="#C4302B"/>
+                            <circle cx="80" cy="45" r="3" fill="white"/>
+                            
+                            <!-- Business info card -->
+                            <rect x="120" y="30" width="60" height="50" fill="white" rx="3" stroke="#dee2e6"/>
+                            <rect x="125" y="35" width="50" height="5" fill="#C4302B" rx="2"/>
+                            <rect x="125" y="45" width="35" height="3" fill="#6c757d" rx="1"/>
+                            <rect x="125" y="52" width="40" height="3" fill="#6c757d" rx="1"/>
+                            
+                            <!-- Stars -->
+                            <g fill="#ffc107">
+                                <circle cx="127" cy="62" r="2"/>
+                                <circle cx="133" cy="62" r="2"/>
+                                <circle cx="139" cy="62" r="2"/>
+                                <circle cx="145" cy="62" r="2"/>
+                                <circle cx="151" cy="62" r="2"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="service-content-new">
+                        <h3>Google Mi Negocio</h3>
+                        <p>Optimización completa para aparecer en búsquedas locales y Google Maps. Aumenta tu visibilidad local.</p>
+                        <div class="service-price-new">
+                            <span class="price-amount">S/ 350</span>
+                            <span class="price-period">pago único</span>
+                        </div>
+                        <ul class="service-features-new">
+                            <li>Creación/optimización del perfil</li>
+                            <li>Verificación de la cuenta</li>
+                            <li>Subida de fotos profesionales</li>
+                            <li>Estrategia para obtener reseñas</li>
+                            <li>Reporte mensual por 3 meses</li>
+                        </ul>
+                        <div class="service-actions-new">
+                            <a href="https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20Google%20Mi%20Negocio" class="btn btn-primary" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Solicitar
+                            </a>
+                            <a href="ejemplos.html" class="btn btn-outline-sm">Ver Resultados</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tienda Online -->
+                <div class="service-card-new" id="tienda-online">
+                    <div class="service-image-new">
+                        <svg viewBox="0 0 200 120" class="service-icon">
+                            <rect width="200" height="120" fill="#f8f9fa" rx="8"/>
+                            
+                            <!-- Shopping cart -->
+                            <path d="M30 30 L35 50 L150 50 L155 30 Z" fill="#C4302B" stroke="#C4302B" stroke-width="2"/>
+                            <circle cx="50" cy="65" r="5" fill="#6c757d"/>
+                            <circle cx="130" cy="65" r="5" fill="#6c757d"/>
+                            <path d="M25 20 L30 30 L35 20" stroke="#C4302B" stroke-width="2" fill="none"/>
+                            
+                            <!-- Products grid -->
+                            <rect x="60" y="75" width="25" height="25" fill="#e9ecef" rx="2"/>
+                            <rect x="90" y="75" width="25" height="25" fill="#e9ecef" rx="2"/>
+                            <rect x="120" y="75" width="25" height="25" fill="#e9ecef" rx="2"/>
+                            
+                            <!-- Shopping bag -->
+                            <rect x="160" y="40" width="20" height="25" fill="#28a745" rx="2"/>
+                            <path d="M165 40 Q165 35 170 35 Q175 35 175 40" stroke="#28a745" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="service-content-new">
+                        <h3>Tienda Online</h3>
+                        <p>Tienda virtual completa para vender tus productos online con carrito de compras y métodos de pago.</p>
+                        <div class="service-price-new">
+                            <span class="price-amount">S/ 1,200</span>
+                            <span class="price-period">pago único</span>
+                        </div>
+                        <ul class="service-features-new">
+                            <li>Catálogo de productos</li>
+                            <li>Carrito de compras</li>
+                            <li>Métodos de pago integrados</li>
+                            <li>Panel administrativo</li>
+                            <li>Gestión de inventario</li>
+                        </ul>
+                        <div class="service-actions-new">
+                            <a href="https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20Tienda%20Online" class="btn btn-primary" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Solicitar
+                            </a>
+                            <a href="ejemplos.html" class="btn btn-outline-sm">Ver Ejemplos</a>
+                        </div>
                     </div>
                 </div>
             </div>

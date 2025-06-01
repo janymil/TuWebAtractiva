@@ -713,6 +713,127 @@ a:hover {
     padding: var(--spacing-3xl) 0;
 }
 
+/* New Services Grid */
+.services-grid-section {
+    padding: var(--spacing-3xl) 0;
+    background: hsl(var(--background));
+}
+
+.services-grid-new {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-2xl);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card-new {
+    background: hsl(var(--secondary));
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: 0 8px 25px hsl(var(--shadow) / 0.1);
+    transition: var(--transition);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card-new:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px hsl(var(--shadow) / 0.15);
+    border-color: hsl(var(--primary) / 0.2);
+}
+
+.service-image-new {
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+.service-icon {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
+.service-content-new h3 {
+    color: hsl(var(--text));
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+}
+
+.service-content-new p {
+    color: hsl(var(--text) / 0.8);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.service-price-new {
+    background: hsl(var(--primary) / 0.1);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.price-amount {
+    color: hsl(var(--primary));
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    display: block;
+}
+
+.price-period {
+    color: hsl(var(--text) / 0.7);
+    font-size: var(--font-size-sm);
+}
+
+.service-features-new {
+    list-style: none;
+    margin-bottom: var(--spacing-xl);
+}
+
+.service-features-new li {
+    color: hsl(var(--text) / 0.8);
+    margin-bottom: var(--spacing-sm);
+    padding-left: var(--spacing-lg);
+    position: relative;
+}
+
+.service-features-new li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: hsl(var(--primary));
+    font-weight: bold;
+}
+
+.service-actions-new {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.btn-outline-sm {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    border: 2px solid hsl(var(--border));
+    background: transparent;
+    color: hsl(var(--text));
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.btn-outline-sm:hover {
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.05);
+}
+
 .service-detail {
     margin-bottom: var(--spacing-3xl);
     padding: var(--spacing-3xl) 0;
