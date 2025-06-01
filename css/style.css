@@ -11,6 +11,19 @@
     --success: 134 61% 41%; /* #28A745 green */
     --border: 220 13% 91%; /* #E5E7EB */
     --shadow: 220 13% 84%; /* #D1D5DB */
+}
+
+/* Dark mode variables */
+[data-theme="dark"] {
+    --primary: 0 70% 55%; /* Slightly brighter red for dark mode */
+    --secondary: 210 22% 15%; /* #1F2937 dark grey */
+    --accent: 51 100% 50%; /* Keep gold accent */
+    --background: 210 22% 12%; /* #111827 very dark grey */
+    --text: 0 0% 95%; /* #F3F4F6 light grey */
+    --success: 134 61% 45%; /* Slightly brighter green */
+    --border: 210 22% 25%; /* #374151 dark border */
+    --shadow: 210 22% 8%; /* Very dark shadow */
+}
     
     /* Typography */
     --font-primary: 'Montserrat', sans-serif;
@@ -240,6 +253,79 @@ a:hover {
 .nav-cta:hover {
     background-color: hsl(134 61% 35%);
     transform: translateY(-1px);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: 2px solid hsl(var(--border));
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    color: hsl(var(--text));
+    font-size: var(--font-size-lg);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.theme-toggle:hover {
+    background-color: hsl(var(--background));
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+}
+
+.theme-toggle i {
+    transition: var(--transition);
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .hero {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--secondary)) 100%);
+}
+
+[data-theme="dark"] .service-card,
+[data-theme="dark"] .testimonial-card,
+[data-theme="dark"] .contact-method,
+[data-theme="dark"] .portfolio-card,
+[data-theme="dark"] .quick-option,
+[data-theme="dark"] .form-container,
+[data-theme="dark"] .faq-item {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border));
+}
+
+[data-theme="dark"] .navbar {
+    background-color: hsl(var(--secondary));
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+[data-theme="dark"] .why-choose-us,
+[data-theme="dark"] .package-comparison,
+[data-theme="dark"] .location-section {
+    background: hsl(var(--secondary));
+}
+
+[data-theme="dark"] .testimonials,
+[data-theme="dark"] .contact-form-section,
+[data-theme="dark"] .faq-section,
+[data-theme="dark"] .process-section {
+    background: hsl(var(--background));
+}
+
+[data-theme="dark"] .mockup-container {
+    background: hsl(var(--background));
+}
+
+[data-theme="dark"] .comparison-header {
+    background: hsl(var(--background));
+}
+
+[data-theme="dark"] .comparison-row .feature {
+    background: hsl(var(--background));
 }
 
 .nav-toggle {
@@ -1567,6 +1653,12 @@ a:hover {
     .nav-toggle.active .bar:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
     }
+
+    /* Dark mode toggle */
+    .theme-toggle {
+        display: none;
+    }
+}
 
     /* Hero Section */
     .hero-container {
