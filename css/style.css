@@ -1343,7 +1343,9 @@ a:hover {
 
 /* Workflow Process Section */
 .workflow-process-section {
+    background: white;
     background: hsl(var(--background));
+    padding: 4rem 0;
     padding: var(--spacing-3xl) 0;
     position: relative;
     overflow: hidden;
@@ -1371,13 +1373,16 @@ a:hover {
 }
 
 .section-title-white {
+    color: #333;
     color: hsl(var(--text));
     font-size: 2.5rem;
     font-weight: 700;
+    margin-bottom: 1.5rem;
     margin-bottom: var(--spacing-md);
 }
 
 .section-subtitle-white {
+    color: #666;
     color: hsl(var(--text-muted));
     font-size: 1.1rem;
     max-width: 600px;
@@ -1387,12 +1392,14 @@ a:hover {
 .workflow-timeline {
     position: relative;
     max-width: 1000px;
+    margin: 0 auto 4rem;
     margin: 0 auto var(--spacing-3xl);
 }
 
 .workflow-step {
     display: flex;
     align-items: flex-start;
+    margin-bottom: 3rem;
     margin-bottom: var(--spacing-2xl);
     position: relative;
     opacity: 0;
@@ -1422,6 +1429,7 @@ a:hover {
 }
 
 .step-number {
+    background: #3b82f6;
     background: hsl(var(--primary));
     color: white;
     width: 60px;
@@ -1432,18 +1440,24 @@ a:hover {
     justify-content: center;
     font-size: 1.5rem;
     font-weight: bold;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
     box-shadow: 0 10px 30px hsl(var(--primary) / 0.3);
     position: relative;
     z-index: 2;
+    margin: 0 2rem;
     margin: 0 var(--spacing-xl);
 }
 
 .step-content {
+    background: white;
     background: hsl(var(--card));
+    border: 1px solid #e5e7eb;
     border: 1px solid hsl(var(--border));
     border-radius: 20px;
+    padding: 2rem;
     padding: var(--spacing-xl);
     max-width: 400px;
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.1);
     box-shadow: 0 5px 15px hsl(var(--primary) / 0.1);
     transition: transform 0.3s ease;
 }
@@ -1457,6 +1471,7 @@ a:hover {
 }
 
 .step-icon {
+    background: #3b82f6;
     background: hsl(var(--primary));
     color: white;
     width: 50px;
@@ -1466,6 +1481,7 @@ a:hover {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
+    margin-bottom: 1rem;
     margin-bottom: var(--spacing-md);
 }
 
@@ -1474,19 +1490,24 @@ a:hover {
 }
 
 .step-content h3 {
+    color: #333;
     color: hsl(var(--text));
     font-size: 1.3rem;
+    margin-bottom: 0.75rem;
     margin-bottom: var(--spacing-sm);
 }
 
 .step-content p {
+    color: #666;
     color: hsl(var(--text-muted));
     line-height: 1.6;
+    margin-bottom: 1rem;
     margin-bottom: var(--spacing-md);
 }
 
 .step-details {
     display: flex;
+    gap: 1rem;
     gap: var(--spacing-md);
     flex-wrap: wrap;
 }
@@ -1496,7 +1517,9 @@ a:hover {
 }
 
 .step-details span {
+    background: rgba(59, 130, 246, 0.1);
     background: hsl(var(--primary) / 0.1);
+    color: #3b82f6;
     color: hsl(var(--primary));
     padding: 0.25rem 0.75rem;
     border-radius: 15px;
@@ -1513,6 +1536,7 @@ a:hover {
     transform: translateX(-50%);
     width: 2px;
     height: 80px;
+    background: linear-gradient(to bottom, #e5e7eb, rgba(229, 231, 235, 0.3));
     background: linear-gradient(to bottom, hsl(var(--border)), hsl(var(--border) / 0.3));
     z-index: 1;
 }
@@ -1524,7 +1548,9 @@ a:hover {
 .workflow-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
     gap: var(--spacing-xl);
+    margin-bottom: 4rem;
     margin-bottom: var(--spacing-3xl);
     max-width: 800px;
     margin-left: auto;
@@ -1533,14 +1559,19 @@ a:hover {
 
 .stat-item {
     text-align: center;
+    background: white;
     background: hsl(var(--card));
+    border: 1px solid #e5e7eb;
     border: 1px solid hsl(var(--border));
     border-radius: 15px;
+    padding: 2rem;
     padding: var(--spacing-xl);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
     box-shadow: 0 2px 8px hsl(var(--primary) / 0.1);
 }
 
 .stat-number {
+    color: #3b82f6;
     color: hsl(var(--primary));
     font-size: 2.5rem;
     font-weight: 700;
@@ -1548,6 +1579,7 @@ a:hover {
 }
 
 .stat-label {
+    color: #666;
     color: hsl(var(--text-muted));
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -1556,23 +1588,31 @@ a:hover {
 
 .workflow-cta {
     text-align: center;
+    background: white;
     background: hsl(var(--card));
+    border: 1px solid #e5e7eb;
     border: 1px solid hsl(var(--border));
     border-radius: 20px;
+    padding: 3rem;
     padding: var(--spacing-2xl);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.1);
     box-shadow: 0 5px 15px hsl(var(--primary) / 0.1);
     max-width: 500px;
     margin: 0 auto;
 }
 
 .workflow-cta h3 {
+    color: #333;
     color: hsl(var(--text));
     font-size: 1.5rem;
+    margin-bottom: 0.75rem;
     margin-bottom: var(--spacing-sm);
 }
 
 .workflow-cta p {
+    color: #666;
     color: hsl(var(--text-muted));
+    margin-bottom: 2rem;
     margin-bottom: var(--spacing-lg);
 }
 
