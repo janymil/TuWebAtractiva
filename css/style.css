@@ -643,7 +643,7 @@ a:hover {
 }
 
 .footer-section h3 {
-    color: white;
+    color: hsl(var(--text));
     margin-bottom: var(--spacing-lg);
 }
 
@@ -656,20 +656,12 @@ a:hover {
 }
 
 .footer-section ul li a {
-    color: hsl(var(--text-dark) / 0.8);
+    color: hsl(var(--text) / 0.8);
     transition: var(--transition);
 }
 
 .footer-section ul li a:hover {
-    color: hsl(var(--text-dark));
-}
-
-[data-theme="light"] .footer-section ul li a {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-[data-theme="light"] .footer-section ul li a:hover {
-    color: white;
+    color: hsl(var(--text));
 }
 
 .social-links {
@@ -696,7 +688,7 @@ a:hover {
 }
 
 .contact-info {
-    color: hsl(var(--text-dark) / 0.8);
+    color: hsl(var(--text) / 0.8);
 }
 
 .contact-info p {
@@ -704,27 +696,14 @@ a:hover {
     align-items: center;
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-sm);
-    color: hsl(var(--text-dark) / 0.8);
-}
-
-[data-theme="light"] .contact-info {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-[data-theme="light"] .contact-info p {
-    color: rgba(255, 255, 255, 0.8);
+    color: hsl(var(--text) / 0.8);
 }
 
 .footer-bottom {
-    border-top: 1px solid hsl(var(--border-dark));
+    border-top: 1px solid hsl(var(--border));
     padding-top: var(--spacing-xl);
     text-align: center;
-    color: hsl(var(--text-dark) / 0.6);
-}
-
-[data-theme="light"] .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--text) / 0.6);
 }
 
 /* Page Header */
@@ -1182,7 +1161,7 @@ a:hover {
 /* Mobile vs Desktop Preview */
 .mobile-desktop-preview {
     padding: var(--spacing-3xl) 0;
-    background: white;
+    background: hsl(var(--secondary));
 }
 
 .preview-comparison {
@@ -1436,7 +1415,7 @@ a:hover {
 .form-container {
     max-width: 800px;
     margin: 0 auto;
-    background: white;
+    background: hsl(var(--secondary));
     padding: var(--spacing-3xl);
     border-radius: var(--border-radius-lg);
     box-shadow: 0 4px 20px hsl(var(--shadow) / 0.1);
@@ -1483,7 +1462,8 @@ a:hover {
     font-family: var(--font-primary);
     font-size: var(--font-size-base);
     transition: var(--transition);
-    background: white;
+    background: hsl(var(--background));
+    color: hsl(var(--text));
 }
 
 .form-group input:focus,
@@ -1675,7 +1655,7 @@ a:hover {
         top: 80px;
         left: -100%;
         width: 100%;
-        background: white;
+        background: hsl(var(--secondary));
         flex-direction: column;
         align-items: flex-start;
         padding: var(--spacing-xl);
