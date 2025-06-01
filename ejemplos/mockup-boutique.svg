@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="fashionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E91E63;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C2185B;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="elegantGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9C27B0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7B1FA2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E6C200;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FCE4EC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F8BBD9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background representing boutique website -->
+  <rect width="400" height="300" fill="url(#pinkGradient)"/>
+  
+  <!-- Header/Navigation -->
+  <rect x="0" y="0" width="400" height="50" fill="url(#fashionGradient)"/>
+  
+  <!-- Logo area -->
+  <rect x="20" y="12" width="100" height="26" rx="3" fill="#fff" opacity="0.95"/>
+  <text x="70" y="20" text-anchor="middle" font-family="serif" font-size="8" fill="#E91E63" font-weight="bold">Fashion Style</text>
+  <text x="70" y="30" text-anchor="middle" font-family="serif" font-size="6" fill="#C2185B" font-style="italic">Boutique</text>
+  
+  <!-- Navigation menu -->
+  <rect x="280" y="18" width="25" height="4" rx="1" fill="#fff" opacity="0.9"/>
+  <rect x="315" y="18" width="30" height="4" rx="1" fill="#fff" opacity="0.9"/>
+  <rect x="355" y="18" width="25" height="4" rx="1" fill="#fff" opacity="0.9"/>
+  
+  <!-- Shopping cart icon -->
+  <rect x="250" y="18" width="20" height="15" rx="2" fill="#fff" opacity="0.9"/>
+  <circle cx="256" cy="25" r="2" fill="#E91E63"/>
+  <circle cx="264" cy="25" r="2" fill="#E91E63"/>
+  <rect x="252" y="22" width="12" height="1" fill="#E91E63"/>
+  
+  <!-- Hero section with featured collection -->
+  <rect x="0" y="50" width="400" height="100" fill="url(#elegantGradient)" opacity="0.4"/>
+  
+  <!-- Featured product image -->
+  <rect x="30" y="65" width="120" height="70" rx="8" fill="#fff" opacity="0.95"/>
+  <rect x="35" y="70" width="110" height="50" rx="5" fill="url(#fashionGradient)" opacity="0.7"/>
+  
+  <!-- Dress silhouette -->
+  <g transform="translate(90, 85)">
+    <ellipse cx="0" cy="0" rx="12" ry="8" fill="#fff" opacity="0.9"/>
+    <path d="M -8 8 Q 0 25 8 8 Q 0 15 -8 8" fill="#fff" opacity="0.9"/>
+    <circle cx="0" cy="-5" r="3" fill="#E91E63"/>
+  </g>
+  
+  <!-- Product info -->
+  <rect x="170" y="70" width="120" height="6" rx="2" fill="#2C3E50"/>
+  <rect x="170" y="82" width="150" height="4" rx="1" fill="#2C3E50" opacity="0.7"/>
+  <rect x="170" y="90" width="100" height="4" rx="1" fill="#2C3E50" opacity="0.7"/>
+  
+  <!-- Price -->
+  <rect x="170" y="105" width="60" height="8" rx="2" fill="url(#goldAccent)"/>
+  <text x="200" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#2C3E50" font-weight="bold">S/ 89</text>
+  
+  <!-- WhatsApp order button -->
+  <rect x="170" y="120" width="80" height="20" rx="10" fill="#25D366"/>
+  <circle cx="185" cy="130" r="5" fill="#fff"/>
+  <path d="M 182 130 Q 185 127 188 130 Q 185 133 182 130" fill="#25D366"/>
+  <text x="220" y="133" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#fff" font-weight="bold">Ordenar</text>
+  
+  <!-- Collection grid -->
+  <rect x="20" y="165" width="360" height="6" rx="2" fill="#E91E63"/>
+  <text x="200" y="175" text-anchor="middle" font-family="serif" font-size="9" fill="#E91E63" font-weight="bold">Nueva Colección</text>
+  
+  <!-- Product grid -->
+  <g transform="translate(30, 190)">
+    <!-- Product 1 -->
+    <rect x="0" y="0" width="80" height="80" rx="5" fill="#fff" stroke="#E5E7EB"/>
+    <rect x="5" y="5" width="70" height="50" rx="3" fill="url(#fashionGradient)" opacity="0.5"/>
+    <!-- Blouse design -->
+    <ellipse cx="40" cy="20" rx="15" ry="10" fill="#fff" opacity="0.9"/>
+    <rect x="30" y="30" width="20" height="15" rx="3" fill="#fff" opacity="0.9"/>
+    <rect x="5" y="58" width="50" height="3" rx="1" fill="#2C3E50"/>
+    <rect x="5" y="64" width="30" height="4" rx="1" fill="url(#goldAccent)"/>
+    <rect x="5" y="71" width="25" height="3" rx="1" fill="#25D366"/>
+    
+    <!-- Product 2 -->
+    <rect x="90" y="0" width="80" height="80" rx="5" fill="#fff" stroke="#E5E7EB"/>
+    <rect x="95" y="5" width="70" height="50" rx="3" fill="url(#elegantGradient)" opacity="0.5"/>
+    <!-- Skirt design -->
+    <path d="M 120 15 Q 130 25 140 15 Q 130 40 120 15" fill="#fff" opacity="0.9"/>
+    <path d="M 115 15 Q 125 25 135 15 Q 125 40 115 15" fill="#fff" opacity="0.9"/>
+    <rect x="95" y="58" width="55" height="3" rx="1" fill="#2C3E50"/>
+    <rect x="95" y="64" width="35" height="4" rx="1" fill="url(#goldAccent)"/>
+    <rect x="95" y="71" width="25" height="3" rx="1" fill="#25D366"/>
+    
+    <!-- Product 3 -->
+    <rect x="180" y="0" width="80" height="80" rx="5" fill="#fff" stroke="#E5E7EB"/>
+    <rect x="185" y="5" width="70" height="50" rx="3" fill="url(#fashionGradient)" opacity="0.6"/>
+    <!-- Dress design -->
+    <ellipse cx="220" cy="18" rx="12" ry="8" fill="#fff" opacity="0.9"/>
+    <path d="M 208 26 Q 220 45 232 26 Q 220 35 208 26" fill="#fff" opacity="0.9"/>
+    <rect x="185" y="58" width="45" height="3" rx="1" fill="#2C3E50"/>
+    <rect x="185" y="64" width="40" height="4" rx="1" fill="url(#goldAccent)"/>
+    <rect x="185" y="71" width="25" height="3" rx="1" fill="#25D366"/>
+    
+    <!-- Product 4 -->
+    <rect x="270" y="0" width="80" height="80" rx="5" fill="#fff" stroke="#E5E7EB"/>
+    <rect x="275" y="5" width="70" height="50" rx="3" fill="url(#elegantGradient)" opacity="0.4"/>
+    <!-- Accessories design -->
+    <circle cx="310" cy="25" r="8" fill="#fff" opacity="0.9"/>
+    <circle cx="310" cy="25" r="5" fill="url(#goldAccent)"/>
+    <circle cx="310" cy="35" r="4" fill="#fff" opacity="0.9"/>
+    <rect x="275" y="58" width="40" height="3" rx="1" fill="#2C3E50"/>
+    <rect x="275" y="64" width="30" height="4" rx="1" fill="url(#goldAccent)"/>
+    <rect x="275" y="71" width="25" height="3" rx="1" fill="#25D366"/>
+  </g>
+  
+  <!-- Social media icons -->
+  <g transform="translate(310, 60)">
+    <circle cx="0" cy="0" r="8" fill="#E1306C"/>
+    <circle cx="0" cy="0" r="4" fill="#fff"/>
+    <rect x="-2" y="-2" width="4" height="4" rx="1" fill="#E1306C"/>
+    
+    <circle cx="20" cy="0" r="8" fill="#1877F2"/>
+    <text x="20" y="3" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#fff" font-weight="bold">f</text>
+  </g>
+  
+  <!-- Promotional banner -->
+  <rect x="300" y="155" width="80" height="15" rx="7" fill="url(#goldAccent)"/>
+  <text x="340" y="165" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#2C3E50" font-weight="bold">ENVÍO GRATIS</text>
+  
+  <!-- Rating and reviews -->
+  <g transform="translate(260, 110)" fill="#FFD700">
+    <text x="0" y="8" font-family="sans-serif" font-size="8">★★★★★</text>
+    <text x="45" y="8" font-family="sans-serif" font-size="6" fill="#2C3E50">(127)</text>
+  </g>
+  
+  <!-- Peru flag accent -->
+  <rect x="350" y="125" width="12" height="8" rx="1" fill="#fff"/>
+  <rect x="350" y="125" width="4" height="8" fill="#C4302B"/>
+  <rect x="358" y="125" width="4" height="8" fill="#C4302B"/>
+  
+  <!-- Fashion pattern border -->
+  <rect x="0" y="290" width="400" height="10" fill="url(#fashionGradient)"/>
+  <circle cx="20" cy="295" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="40" cy="295" r="3" fill="url(#goldAccent)" opacity="0.8"/>
+  <circle cx="60" cy="295" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="340" cy="295" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="360" cy="295" r="3" fill="url(#goldAccent)" opacity="0.8"/>
+  <circle cx="380" cy="295" r="3" fill="#fff" opacity="0.8"/>
+</svg>
