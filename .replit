@@ -25,7 +25,8 @@ args = "python server.py"
 waitForPort = 5000
 
 [deployment]
-run = ["sh", "-c", "python server.py"]
+deploymentTarget = "static"
+publicDir = "/"
 
 [[ports]]
 localPort = 5000
