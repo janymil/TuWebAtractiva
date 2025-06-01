@@ -713,6 +713,29 @@ a:hover {
     padding: var(--spacing-3xl) 0;
 }
 
+/* Services Introduction */
+.services-intro {
+    padding: var(--spacing-2xl) 0;
+    background: hsl(var(--secondary));
+}
+
+.intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-content p {
+    color: hsl(var(--text));
+    font-size: var(--font-size-lg);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+}
+
+.intro-content p:last-child {
+    margin-bottom: 0;
+}
+
 /* New Services Grid */
 .services-grid-section {
     padding: var(--spacing-3xl) 0;
