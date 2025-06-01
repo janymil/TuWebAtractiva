@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initFAQ();
     initSmoothScrolling();
     initAnimations();
-    initThemeToggle();
 });
 
 // Navigation functionality
@@ -509,58 +508,6 @@ function removeFieldError(field) {
 document.addEventListener('DOMContentLoaded', function() {
     initRealTimeValidation();
 });
-
-// Theme Toggle Functionality
-function initThemeToggle() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    if (!themeToggle) return;
-    
-    // Get saved theme or use system preference
-    let currentTheme = localStorage.getItem('theme');
-    if (!currentTheme) {
-        currentTheme = prefersDarkScheme.matches ? 'dark' : 'light';
-    }
-    
-    // Apply initial theme
-    applyTheme(currentTheme);
-    updateThemeIcon(currentTheme);
-    
-    // Theme toggle click handler
-    themeToggle.addEventListener('click', function() {
-        const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        applyTheme(newTheme);
-        updateThemeIcon(newTheme);
-        localStorage.setItem('theme', newTheme);
-    });
-    
-    // Listen for system theme changes
-    prefersDarkScheme.addEventListener('change', function(e) {
-        if (!localStorage.getItem('theme')) {
-            const newTheme = e.matches ? 'dark' : 'light';
-            applyTheme(newTheme);
-            updateThemeIcon(newTheme);
-        }
-    });
-}
-
-function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-}
-
-function updateThemeIcon(theme) {
-    const themeToggle = document.getElementById('theme-toggle');
-    const icon = themeToggle.querySelector('i');
-    
-    if (theme === 'dark') {
-        icon.className = 'fas fa-sun';
-        themeToggle.setAttribute('aria-label', 'Cambiar a modo claro');
-    } else {
-        icon.className = 'fas fa-moon';
-        themeToggle.setAttribute('aria-label', 'Cambiar a modo oscuro');
-    }
-}
 
 // WhatsApp floating button (optional enhancement)
 function addFloatingWhatsApp() {
