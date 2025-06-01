@@ -778,6 +778,20 @@ a:hover {
     height: auto;
 }
 
+.service-icon-img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+.service-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
 .service-content-new h3 {
     color: hsl(var(--text));
     font-size: var(--font-size-xl);
