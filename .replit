@@ -4,7 +4,7 @@ modules = ["python-3.11"]
 channel = "stable-24_05"
 
 [workflows]
-runButton = "Project"
+runButton = "Start Server"
 
 [[workflows.workflow]]
 name = "Project"
@@ -23,6 +23,15 @@ author = "agent"
 task = "shell.exec"
 args = "python server.py"
 waitForPort = 5000
+
+[[workflows.workflow]]
+name = "Start Server"
+author = 43272767
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python server.py"
 
 [deployment]
 deploymentTarget = "static"
