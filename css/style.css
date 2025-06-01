@@ -618,14 +618,14 @@ a:hover {
 .footer {
     background: hsl(var(--text));
     color: white;
-    padding: var(--spacing-3xl) 0 var(--spacing-xl);
+    padding: var(--spacing-2xl) 0 var(--spacing-lg);
 }
 
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-2xl);
-    margin-bottom: var(--spacing-2xl);
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .footer-logo {
@@ -1350,7 +1350,7 @@ a:hover {
 }
 
 .contact-method {
-    background: white;
+    background: hsl(var(--secondary));
     padding: var(--spacing-2xl);
     border-radius: var(--border-radius-lg);
     box-shadow: 0 4px 20px hsl(var(--shadow) / 0.1);
@@ -1522,7 +1522,7 @@ a:hover {
 }
 
 .quick-option {
-    background: white;
+    background: hsl(var(--secondary));
     padding: var(--spacing-2xl);
     border-radius: var(--border-radius-lg);
     box-shadow: 0 4px 20px hsl(var(--shadow) / 0.1);
@@ -1542,7 +1542,7 @@ a:hover {
 /* Location Section */
 .location-section {
     padding: var(--spacing-3xl) 0;
-    background: white;
+    background: hsl(var(--secondary));
 }
 
 .location-content {
