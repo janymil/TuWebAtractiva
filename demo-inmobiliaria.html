@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inmobiliaria Lima Premium - Demo Interactivo</title>
+    <meta name="description" content="Demo interactivo de portal inmobiliario con búsqueda de propiedades y tours virtuales">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .demo-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            font-size: 0.9rem;
+        }
+
+        .demo-banner a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        body {
+            margin-top: 60px;
+        }
+
+        .real-estate-nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 60px;
+            z-index: 100;
+        }
+
+        .real-estate-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .real-estate-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c5aa0;
+        }
+
+        .real-estate-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .real-estate-menu a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .real-estate-menu a:hover {
+            color: #2c5aa0;
+        }
+
+        .hero-search {
+            background: linear-gradient(rgba(44,90,160,0.9), rgba(44,90,160,0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232c5aa0" width="1200" height="600"/><rect fill="%233d6bb3" x="100" y="100" width="200" height="150"/><rect fill="%234e7cc6" x="400" y="150" width="250" height="180"/><rect fill="%235f8dd9" x="750" y="80" width="180" height="200"/></svg>');
+            background-size: cover;
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+        }
+
+        .search-form {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .search-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-filters select, .search-filters input {
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            color: #333;
+        }
+
+        .properties-section {
+            padding: 3rem 0;
+        }
+
+        .property-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid #2c5aa0;
+            color: #2c5aa0;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #2c5aa0;
+            color: white;
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #2c5aa0, #4e7cc6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #e74c3c;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .property-info {
+            padding: 1.5rem;
+        }
+
+        .property-price {
+            color: #2c5aa0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-title {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-location {
+            color: #666;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .property-features {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .property-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .mortgage-calculator {
+            background: #f8f9fa;
+            padding: 3rem 0;
+        }
+
+        .calculator-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .calc-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .calc-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .calc-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .calc-result {
+            background: #2c5aa0;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .services-section {
+            background: #2c5aa0;
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .service-item i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        @media (max-width: 768px) {
+            .real-estate-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .search-filters {
+                grid-template-columns: 1fr;
+            }
+            
+            .property-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        🏠 DEMO INTERACTIVO - <a href="ejemplos.html">← Volver a Ejemplos</a> | Portal inmobiliario completo para tu empresa
+    </div>
+
+    <!-- Navigation -->
+    <nav class="real-estate-nav">
+        <div class="container">
+            <div class="real-estate-logo">
+                <i class="fas fa-home"></i> Lima Premium
+            </div>
+            <ul class="real-estate-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#propiedades">Propiedades</a></li>
+                <li><a href="#calculadora">Calculadora</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Search Section -->
+    <section id="inicio" class="hero-search">
+        <div class="container">
+            <h1>Encuentra tu Hogar Ideal</h1>
+            <p>La inmobiliaria líder en Lima con más de 500 propiedades disponibles</p>
+            
+            <div class="search-form">
+                <h3 style="color: #333; margin-bottom: 1rem;">Buscar Propiedades</h3>
+                <div class="search-filters">
+                    <select id="tipo-propiedad">
+                        <option value="">Tipo de Propiedad</option>
+                        <option value="casa">Casa</option>
+                        <option value="departamento">Departamento</option>
+                        <option value="oficina">Oficina</option>
+                        <option value="terreno">Terreno</option>
+                    </select>
+                    
+                    <select id="distrito">
+                        <option value="">Distrito</option>
+                        <option value="miraflores">Miraflores</option>
+                        <option value="san-isidro">San Isidro</option>
+                        <option value="surco">Surco</option>
+                        <option value="la-molina">La Molina</option>
+                    </select>
+                    
+                    <input type="number" id="precio-min" placeholder="Precio mínimo (S/)">
+                    <input type="number" id="precio-max" placeholder="Precio máximo (S/)">
+                </div>
+                
+                <button class="btn btn-primary" onclick="buscarPropiedades()" style="width: 100%;">
+                    <i class="fas fa-search"></i> Buscar Propiedades
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section id="propiedades" class="properties-section">
+        <div class="container">
+            <h2 class="section-title">Propiedades Destacadas</h2>
+            <p class="section-subtitle">Encuentra la propiedad perfecta para ti</p>
+            
+            <div class="property-filters">
+                <button class="filter-btn active" onclick="filtrarPropiedades('todas')">Todas</button>
+                <button class="filter-btn" onclick="filtrarPropiedades('venta')">En Venta</button>
+                <button class="filter-btn" onclick="filtrarPropiedades('alquiler')">En Alquiler</button>
+                <button class="filter-btn" onclick="filtrarPropiedades('nuevas')">Nuevas</button>
+            </div>
+
+            <div class="properties-grid" id="properties-container">
+                <!-- Properties will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Mortgage Calculator -->
+    <section id="calculadora" class="mortgage-calculator">
+        <div class="container">
+            <h2 class="section-title">Calculadora de Hipoteca</h2>
+            <p class="section-subtitle">Calcula tu cuota mensual</p>
+            
+            <div class="calculator-form">
+                <div class="calc-group">
+                    <label for="precio-propiedad">Precio de la Propiedad (S/)</label>
+                    <input type="number" id="precio-propiedad" value="300000">
+                </div>
+                
+                <div class="calc-group">
+                    <label for="inicial">Cuota Inicial (S/)</label>
+                    <input type="number" id="inicial" value="90000">
+                </div>
+                
+                <div class="calc-group">
+                    <label for="anos">Años del Préstamo</label>
+                    <input type="number" id="anos" value="20" min="5" max="30">
+                </div>
+                
+                <div class="calc-group">
+                    <label for="tasa">Tasa de Interés Anual (%)</label>
+                    <input type="number" id="tasa" value="8.5" step="0.1">
+                </div>
+                
+                <button class="btn btn-primary" onclick="calcularHipoteca()" style="width: 100%;">
+                    <i class="fas fa-calculator"></i> Calcular Cuota
+                </button>
+                
+                <div id="calc-result" class="calc-result" style="display: none;">
+                    <h3>Tu cuota mensual sería:</h3>
+                    <div id="cuota-mensual" style="font-size: 2rem; font-weight: bold;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Nuestros Servicios</h2>
+            
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-search"></i>
+                    <h3>Búsqueda Personalizada</h3>
+                    <p>Te ayudamos a encontrar la propiedad perfecta según tus necesidades</p>
+                </div>
+                
+                <div class="service-item">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Asesoría Legal</h3>
+                    <p>Acompañamiento completo en todos los trámites legales</p>
+                </div>
+                
+                <div class="service-item">
+                    <i class="fas fa-money-check-alt"></i>
+                    <h3>Financiamiento</h3>
+                    <p>Te conectamos con los mejores bancos para tu crédito hipotecario</p>
+                </div>
+                
+                <div class="service-item">
+                    <i class="fas fa-home"></i>
+                    <h3>Tasaciones</h3>
+                    <p>Valuación profesional de tu propiedad al mejor precio del mercado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">¿Interesado en una Propiedad?</h2>
+            <p class="section-subtitle">Nuestros asesores especializados te están esperando</p>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://wa.me/51999999999?text=Hola,%20estoy%20interesado%20en%20sus%20propiedades" class="btn btn-primary" target="_blank" style="margin-right: 1rem;">
+                    <i class="fab fa-whatsapp"></i> Contactar Asesor
+                </a>
+                <a href="tel:+5112345678" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i> (01) 234-5678
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20propiedades" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Properties data
+        const properties = [
+            {
+                id: 1,
+                type: 'departamento',
+                title: 'Moderno Departamento en Miraflores',
+                location: 'Miraflores',
+                price: 'S/ 450,000',
+                bedrooms: 3,
+                bathrooms: 2,
+                area: '95 m²',
+                status: 'venta',
+                badge: 'NUEVO',
+                icon: '🏢'
+            },
+            {
+                id: 2,
+                type: 'casa',
+                title: 'Casa con Jardín en San Isidro',
+                location: 'San Isidro',
+                price: 'S/ 3,500 /mes',
+                bedrooms: 4,
+                bathrooms: 3,
+                area: '180 m²',
+                status: 'alquiler',
+                badge: 'DISPONIBLE',
+                icon: '🏠'
+            },
+            {
+                id: 3,
+                type: 'departamento',
+                title: 'Penthouse con Vista al Mar',
+                location: 'Miraflores',
+                price: 'S/ 850,000',
+                bedrooms: 4,
+                bathrooms: 3,
+                area: '150 m²',
+                status: 'venta',
+                badge: 'PREMIUM',
+                icon: '🌊'
+            },
+            {
+                id: 4,
+                type: 'oficina',
+                title: 'Oficina Corporativa',
+                location: 'San Isidro',
+                price: 'S/ 2,800 /mes',
+                bedrooms: 0,
+                bathrooms: 2,
+                area: '120 m²',
+                status: 'alquiler',
+                badge: 'CORPORATIVA',
+                icon: '🏢'
+            },
+            {
+                id: 5,
+                type: 'casa',
+                title: 'Casa Familiar en Surco',
+                location: 'Surco',
+                price: 'S/ 380,000',
+                bedrooms: 3,
+                bathrooms: 2,
+                area: '140 m²',
+                status: 'venta',
+                badge: 'OPORTUNIDAD',
+                icon: '🏡'
+            },
+            {
+                id: 6,
+                type: 'departamento',
+                title: 'Loft Moderno en La Molina',
+                location: 'La Molina',
+                price: 'S/ 2,200 /mes',
+                bedrooms: 2,
+                bathrooms: 1,
+                area: '75 m²',
+                status: 'alquiler',
+                badge: 'MODERNO',
+                icon: '🌟'
+            }
+        ];
+
+        // Display properties
+        function displayProperties(propertiesToShow = properties) {
+            const container = document.getElementById('properties-container');
+            container.innerHTML = propertiesToShow.map(property => `
+                <div class="property-card">
+                    <div class="property-image">
+                        ${property.icon}
+                        <div class="property-badge">${property.badge}</div>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">${property.price}</div>
+                        <h3 class="property-title">${property.title}</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${property.location}
+                        </div>
+                        <div class="property-features">
+                            ${property.bedrooms > 0 ? `<span><i class="fas fa-bed"></i> ${property.bedrooms} hab.</span>` : ''}
+                            <span><i class="fas fa-bath"></i> ${property.bathrooms} baños</span>
+                            <span><i class="fas fa-expand-arrows-alt"></i> ${property.area}</span>
+                        </div>
+                        <div class="property-actions">
+                            <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20${property.title}" 
+                               class="btn btn-primary btn-sm" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Consultar
+                            </a>
+                            <button class="btn btn-outline-sm" onclick="verTourVirtual(${property.id})">
+                                <i class="fas fa-vr-cardboard"></i> Tour 360°
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter properties
+        function filtrarPropiedades(filter) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            let filtered = properties;
+            if (filter !== 'todas') {
+                if (filter === 'nuevas') {
+                    filtered = properties.filter(p => p.badge === 'NUEVO' || p.badge === 'MODERNO');
+                } else {
+                    filtered = properties.filter(p => p.status === filter);
+                }
+            }
+            displayProperties(filtered);
+        }
+
+        // Search properties
+        function buscarPropiedades() {
+            const tipo = document.getElementById('tipo-propiedad').value;
+            const distrito = document.getElementById('distrito').value;
+            const precioMin = document.getElementById('precio-min').value;
+            const precioMax = document.getElementById('precio-max').value;
+
+            let filtered = properties;
+
+            if (tipo) {
+                filtered = filtered.filter(p => p.type === tipo);
+            }
+
+            if (distrito) {
+                filtered = filtered.filter(p => p.location.toLowerCase().includes(distrito.replace('-', ' ')));
+            }
+
+            displayProperties(filtered);
+            document.getElementById('propiedades').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Mortgage calculator
+        function calcularHipoteca() {
+            const precio = parseFloat(document.getElementById('precio-propiedad').value);
+            const inicial = parseFloat(document.getElementById('inicial').value);
+            const anos = parseInt(document.getElementById('anos').value);
+            const tasa = parseFloat(document.getElementById('tasa').value) / 100;
+
+            const prestamo = precio - inicial;
+            const tasaMensual = tasa / 12;
+            const numeroMeses = anos * 12;
+
+            const cuotaMensual = prestamo * (tasaMensual * Math.pow(1 + tasaMensual, numeroMeses)) / 
+                                (Math.pow(1 + tasaMensual, numeroMeses) - 1);
+
+            document.getElementById('cuota-mensual').textContent = 
+                `S/ ${cuotaMensual.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            document.getElementById('calc-result').style.display = 'block';
+        }
+
+        // Virtual tour
+        function verTourVirtual(propertyId) {
+            alert('¡Tour virtual disponible! En una implementación real, aquí se abriría una ventana con el tour 360° de la propiedad.');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            displayProperties();
+
+            // Update mortgage calculator when inputs change
+            document.querySelectorAll('#precio-propiedad, #inicial, #anos, #tasa').forEach(input => {
+                input.addEventListener('input', calcularHipoteca);
+            });
+
+            // Initial calculation
+            calcularHipoteca();
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
