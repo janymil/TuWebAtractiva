@@ -1,41 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100">
   <defs>
-    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#C4302B;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#A02A26;stop-opacity:1" />
+    <linearGradient id="globeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2E5BBA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E3A8A;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#E6C200;stop-opacity:1" />
+    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
     </linearGradient>
   </defs>
   
-  <!-- Background circle -->
-  <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" stroke="#fff" stroke-width="2"/>
+  <!-- Main globe -->
+  <circle cx="50" cy="50" r="25" fill="url(#globeGradient)" stroke="#fff" stroke-width="1"/>
   
-  <!-- Web icon representation -->
-  <!-- Monitor/Screen -->
-  <rect x="25" y="30" width="50" height="30" rx="3" fill="#fff" stroke="none"/>
-  <rect x="27" y="32" width="46" height="24" rx="1" fill="#2C3E50"/>
+  <!-- Orbital rings -->
+  <ellipse cx="50" cy="50" rx="35" ry="15" fill="none" stroke="url(#ringGradient)" stroke-width="2" opacity="0.8"/>
+  <ellipse cx="50" cy="50" rx="35" ry="15" fill="none" stroke="url(#ringGradient)" stroke-width="2" opacity="0.6" transform="rotate(60 50 50)"/>
+  <ellipse cx="50" cy="50" rx="35" ry="15" fill="none" stroke="url(#ringGradient)" stroke-width="2" opacity="0.4" transform="rotate(120 50 50)"/>
   
-  <!-- Website lines -->
-  <line x1="30" y1="36" x2="45" y2="36" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="30" y1="40" x2="70" y2="40" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="30" y1="44" x2="55" y2="44" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="30" y1="48" x2="65" y2="48" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="30" y1="52" x2="50" y2="52" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Globe grid lines -->
+  <path d="M 25 50 Q 50 35 75 50 Q 50 65 25 50" fill="none" stroke="#fff" stroke-width="1" opacity="0.6"/>
+  <path d="M 25 50 Q 50 65 75 50 Q 50 35 25 50" fill="none" stroke="#fff" stroke-width="1" opacity="0.6"/>
+  <line x1="50" y1="25" x2="50" y2="75" stroke="#fff" stroke-width="1" opacity="0.6"/>
+  <line x1="25" y1="50" x2="75" y2="50" stroke="#fff" stroke-width="1" opacity="0.6"/>
   
-  <!-- Monitor stand -->
-  <rect x="47" y="60" width="6" height="8" rx="1" fill="#fff"/>
-  <rect x="40" y="68" width="20" height="3" rx="1.5" fill="#fff"/>
+  <!-- Text: Tu Web Atractiva -->
+  <text x="110" y="45" font-family="Montserrat, Arial, sans-serif" font-size="24" font-weight="700" fill="#2E5BBA">Tu Web Atractiva</text>
   
-  <!-- Decorative accent elements -->
-  <circle cx="20" cy="25" r="3" fill="url(#accentGradient)" opacity="0.8"/>
-  <circle cx="80" cy="75" r="2.5" fill="url(#accentGradient)" opacity="0.6"/>
-  <circle cx="15" cy="70" r="2" fill="url(#accentGradient)" opacity="0.7"/>
-  
-  <!-- Peru flag inspired accent -->
-  <rect x="65" y="20" width="12" height="8" rx="1" fill="#fff" opacity="0.9"/>
-  <rect x="65" y="20" width="4" height="8" rx="1" fill="#C4302B"/>
-  <rect x="73" y="20" width="4" height="8" rx="1" fill="#C4302B"/>
+  <!-- Tagline: eleva tu presencia online -->
+  <text x="110" y="65" font-family="Montserrat, Arial, sans-serif" font-size="12" font-weight="400" fill="#64748B">eleva tu presencia online</text>
 </svg>
