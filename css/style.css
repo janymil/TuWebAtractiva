@@ -2,7 +2,7 @@
 
 /* CSS Custom Properties */
 :root {
-    /* Colors using HSL format */
+    /* Light theme colors using HSL format */
     --primary: 0 70% 47%; /* #C4302B Peru red */
     --secondary: 0 0% 100%; /* #FFFFFF white */
     --accent: 51 100% 50%; /* #FFD700 gold */
@@ -11,6 +11,16 @@
     --success: 134 61% 41%; /* #28A745 green */
     --border: 220 13% 91%; /* #E5E7EB */
     --shadow: 220 13% 84%; /* #D1D5DB */
+    
+    /* Dark theme colors */
+    --primary-dark: 0 70% 52%; /* Slightly brighter red for dark mode */
+    --secondary-dark: 220 13% 18%; /* #1F2937 dark grey */
+    --accent-dark: 51 100% 60%; /* Brighter gold for dark mode */
+    --background-dark: 220 13% 14%; /* #111827 very dark grey */
+    --text-dark: 220 13% 91%; /* #F3F4F6 light grey */
+    --success-dark: 134 61% 51%; /* Brighter green for dark mode */
+    --border-dark: 220 13% 26%; /* #374151 medium grey */
+    --shadow-dark: 220 13% 10%; /* #0F172A very dark shadow */
     
     /* Typography */
     --font-primary: 'Montserrat', sans-serif;
@@ -57,6 +67,33 @@ body {
     line-height: 1.6;
     color: hsl(var(--text));
     background-color: hsl(var(--background));
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styles */
+[data-theme="dark"] {
+    --primary: var(--primary-dark);
+    --secondary: var(--secondary-dark);
+    --accent: var(--accent-dark);
+    --background: var(--background-dark);
+    --text: var(--text-dark);
+    --success: var(--success-dark);
+    --border: var(--border-dark);
+    --shadow: var(--shadow-dark);
+}
+
+/* Automatic dark mode based on system preference */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --primary: var(--primary-dark);
+        --secondary: var(--secondary-dark);
+        --accent: var(--accent-dark);
+        --background: var(--background-dark);
+        --text: var(--text-dark);
+        --success: var(--success-dark);
+        --border: var(--border-dark);
+        --shadow: var(--shadow-dark);
+    }
 }
 
 /* Container */
@@ -254,6 +291,68 @@ a:hover {
     height: 3px;
     background-color: hsl(var(--text));
     transition: var(--transition);
+}
+
+/* Dark mode toggle button */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: hsl(var(--background));
+    color: hsl(var(--text));
+    cursor: pointer;
+    transition: var(--transition);
+    margin-left: var(--spacing-md);
+    font-size: var(--font-size-lg);
+    border: 2px solid hsl(var(--border));
+}
+
+.theme-toggle:hover {
+    background-color: hsl(var(--primary));
+    color: white;
+    border-color: hsl(var(--primary));
+    transform: scale(1.05);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle .icon {
+    transition: var(--transition);
+}
+
+/* Hide/show icons based on theme */
+[data-theme="dark"] .theme-toggle .sun-icon {
+    display: inline;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+    display: none;
+}
+
+[data-theme="light"] .theme-toggle .sun-icon,
+:root:not([data-theme]) .theme-toggle .sun-icon {
+    display: none;
+}
+
+[data-theme="light"] .theme-toggle .moon-icon,
+:root:not([data-theme]) .theme-toggle .moon-icon {
+    display: inline;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle .sun-icon {
+        display: inline;
+    }
+    
+    :root:not([data-theme="light"]) .theme-toggle .moon-icon {
+        display: none;
+    }
 }
 
 /* Hero Section */
