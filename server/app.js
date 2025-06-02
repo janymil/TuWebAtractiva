@@ -171,6 +171,37 @@ app.get('/api/features', (req, res) => {
   res.json(content.features || []);
 });
 
+// Get portfolio items
+app.get('/api/portfolio-items', (req, res) => {
+  const content = htmlEditor.readContent();
+  res.json(content.portfolioItems || []);
+});
+
+// Update portfolio item
+app.put('/api/portfolio-items/:id', upload.single('image'), (req, res) => {
+  const { id } = req.params;
+  const updateData = { id: parseInt(id), ...req.body };
+  
+  if (req.file) {
+    updateData.image = `/uploads/${req.file.filename}`;
+  }
+  
+  const success = htmlEditor.updateContent('portfolioItem', updateData);
+  
+  if (success) {
+    res.json({ 
+      success: true, 
+      message: 'Portfolio item updated successfully',
+      data: updateData
+    });
+  } else {
+    res.status(500).json({ 
+      success: false, 
+      message: 'Error updating portfolio item' 
+    });
+  }
+});
+
 // Update feature
 app.put('/api/features/:id', (req, res) => {
   const { id } = req.params;

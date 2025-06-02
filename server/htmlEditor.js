@@ -21,7 +21,8 @@ class HTMLEditor {
         services: this.extractServicesSection(indexContent),
         serviceCards: this.extractServiceCards(indexContent),
         features: this.extractFeatures(indexContent),
-        portfolio: this.extractPortfolioSection(indexContent)
+        portfolio: this.extractPortfolioSection(indexContent),
+        portfolioItems: this.extractPortfolioItems()
       };
     } catch (error) {
       console.error('Error reading HTML content:', error);
@@ -147,6 +148,69 @@ class HTMLEditor {
     return features;
   }
 
+  // Extract portfolio items from ejemplos.html
+  extractPortfolioItems() {
+    try {
+      const ejemplosContent = fs.readFileSync(this.htmlFiles.ejemplos, 'utf8');
+      const portfolioItems = [];
+      
+      const itemMatches = ejemplosContent.match(/<div class="portfolio-item"[^>]*>[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/g);
+      
+      if (itemMatches) {
+        itemMatches.forEach((item, index) => {
+          const imageMatch = item.match(/<img[^>]*src="([^"]*)"[^>]*alt="([^"]*)"[^>]*>/);
+          const titleMatch = item.match(/<h3>([^<]+)<\/h3>/);
+          const typeMatch = item.match(/<p class="portfolio-type">([^<]+)<\/p>/);
+          const descriptionMatch = item.match(/<p class="portfolio-description">\s*([\s\S]*?)\s*<\/p>/);
+          const buttonMatch = item.match(/<a[^>]*href="([^"]*)"[^>]*class="[^"]*btn[^"]*btn-demo[^"]*"[^>]*>([\s\S]*?)<\/a>/);
+          const categoryMatch = item.match(/data-category="([^"]*)"/);
+          
+          // Extract tech features
+          const techMatches = item.match(/<div class="portfolio-tech">([\s\S]*?)<\/div>/);
+          let techFeatures = [];
+          if (techMatches) {
+            const spans = techMatches[1].match(/<span>([^<]+)<\/span>/g);
+            if (spans) {
+              techFeatures = spans.map(span => span.replace(/<\/?span>/g, ''));
+            }
+          }
+          
+          // Extract results
+          const resultMatches = item.match(/<div class="portfolio-results">([\s\S]*?)<\/div>/);
+          let results = [];
+          if (resultMatches) {
+            const resultItems = resultMatches[1].match(/<div class="result-item">\s*<strong>([^<]+)<\/strong>\s*<span>([^<]+)<\/span>\s*<\/div>/g);
+            if (resultItems) {
+              results = resultItems.map(resultItem => {
+                const parts = resultItem.match(/<strong>([^<]+)<\/strong>\s*<span>([^<]+)<\/span>/);
+                return parts ? { value: parts[1], label: parts[2] } : null;
+              }).filter(Boolean);
+            }
+          }
+
+          portfolioItems.push({
+            id: index + 1,
+            image: imageMatch ? imageMatch[1] : '',
+            alt: imageMatch ? imageMatch[2] : '',
+            title: titleMatch ? titleMatch[1] : '',
+            type: typeMatch ? typeMatch[1] : '',
+            description: descriptionMatch ? descriptionMatch[1].replace(/\s+/g, ' ').trim() : '',
+            category: categoryMatch ? categoryMatch[1] : '',
+            techFeatures: techFeatures,
+            results: results,
+            buttonText: buttonMatch ? buttonMatch[2].replace(/<[^>]*>/g, '').trim() : '',
+            buttonLink: buttonMatch ? buttonMatch[1] : ''
+          });
+        });
+      }
+      
+      return portfolioItems;
+    } catch (error) {
+      console.error('Error reading portfolio items:', error);
+      return [];
+    }
+  }
+
   // Update content in HTML files
   updateContent(sectionName, data) {
     try {
@@ -164,6 +228,8 @@ class HTMLEditor {
         html = this.updateServiceCard(html, data);
       } else if (sectionName === 'feature') {
         html = this.updateFeature(html, data);
+      } else if (sectionName === 'portfolioItem') {
+        return this.updatePortfolioItem(data);
       }
 
       fs.writeFileSync(this.htmlFiles.index, html, 'utf8');
@@ -337,6 +403,64 @@ class HTMLEditor {
     }
 
     return html.replace(this.extractSection(html, 'why-choose-us'), updatedSection);
+  }
+
+  // Update portfolio item in ejemplos.html
+  updatePortfolioItem(data) {
+    try {
+      let html = fs.readFileSync(this.htmlFiles.ejemplos, 'utf8');
+      
+      const itemMatches = html.match(/<div class="portfolio-item"[^>]*>[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/g);
+      
+      if (itemMatches && data.id && itemMatches[data.id - 1]) {
+        let itemHtml = itemMatches[data.id - 1];
+        
+        // Update image
+        if (data.image) {
+          itemHtml = itemHtml.replace(/(<img[^>]*src=")([^"]*)("[^>]*>)/, `$1${data.image}$3`);
+        }
+        if (data.alt) {
+          itemHtml = itemHtml.replace(/(<img[^>]*alt=")([^"]*)("[^>]*>)/, `$1${data.alt}$3`);
+        }
+        
+        // Update title (appears twice - in overlay and content)
+        if (data.title) {
+          itemHtml = itemHtml.replace(/(<h3>)([^<]+)(<\/h3>)/g, `$1${data.title}$3`);
+        }
+        
+        // Update type
+        if (data.type) {
+          itemHtml = itemHtml.replace(/(<p class="portfolio-type">)([^<]+)(<\/p>)/, `$1${data.type}$3`);
+        }
+        
+        // Update description
+        if (data.description) {
+          itemHtml = itemHtml.replace(/(<p class="portfolio-description">\s*)[\s\S]*?(\s*<\/p>)/, `$1${data.description}$2`);
+        }
+        
+        // Update button text and link
+        if (data.buttonLink || data.buttonText) {
+          const currentButtonMatch = itemHtml.match(/(<a[^>]*href=")([^"]*)("[^>]*class="[^"]*btn[^"]*btn-demo[^"]*"[^>]*>)([\s\S]*?)(<\/a>)/);
+          if (currentButtonMatch) {
+            const newLink = data.buttonLink || currentButtonMatch[2];
+            const newText = data.buttonText || currentButtonMatch[4].replace(/<[^>]*>/g, '').trim();
+            
+            itemHtml = itemHtml.replace(
+              /(<a[^>]*href=")([^"]*)("[^>]*class="[^"]*btn[^"]*btn-demo[^"]*"[^>]*>)[\s\S]*?(<\/a>)/,
+              `$1${newLink}$3<i class="fas fa-external-link-alt"></i> ${newText}$4`
+            );
+          }
+        }
+        
+        html = html.replace(itemMatches[data.id - 1], itemHtml);
+      }
+      
+      fs.writeFileSync(this.htmlFiles.ejemplos, html, 'utf8');
+      return true;
+    } catch (error) {
+      console.error('Error updating portfolio item:', error);
+      return false;
+    }
   }
 
   // Helper methods
