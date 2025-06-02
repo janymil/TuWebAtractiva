@@ -1760,6 +1760,30 @@ a:hover {
     margin: 0 auto;
 }
 
+/* Target Clients Section */
+.target-clients-section {
+    padding: var(--spacing-2xl) 0;
+    background: hsl(var(--background));
+}
+
+.clients-image-container {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.clients-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.clients-image:hover {
+    transform: translateY(-5px);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .partner-content {
