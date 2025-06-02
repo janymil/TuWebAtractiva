@@ -676,3 +676,176 @@ window.editGalleryItem = function(id) {
 };
 
 window.deleteGalleryItem = deleteGalleryItem;
+
+// Portfolio Items Management
+async function loadPortfolioItems() {
+    try {
+        const response = await fetch('/api/portfolio-items', {
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            }
+        });
+        
+        if (!response.ok) throw new Error('Failed to load portfolio items');
+        
+        const portfolioItems = await response.json();
+        displayPortfolioItems(portfolioItems);
+    } catch (error) {
+        console.error('Error loading portfolio items:', error);
+        showMessage('portfolioItemsContainer', 'Error al cargar los ejemplos', 'error');
+    }
+}
+
+function displayPortfolioItems(portfolioItems) {
+    const container = document.getElementById('portfolioItemsContainer');
+    
+    if (!portfolioItems || portfolioItems.length === 0) {
+        container.innerHTML = '<p>No se encontraron ejemplos de portfolio.</p>';
+        return;
+    }
+    
+    container.innerHTML = portfolioItems.map((item, index) => `
+        <div class="item-card" id="portfolioItem-${item.id}">
+            <div class="item-header">
+                <h3>Ejemplo ${item.id}: ${item.title}</h3>
+                <span class="item-status">${item.type}</span>
+            </div>
+            
+            <div class="item-content">
+                <div class="item-preview">
+                    <img src="${item.image}" alt="${item.alt}" style="max-width: 200px; height: auto; object-fit: cover;">
+                </div>
+                
+                <div class="item-form">
+                    <div class="form-group">
+                        <label>Imagen de Fondo:</label>
+                        <input type="file" id="portfolioImage-${item.id}" accept="image/*" data-item-id="${item.id}">
+                        <small>Imagen actual: ${item.image}</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Nombre del Negocio:</label>
+                        <input type="text" id="portfolioTitle-${item.id}" value="${item.title}" data-item-id="${item.id}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tipo de Servicio:</label>
+                        <input type="text" id="portfolioType-${item.id}" value="${item.type}" data-item-id="${item.id}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Descripción:</label>
+                        <textarea id="portfolioDescription-${item.id}" rows="3" data-item-id="${item.id}">${item.description}</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Texto del Botón:</label>
+                        <input type="text" id="portfolioButtonText-${item.id}" value="${item.buttonText}" data-item-id="${item.id}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Enlace del Botón:</label>
+                        <input type="url" id="portfolioButtonLink-${item.id}" value="${item.buttonLink}" data-item-id="${item.id}">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="item-actions">
+                <button onclick="updatePortfolioItem(${item.id})" class="btn">Guardar Cambios</button>
+            </div>
+            
+            <div id="portfolioMessage-${item.id}"></div>
+        </div>
+    `).join('');
+    
+    // Add image preview functionality
+    portfolioItems.forEach(item => {
+        const imageInput = document.getElementById(`portfolioImage-${item.id}`);
+        if (imageInput) {
+            imageInput.addEventListener('change', function() {
+                if (this.files[0]) {
+                    const preview = this.parentNode.querySelector('.preview-img');
+                    if (preview) preview.remove();
+                    
+                    const newPreview = document.createElement('img');
+                    newPreview.className = 'preview-img';
+                    newPreview.style.cssText = 'max-width: 100px; height: auto; margin-top: 10px; border-radius: 4px;';
+                    newPreview.src = URL.createObjectURL(this.files[0]);
+                    this.parentNode.appendChild(newPreview);
+                }
+            });
+        }
+    });
+}
+
+async function updatePortfolioItem(itemId) {
+    try {
+        const formData = new FormData();
+        
+        // Get form values
+        const title = document.getElementById(`portfolioTitle-${itemId}`).value;
+        const type = document.getElementById(`portfolioType-${itemId}`).value;
+        const description = document.getElementById(`portfolioDescription-${itemId}`).value;
+        const buttonText = document.getElementById(`portfolioButtonText-${itemId}`).value;
+        const buttonLink = document.getElementById(`portfolioButtonLink-${itemId}`).value;
+        const imageFile = document.getElementById(`portfolioImage-${itemId}`).files[0];
+        
+        // Add data to FormData
+        formData.append('title', title);
+        formData.append('type', type);
+        formData.append('description', description);
+        formData.append('buttonText', buttonText);
+        formData.append('buttonLink', buttonLink);
+        formData.append('alt', title); // Use title as alt text
+        
+        if (imageFile) {
+            formData.append('image', imageFile);
+        }
+        
+        const response = await fetch(`/api/portfolio-items/${itemId}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${authToken}`
+            },
+            body: formData
+        });
+        
+        if (!response.ok) throw new Error('Failed to update portfolio item');
+        
+        const result = await response.json();
+        showMessage(`portfolioMessage-${itemId}`, 'Ejemplo actualizado correctamente', 'success');
+        
+        // Reload the portfolio items to show updated content
+        setTimeout(() => {
+            loadPortfolioItems();
+        }, 1000);
+        
+    } catch (error) {
+        console.error('Error updating portfolio item:', error);
+        showMessage(`portfolioMessage-${itemId}`, 'Error al actualizar el ejemplo', 'error');
+    }
+}
+
+// Update showSection to load portfolio items when ejemplos section is shown
+const originalShowSection = window.showSection;
+window.showSection = function(sectionName) {
+    // Call original showSection logic
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    document.getElementById(sectionName).classList.add('active');
+    document.querySelector(`[data-section="${sectionName}"]`).classList.add('active');
+    
+    // Load data specific to the section
+    if (sectionName === 'ejemplos') {
+        loadPortfolioItems();
+    }
+};
+
+window.loadPortfolioItems = loadPortfolioItems;
+window.updatePortfolioItem = updatePortfolioItem;
