@@ -596,9 +596,79 @@ async function updateFeature(featureId) {
     }
 }
 
+// Load hero section data
+async function loadHeroData() {
+    try {
+        const response = await fetch('/api/content');
+        const data = await response.json();
+        
+        if (data.hero) {
+            document.getElementById('heroTitleRegular').value = data.hero.titleRegular || '';
+            document.getElementById('heroTitleHighlight').value = data.hero.titleHighlight || '';
+            document.getElementById('heroSubtitle').value = data.hero.subtitle || '';
+            document.getElementById('heroPrimaryButtonText').value = data.hero.primaryButtonText || '';
+            document.getElementById('heroPrimaryButtonLink').value = data.hero.primaryButtonLink || '';
+            document.getElementById('heroSecondaryButtonText').value = data.hero.secondaryButtonText || '';
+            document.getElementById('heroSecondaryButtonLink').value = data.hero.secondaryButtonLink || '';
+            
+            // Show current image
+            if (data.hero.heroImage) {
+                const previewContainer = document.getElementById('heroImagePreview');
+                previewContainer.innerHTML = `<img src="${data.hero.heroImage}" style="width: 200px; height: 120px; object-fit: cover; border-radius: 6px;">`;
+            }
+        }
+    } catch (error) {
+        showMessage('inicioMessage', 'Error cargando datos del inicio', 'error');
+    }
+}
+
+// Save hero section
+async function saveHeroSection() {
+    const titleRegular = document.getElementById('heroTitleRegular').value;
+    const titleHighlight = document.getElementById('heroTitleHighlight').value;
+    const subtitle = document.getElementById('heroSubtitle').value;
+    const primaryButtonText = document.getElementById('heroPrimaryButtonText').value;
+    const primaryButtonLink = document.getElementById('heroPrimaryButtonLink').value;
+    const secondaryButtonText = document.getElementById('heroSecondaryButtonText').value;
+    const secondaryButtonLink = document.getElementById('heroSecondaryButtonLink').value;
+    const imageFile = document.getElementById('heroImageUpload').files[0];
+    
+    const formData = new FormData();
+    formData.append('titleRegular', titleRegular);
+    formData.append('titleHighlight', titleHighlight);
+    formData.append('subtitle', subtitle);
+    formData.append('primaryButtonText', primaryButtonText);
+    formData.append('primaryButtonLink', primaryButtonLink);
+    formData.append('secondaryButtonText', secondaryButtonText);
+    formData.append('secondaryButtonLink', secondaryButtonLink);
+    
+    if (imageFile) {
+        formData.append('image', imageFile);
+    }
+    
+    try {
+        const response = await fetch('/api/content/inicio', {
+            method: 'PUT',
+            body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            showMessage('inicioMessage', 'Sección de inicio actualizada correctamente', 'success');
+            setTimeout(() => loadHeroData(), 1000);
+        } else {
+            showMessage('inicioMessage', data.message, 'error');
+        }
+    } catch (error) {
+        showMessage('inicioMessage', 'Error actualizando sección de inicio', 'error');
+    }
+}
+
 // Make functions available globally for onclick handlers
 window.updateServiceCard = updateServiceCard;
 window.updateFeature = updateFeature;
+window.saveHeroSection = saveHeroSection;
 
 window.editGalleryItem = function(id) {
     // Implement edit functionality if needed

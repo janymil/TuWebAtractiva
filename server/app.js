@@ -110,9 +110,13 @@ app.get('/api/content', (req, res) => {
 });
 
 // Update content section
-app.put('/api/content/:section', (req, res) => {
+app.put('/api/content/:section', upload.single('image'), (req, res) => {
   const { section } = req.params;
   const updateData = req.body;
+  
+  if (req.file) {
+    updateData.heroImage = `/uploads/${req.file.filename}`;
+  }
   
   const success = htmlEditor.updateContent(section, updateData);
   
