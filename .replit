@@ -30,7 +30,7 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python server.py"
+args = "cd server && node app.js"
 waitForPort = 5000
 
 [deployment]
