@@ -17,330 +17,6 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <style>
-        .portfolio-item {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-
-        .portfolio-card {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            min-height: 300px;
-        }
-
-        .portfolio-content {
-            flex: 1;
-            padding: 0;
-        }
-
-        .portfolio-image {
-            flex: 0 0 400px;
-            height: 250px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .portfolio-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .portfolio-header h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #2c3e50;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .emoji {
-            font-size: 2.5rem;
-        }
-
-        .portfolio-description {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
-        .portfolio-features {
-            margin: 20px 0;
-        }
-
-        .portfolio-features p {
-            color: #333;
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
-        .portfolio-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 20px 0;
-        }
-
-        .portfolio-tech span {
-            background: #f8f9fa;
-            color: #495057;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            border: 1px solid #e9ecef;
-        }
-
-        .portfolio-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-        }
-
-        .btn-demo {
-            background: #3b82f6;
-            color: white;
-        }
-
-        .btn-demo:hover {
-            background: #2563eb;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .btn-order {
-            background: #10b981;
-            color: white;
-        }
-
-        .btn-order:hover {
-            background: #059669;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .filter-btn {
-            background: white;
-            color: #666;
-            border: 2px solid #e0e0e0;
-            padding: 12px 24px;
-            border-radius: 25px;
-            margin: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: #dc2626;
-            color: white;
-            border-color: #dc2626;
-        }
-
-        .category-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 30px 0;
-            gap: 10px;
-        }
-
-        /* Mobile Responsive Design */
-        @media (max-width: 768px) {
-            .portfolio-card {
-                flex-direction: column;
-                gap: 20px;
-                min-height: auto;
-            }
-            
-            .portfolio-content {
-                padding: 20px;
-            }
-            
-            .portfolio-image {
-                flex: none;
-                width: 100%;
-                height: 200px;
-            }
-            
-            .portfolio-header h3 {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .emoji {
-                font-size: 2rem;
-            }
-            
-            .portfolio-description {
-                font-size: 15px;
-                margin-bottom: 12px;
-            }
-            
-            .portfolio-actions {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .btn {
-                padding: 10px 14px;
-                font-size: 13px;
-                justify-content: center;
-            }
-            
-            .portfolio-tech span {
-                font-size: 12px;
-                padding: 4px 8px;
-            }
-            
-            .category-filters {
-                margin: 20px 0;
-                gap: 8px;
-            }
-            
-            .filter-btn {
-                padding: 10px 18px;
-                font-size: 13px;
-                margin: 3px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .portfolio-content {
-                padding: 20px;
-            }
-            
-            .portfolio-header h3 {
-                font-size: 1.3rem;
-            }
-            
-            .emoji {
-                font-size: 1.8rem;
-            }
-            
-            .portfolio-description {
-                font-size: 14px;
-            }
-            
-            .filter-btn {
-                padding: 8px 15px;
-                font-size: 12px;
-            }
-            
-            .btn {
-                padding: 10px 14px;
-                font-size: 13px;
-            }
-        }
-
-        /* Dark Mode Styles */
-        [data-theme="dark"] .portfolio-item {
-            background: #2d3748;
-            color: #e2e8f0;
-        }
-
-        [data-theme="dark"] .portfolio-description {
-            color: #cbd5e0;
-        }
-
-        [data-theme="dark"] .portfolio-features p {
-            color: #e2e8f0;
-        }
-
-        [data-theme="dark"] .portfolio-tech span {
-            background: #4a5568;
-            color: #e2e8f0;
-            border-color: #2d3748;
-        }
-
-        [data-theme="dark"] .filter-btn {
-            background: #2d3748;
-            color: #e2e8f0;
-            border-color: #4a5568;
-        }
-
-        [data-theme="dark"] .filter-btn.active,
-        [data-theme="dark"] .filter-btn:hover {
-            background: #dc2626;
-            color: white;
-            border-color: #dc2626;
-        }
-
-        /* Compact Footer */
-        .footer {
-            padding: 30px 0 20px 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-
-        .footer-section h3 {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 8px;
-        }
-
-        .footer-section p, 
-        .footer-section ul li a {
-            font-size: 14px;
-        }
-
-        .contact-info p {
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .social-links {
-            margin-top: 15px;
-        }
-
-        .footer-bottom {
-            padding-top: 15px;
-            font-size: 13px;
-        }
-
-        @media (max-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -386,10 +62,10 @@
         <div class="container">
             <div class="category-filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="restaurantes">Restaurantes</button>
-                <button class="filter-btn" data-filter="salud">Salud</button>
-                <button class="filter-btn" data-filter="negocios">Negocios</button>
-                <button class="filter-btn" data-filter="profesionales">Profesionales</button>
+                <button class="filter-btn" data-filter="restaurant">Restaurantes</button>
+                <button class="filter-btn" data-filter="medical">Salud</button>
+                <button class="filter-btn" data-filter="business">Negocios</button>
+                <button class="filter-btn" data-filter="personal">Profesionales</button>
             </div>
         </div>
     </section>
@@ -399,148 +75,250 @@
         <div class="container">
             
             <!-- Restaurant Example -->
-            <div class="portfolio-item" data-category="restaurantes">
+            <div class="portfolio-item" data-category="restaurant">
                 <div class="portfolio-card">
-                    <div class="portfolio-content">
-                        <div class="portfolio-header">
-                            <h3><span class="emoji">🍔</span> Restaurante</h3>
-                        </div>
-                        <p class="portfolio-description">
-                            Imagina que tus clientes pueden ver tu menú, tu ubicación y escribirte por WhatsApp con 
-                            un solo clic. Este diseño está pensado para restaurantes modernos que quieren <strong>más 
-                            pedidos, más reservas y más visibilidad</strong>.
-                        </p>
-                        <p class="portfolio-description">
-                            Con un diseño visual irresistible y adaptable a celular, tu página mostrará lo mejor de tu 
-                            carta: desde hamburguesas jugosas hasta el menú ejecutivo del día. Ideal si vendes por 
-                            Rappi, PedidosYa o delivery propio.
-                        </p>
-                        <div class="portfolio-features">
-                            <p><i class="fas fa-check-circle" style="color: #10b981;"></i> Incluye: galería de platos, sección de promociones, ubicación en Google Maps, menú descargable y botón directo a WhatsApp.</p>
-                            <p><strong>¡Tu restaurante merece más que solo un perfil en Instagram!</strong></p>
-                        </div>
-                        <div class="portfolio-actions">
-                            <a href="#" class="btn btn-demo">
-                                <i class="fas fa-eye"></i> Ver demo
-                            </a>
-                            <a href="#" class="btn btn-order">
-                                <i class="fas fa-download"></i> Quiero este diseño
-                            </a>
+                    <div class="portfolio-image">
+                        <img src="ejemplos/mockup-restaurante.svg" alt="Página web para restaurante">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Restaurante El Sabor Criollo</h3>
+                                <p>Web interactiva con menú digital, reservas online y delivery</p>
+                                <div class="portfolio-features">
+                                    <span><i class="fas fa-utensils"></i> Menú Digital</span>
+                                    <span><i class="fas fa-calendar-check"></i> Reservas Online</span>
+                                    <span><i class="fas fa-motorcycle"></i> Delivery</span>
+                                    <span><i class="fas fa-star"></i> Reseñas</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="portfolio-image">
-                        <img src="images/restaurant-hero.jpg" alt="Diseño web para restaurante">
+                    <div class="portfolio-content">
+                        <h3>Restaurante El Sabor Criollo</h3>
+                        <p class="portfolio-type">Web Completa - Restaurante</p>
+                        <p class="portfolio-description">
+                            Página web completa para restaurante peruano con menú interactivo, 
+                            sistema de reservas, pedidos online y integración con delivery.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span>Menú Digital</span>
+                            <span>Reservas Online</span>
+                            <span>WhatsApp Delivery</span>
+                            <span>Google Maps</span>
+                        </div>
+                        <div class="portfolio-results">
+                            <div class="result-item">
+                                <strong>+150%</strong>
+                                <span>Pedidos online</span>
+                            </div>
+                            <div class="result-item">
+                                <strong>+80%</strong>
+                                <span>Reservas</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="demo-restaurante.html" target="_blank" class="btn btn-demo">
+                                <i class="fas fa-external-link-alt"></i> Ver Demo Interactivo
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Real Estate Example -->
-            <div class="portfolio-item" data-category="negocios">
+            <div class="portfolio-item" data-category="business">
                 <div class="portfolio-card">
-                    <div class="portfolio-content">
-                        <div class="portfolio-header">
-                            <h3><span class="emoji">🏠</span> Inmobiliaria</h3>
-                        </div>
-                        <p class="portfolio-description">
-                            ¿Publicas tus propiedades solo en grupos de Facebook o en OLX? Es momento de tener tu 
-                            <strong>propia vitrina online</strong>, elegante, moderna y pensada para captar más clientes.
-                        </p>
-                        <p class="portfolio-description">
-                            Este diseño te permite mostrar tus propiedades con fotos grandes, filtros simples por 
-                            ubicación o precio, y contacto directo por WhatsApp. Ideal para agentes independientes o 
-                            pequeñas inmobiliarias que quieren dejar de depender de portales saturados y tener su 
-                            <strong>propia marca digital</strong>.
-                        </p>
-                        <div class="portfolio-features">
-                            <p><i class="fas fa-check-circle" style="color: #10b981;"></i> Incluye: galería de propiedades, formulario de contacto, mapa de ubicación y sección de testimonios.</p>
-                            <p><strong>Haz que te encuentren, te confíen y te contacten en un solo clic.</strong></p>
-                        </div>
-                        <div class="portfolio-actions">
-                            <a href="#" class="btn btn-demo">
-                                <i class="fas fa-eye"></i> Ver demo
-                            </a>
-                            <a href="#" class="btn btn-order">
-                                <i class="fas fa-download"></i> Quiero este diseño
-                            </a>
+                    <div class="portfolio-image">
+                        <img src="ejemplos/mockup-inmobiliaria.svg" alt="Página web para inmobiliaria">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Inmobiliaria Lima Premium</h3>
+                                <p>Portal inmobiliario con búsqueda avanzada y tours virtuales</p>
+                                <div class="portfolio-features">
+                                    <span><i class="fas fa-search"></i> Búsqueda Avanzada</span>
+                                    <span><i class="fas fa-home"></i> Catálogo Propiedades</span>
+                                    <span><i class="fas fa-vr-cardboard"></i> Tours Virtuales</span>
+                                    <span><i class="fas fa-calculator"></i> Calculadora Hipoteca</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="portfolio-image">
-                        <img src="images/architecture-hero.jpg" alt="Diseño web para inmobiliaria">
+                    <div class="portfolio-content">
+                        <h3>Inmobiliaria Lima Premium</h3>
+                        <p class="portfolio-type">Web Completa - Inmobiliaria</p>
+                        <p class="portfolio-description">
+                            Portal inmobiliario moderno con búsqueda de propiedades, 
+                            filtros avanzados, tours virtuales y calculadora de hipotecas.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span>Catálogo Propiedades</span>
+                            <span>Filtros Búsqueda</span>
+                            <span>Tours Virtuales</span>
+                            <span>Calculadora Hipoteca</span>
+                        </div>
+                        <div class="portfolio-results">
+                            <div class="result-item">
+                                <strong>+220%</strong>
+                                <span>Consultas/mes</span>
+                            </div>
+                            <div class="result-item">
+                                <strong>+180%</strong>
+                                <span>Ventas cerradas</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="demo-inmobiliaria.html" target="_blank" class="btn btn-demo">
+                                <i class="fas fa-external-link-alt"></i> Ver Demo Interactivo
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Nutritionist Example -->
-            <div class="portfolio-item" data-category="salud">
+            <!-- Lawyer Example -->
+            <div class="portfolio-item" data-category="personal">
                 <div class="portfolio-card">
-                    <div class="portfolio-content">
-                        <div class="portfolio-header">
-                            <h3><span class="emoji">🥗</span> Nutricionista</h3>
-                        </div>
-                        <p class="portfolio-description">
-                            Haz que tus pacientes te encuentren con confianza y profesionalismo desde el primer clic. 
-                            Este diseño está pensado para nutricionistas, coaches de salud o dietistas que quieren 
-                            mostrar su experiencia, servicios y transformar seguidores en clientes reales.
-                        </p>
-                        <p class="portfolio-description">
-                            Tu página incluirá tus planes, testimonios, antes y después, y un botón directo a 
-                            WhatsApp o agendamiento. Es ideal si das consultas presenciales o virtuales y necesitas 
-                            una presencia digital clara y creíble.
-                        </p>
-                        <div class="portfolio-features">
-                            <p><i class="fas fa-check-circle" style="color: #10b981;"></i> Incluye: perfil profesional, servicios detallados, testimonios, galería de resultados, formulario de contacto y botón de citas (Calendly o WhatsApp).</p>
-                            <p><strong>Conviértete en la opción número uno para quienes quieren transformar su salud.</strong></p>
-                        </div>
-                        <div class="portfolio-actions">
-                            <a href="#" class="btn btn-demo">
-                                <i class="fas fa-eye"></i> Ver demo
-                            </a>
-                            <a href="#" class="btn btn-order">
-                                <i class="fas fa-download"></i> Quiero este diseño
-                            </a>
+                    <div class="portfolio-image">
+                        <img src="ejemplos/mockup-abogado.svg" alt="Página web para abogado">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Dr. Carlos Mendoza - Abogado</h3>
+                                <p>Web profesional con citas online y consultas virtuales</p>
+                                <div class="portfolio-features">
+                                    <span><i class="fas fa-gavel"></i> Especialidades</span>
+                                    <span><i class="fas fa-calendar-alt"></i> Citas Online</span>
+                                    <span><i class="fas fa-video"></i> Consultas Virtuales</span>
+                                    <span><i class="fas fa-file-contract"></i> Documentos</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="portfolio-image">
-                        <img src="images/architecture-hero.jpg" alt="Diseño web para nutricionista">
+                    <div class="portfolio-content">
+                        <h3>Dr. Carlos Mendoza - Abogado</h3>
+                        <p class="portfolio-type">Web Profesional - Servicios Legales</p>
+                        <p class="portfolio-description">
+                            Sitio web profesional para abogado con sistema de citas, 
+                            consultas virtuales, blog legal y formularios especializados.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span>Citas Online</span>
+                            <span>Consultas Virtuales</span>
+                            <span>Blog Legal</span>
+                            <span>Formularios</span>
+                        </div>
+                        <div class="portfolio-results">
+                            <div class="result-item">
+                                <strong>+200%</strong>
+                                <span>Consultas/mes</span>
+                            </div>
+                            <div class="result-item">
+                                <strong>+140%</strong>
+                                <span>Nuevos clientes</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="demo-abogado.html" target="_blank" class="btn btn-demo">
+                                <i class="fas fa-external-link-alt"></i> Ver Demo Interactivo
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Barbershop Example -->
-            <div class="portfolio-item" data-category="profesionales">
+            <!-- Medical Example -->
+            <div class="portfolio-item" data-category="medical">
                 <div class="portfolio-card">
-                    <div class="portfolio-content">
-                        <div class="portfolio-header">
-                            <h3><span class="emoji">💈</span> Barbería</h3>
+                    <div class="portfolio-image">
+                        <img src="ejemplos/mockup-consultorio.svg" alt="Página web para consultorio médico">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Clínica San Rafael</h3>
+                                <p>Portal médico con citas online y telemedicina</p>
+                                <div class="portfolio-features">
+                                    <span><i class="fas fa-user-md"></i> Especialistas</span>
+                                    <span><i class="fas fa-calendar-plus"></i> Citas Online</span>
+                                    <span><i class="fas fa-laptop-medical"></i> Telemedicina</span>
+                                    <span><i class="fas fa-file-medical"></i> Historia Clínica</span>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Clínica San Rafael</h3>
+                        <p class="portfolio-type">Web Completa - Centro Médico</p>
                         <p class="portfolio-description">
-                            Tu estilo merece una web a la altura. Este diseño está hecho para barberías modernas 
-                            que quieren <strong>destacar en Instagram y en Google</strong>. Muestra tu trabajo, tu ambiente, tus 
-                            cortes, y deja que los clientes te escriban directo por WhatsApp o reserven en línea.
+                            Portal médico completo con sistema de citas, telemedicina, 
+                            información de especialistas y servicios de salud.
                         </p>
-                        <p class="portfolio-description">
-                            Ideal para barberías que quieren proyectar una imagen profesional y ganar más clientes 
-                            sin depender solo del boca a boca.
-                        </p>
-                        <div class="portfolio-features">
-                            <p><i class="fas fa-check-circle" style="color: #10b981;"></i> Incluye: galería de cortes, testimonios, ubicación en Google Maps, precios destacados y botón de contacto.</p>
-                            <p><strong>Haz que te encuentren, te admiren y te reserven desde su celular.</strong></p>
+                        <div class="portfolio-tech">
+                            <span>Citas Online</span>
+                            <span>Telemedicina</span>
+                            <span>Especialistas</span>
+                            <span>Servicios Médicos</span>
+                        </div>
+                        <div class="portfolio-results">
+                            <div class="result-item">
+                                <strong>+180%</strong>
+                                <span>Citas/mes</span>
+                            </div>
+                            <div class="result-item">
+                                <strong>+90%</strong>
+                                <span>Pacientes nuevos</span>
+                            </div>
                         </div>
                         <div class="portfolio-actions">
-                            <a href="#" class="btn btn-demo">
-                                <i class="fas fa-eye"></i> Ver demo
-                            </a>
-                            <a href="#" class="btn btn-order">
-                                <i class="fas fa-download"></i> Quiero este diseño
+                            <a href="demo-consultorio.html" target="_blank" class="btn btn-demo">
+                                <i class="fas fa-external-link-alt"></i> Ver Demo Interactivo
                             </a>
                         </div>
                     </div>
-                    <div class="portfolio-image">
-                        <img src="images/barbershop-hero.jpg" alt="Diseño web para barbería">
-                    </div>
+                </div>
+
+        </div>
+    </section>
+
+    <!-- Features Comparison -->
+    <section class="features-comparison">
+        <div class="container">
+            <h2 class="section-title">Funciones Interactivas Incluidas</h2>
+            <div class="comparison-grid">
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>100% Responsivo</h3>
+                    <p>Perfecto en móviles, tablets y computadoras</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Carga Súper Rápida</h3>
+                    <p>Optimizado para velocidad máxima</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp Integrado</h3>
+                    <p>Botón flotante y enlaces directos</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-search"></i>
+                    <h3>SEO Optimizado</h3>
+                    <p>Aparecer en Google automáticamente</p>
                 </div>
             </div>
+        </div>
+    </section>
 
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Te Inspiraste con Algún Ejemplo?</h2>
+            <p>Podemos crear algo similar y único para tu negocio</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/51999999999?text=Hola,%20vi%20los%20ejemplos%20y%20quiero%20una%20página%20web%20similar" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    Solicitar Presupuesto
+                </a>
+                <a href="servicios.html" class="btn btn-secondary">
+                    Ver Precios
+                </a>
+            </div>
         </div>
     </section>
 
@@ -548,47 +326,21 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="images/logo.svg" alt="Tu Web Atractiva">
-                        <span>Tu Web Atractiva</span>
-                    </div>
-                    <p>Creamos páginas web profesionales que impulsan tu negocio hacia el éxito digital.</p>
-                    <div class="social-links">
-                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://wa.me/51999999999" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    </div>
+                <div class="footer-logo">
+                    <img src="images/logo.svg" alt="Tu Web Atractiva">
+                    <span>Tu Web Atractiva</span>
                 </div>
                 
-                <div class="footer-section">
-                    <h3>Servicios</h3>
-                    <ul>
-                        <li><a href="servicios.html#web-design">Diseño Web</a></li>
-                        <li><a href="servicios.html#ecommerce">Tienda Online</a></li>
-                        <li><a href="servicios.html#seo">SEO</a></li>
-                        <li><a href="servicios.html#maintenance">Mantenimiento</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <a href="servicios.html">Servicios</a>
+                    <a href="ejemplos.html">Ejemplos</a>
+                    <a href="contacto.html">Contacto</a>
                 </div>
                 
-                <div class="footer-section">
-                    <h3>Empresa</h3>
-                    <ul>
-                        <li><a href="index.html#about">Sobre Nosotros</a></li>
-                        <li><a href="ejemplos.html">Portfolio</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <div class="contact-info">
-                        <p><i class="fas fa-phone"></i> +51 999 999 999</p>
-                        <p><i class="fas fa-envelope"></i> contacto@tuwebatractiva.com</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Lima, Perú</p>
-                    </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/51999999999" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             
@@ -597,6 +349,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
