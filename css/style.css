@@ -1151,8 +1151,9 @@ a:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 0;
 }
 
 .portfolio-card:hover {
@@ -1163,11 +1164,13 @@ a:hover {
 .portfolio-image {
     position: relative;
     overflow: hidden;
+    height: 100%;
+    min-height: 400px;
 }
 
 .portfolio-image img {
     width: 100%;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.3s;
 }
@@ -1214,10 +1217,11 @@ a:hover {
 }
 
 .portfolio-content {
-    padding: 1.5rem;
+    padding: 2rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .portfolio-type {
@@ -1803,6 +1807,15 @@ a:hover {
     
     .screen-body h3 {
         font-size: 1.4rem;
+    }
+    
+    .portfolio-card {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .portfolio-image {
+        min-height: 250px;
     }
     
     .workflow-step {
