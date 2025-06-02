@@ -140,7 +140,9 @@ async function loadAllData() {
     await Promise.all([
         loadContentData(),
         loadSettings(),
-        loadGalleryItems()
+        loadGalleryItems(),
+        loadServiceCards(),
+        loadFeatures()
     ]);
 }
 
@@ -414,7 +416,171 @@ function showMessage(containerId, message, type) {
     }, 5000);
 }
 
+// Load service cards
+async function loadServiceCards() {
+    try {
+        const response = await fetch('/api/service-cards');
+        const serviceCards = await response.json();
+        
+        const container = document.getElementById('serviceCardsContainer');
+        container.innerHTML = '';
+        
+        serviceCards.forEach(card => {
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'content-editor';
+            cardDiv.style.marginBottom = '30px';
+            cardDiv.style.border = '2px solid #e0e0e0';
+            cardDiv.style.borderRadius = '8px';
+            cardDiv.style.padding = '20px';
+            
+            cardDiv.innerHTML = `
+                <h3>Servicio ${card.id}: ${card.title}</h3>
+                <div class="form-group">
+                    <label>Imagen del Servicio:</label>
+                    <input type="file" id="serviceImage${card.id}" accept="image/*">
+                    ${card.image ? `<img src="${card.image}" style="width: 100px; height: 100px; object-fit: cover; margin-top: 10px; border-radius: 6px;">` : ''}
+                </div>
+                <div class="form-group">
+                    <label>Título del Servicio:</label>
+                    <input type="text" id="serviceTitle${card.id}" value="${card.title}" placeholder="Ej: Web Simple">
+                </div>
+                <div class="form-group">
+                    <label>Descripción:</label>
+                    <textarea id="serviceDescription${card.id}" rows="3" placeholder="Descripción del servicio">${card.description}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Precio:</label>
+                    <input type="text" id="servicePrice${card.id}" value="${card.price}" placeholder="Ej: Desde S/99">
+                </div>
+                <div class="form-group">
+                    <label>Enlace:</label>
+                    <input type="text" id="serviceLink${card.id}" value="${card.link}" placeholder="Ej: servicios.html#web-simple">
+                </div>
+                <button onclick="updateServiceCard(${card.id})" class="btn">Guardar Servicio</button>
+            `;
+            container.appendChild(cardDiv);
+        });
+    } catch (error) {
+        showMessage('servicesMessage', 'Error cargando servicios', 'error');
+    }
+}
+
+// Load features
+async function loadFeatures() {
+    try {
+        const response = await fetch('/api/features');
+        const features = await response.json();
+        
+        const container = document.getElementById('featuresContainer');
+        container.innerHTML = '';
+        
+        features.forEach(feature => {
+            const featureDiv = document.createElement('div');
+            featureDiv.className = 'content-editor';
+            featureDiv.style.marginBottom = '30px';
+            featureDiv.style.border = '2px solid #e0e0e0';
+            featureDiv.style.borderRadius = '8px';
+            featureDiv.style.padding = '20px';
+            
+            featureDiv.innerHTML = `
+                <h3>Característica ${feature.id}: ${feature.title}</h3>
+                <div class="form-group">
+                    <label>Icono (Font Awesome):</label>
+                    <input type="text" id="featureIcon${feature.id}" value="${feature.icon}" placeholder="Ej: fas fa-mobile-alt">
+                    <small>Usa clases de Font Awesome como: fas fa-mobile-alt, fas fa-clock, etc.</small>
+                </div>
+                <div class="form-group">
+                    <label>Título:</label>
+                    <input type="text" id="featureTitle${feature.id}" value="${feature.title}" placeholder="Ej: Diseño Móvil Primero">
+                </div>
+                <div class="form-group">
+                    <label>Descripción:</label>
+                    <textarea id="featureDescription${feature.id}" rows="3" placeholder="Descripción de la característica">${feature.description}</textarea>
+                </div>
+                <button onclick="updateFeature(${feature.id})" class="btn">Guardar Característica</button>
+            `;
+            container.appendChild(featureDiv);
+        });
+    } catch (error) {
+        showMessage('featuresMessage', 'Error cargando características', 'error');
+    }
+}
+
+// Update service card
+async function updateServiceCard(cardId) {
+    const title = document.getElementById(`serviceTitle${cardId}`).value;
+    const description = document.getElementById(`serviceDescription${cardId}`).value;
+    const price = document.getElementById(`servicePrice${cardId}`).value;
+    const link = document.getElementById(`serviceLink${cardId}`).value;
+    const imageFile = document.getElementById(`serviceImage${cardId}`).files[0];
+    
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('price', price);
+    formData.append('link', link);
+    formData.append('alt', title);
+    
+    if (imageFile) {
+        formData.append('image', imageFile);
+    }
+    
+    try {
+        const response = await fetch(`/api/service-cards/${cardId}`, {
+            method: 'PUT',
+            body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            showMessage('servicesMessage', `Servicio ${cardId} actualizado correctamente`, 'success');
+            setTimeout(() => loadServiceCards(), 1000);
+        } else {
+            showMessage('servicesMessage', data.message, 'error');
+        }
+    } catch (error) {
+        showMessage('servicesMessage', 'Error actualizando servicio', 'error');
+    }
+}
+
+// Update feature
+async function updateFeature(featureId) {
+    const icon = document.getElementById(`featureIcon${featureId}`).value;
+    const title = document.getElementById(`featureTitle${featureId}`).value;
+    const description = document.getElementById(`featureDescription${featureId}`).value;
+    
+    const updateData = {
+        icon,
+        title,
+        description
+    };
+    
+    try {
+        const response = await fetch(`/api/features/${featureId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updateData)
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            showMessage('featuresMessage', `Característica ${featureId} actualizada correctamente`, 'success');
+        } else {
+            showMessage('featuresMessage', data.message, 'error');
+        }
+    } catch (error) {
+        showMessage('featuresMessage', 'Error actualizando característica', 'error');
+    }
+}
+
 // Make functions available globally for onclick handlers
+window.updateServiceCard = updateServiceCard;
+window.updateFeature = updateFeature;
+
 window.editGalleryItem = function(id) {
     // Implement edit functionality if needed
     alert('Función de edición en desarrollo');
