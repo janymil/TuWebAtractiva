@@ -1152,7 +1152,7 @@ a:hover {
     transition: transform 0.3s;
     height: 100%;
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 500px 1fr;
     gap: 0;
 }
 
