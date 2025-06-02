@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
+const HTMLEditor = require('./htmlEditor');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -12,13 +13,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files
-app.use(express.static('.'));
+// Serve static files from parent directory
+app.use(express.static(path.join(__dirname, '..')));
 
 // Configure multer for image uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadDir = './uploads';
+    const uploadDir = path.join(__dirname, '../uploads');
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }
@@ -44,28 +45,8 @@ const upload = multer({
   }
 });
 
-// Simple in-memory storage for now (will be replaced with database)
-let contentData = {
-  hero: {
-    title: "Diseño Web Profesional para tu Negocio",
-    subtitle: "Creamos sitios web modernos, rápidos y optimizados para convertir visitantes en clientes",
-    description: "Especialistas en desarrollo web para pequeñas y medianas empresas en Perú",
-    buttonText: "Solicitar Cotización",
-    backgroundImage: "/images/hero-bg.svg",
-    textColor: "#ffffff",
-    backgroundColor: "#1a202c"
-  },
-  services: {
-    title: "Nuestros Servicios",
-    subtitle: "Soluciones completas para tu presencia digital",
-    description: "Ofrecemos servicios de diseño y desarrollo web adaptados a las necesidades de tu negocio"
-  },
-  portfolio: {
-    title: "Nuestros Trabajos",
-    subtitle: "Proyectos que impulsan el crecimiento de nuestros clientes",
-    description: "Cada sitio web que creamos está diseñado para generar resultados"
-  }
-};
+// HTML Editor instance
+const htmlEditor = new HTMLEditor();
 
 let galleryData = [
   {
@@ -124,7 +105,8 @@ app.post('/api/admin/login', (req, res) => {
 
 // Get all content sections
 app.get('/api/content', (req, res) => {
-  res.json(contentData);
+  const content = htmlEditor.readContent();
+  res.json(content);
 });
 
 // Update content section
@@ -132,17 +114,18 @@ app.put('/api/content/:section', (req, res) => {
   const { section } = req.params;
   const updateData = req.body;
   
-  if (contentData[section]) {
-    contentData[section] = { ...contentData[section], ...updateData };
+  const success = htmlEditor.updateContent(section, updateData);
+  
+  if (success) {
     res.json({ 
       success: true, 
       message: 'Content updated successfully',
-      data: contentData[section]
+      data: updateData
     });
   } else {
-    res.status(404).json({ 
+    res.status(500).json({ 
       success: false, 
-      message: 'Section not found' 
+      message: 'Error updating content' 
     });
   }
 });
