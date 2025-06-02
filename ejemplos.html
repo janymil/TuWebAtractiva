@@ -260,6 +260,86 @@
                 font-size: 13px;
             }
         }
+
+        /* Dark Mode Styles */
+        [data-theme="dark"] .portfolio-item {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+
+        [data-theme="dark"] .portfolio-description {
+            color: #cbd5e0;
+        }
+
+        [data-theme="dark"] .portfolio-features p {
+            color: #e2e8f0;
+        }
+
+        [data-theme="dark"] .portfolio-tech span {
+            background: #4a5568;
+            color: #e2e8f0;
+            border-color: #2d3748;
+        }
+
+        [data-theme="dark"] .filter-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-color: #4a5568;
+        }
+
+        [data-theme="dark"] .filter-btn.active,
+        [data-theme="dark"] .filter-btn:hover {
+            background: #dc2626;
+            color: white;
+            border-color: #dc2626;
+        }
+
+        /* Compact Footer */
+        .footer {
+            padding: 30px 0 20px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section p, 
+        .footer-section ul li a {
+            font-size: 14px;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .footer-bottom {
+            padding-top: 15px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -321,9 +401,6 @@
             <!-- Restaurant Example -->
             <div class="portfolio-item" data-category="restaurantes">
                 <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="images/restaurant-hero.jpg" alt="Diseño web para restaurante">
-                    </div>
                     <div class="portfolio-content">
                         <div class="portfolio-header">
                             <h3><span class="emoji">🍔</span> Restaurante</h3>
@@ -342,12 +419,6 @@
                             <p><i class="fas fa-check-circle" style="color: #10b981;"></i> Incluye: galería de platos, sección de promociones, ubicación en Google Maps, menú descargable y botón directo a WhatsApp.</p>
                             <p><strong>¡Tu restaurante merece más que solo un perfil en Instagram!</strong></p>
                         </div>
-                        <div class="portfolio-tech">
-                            <span>Menú Digital</span>
-                            <span>Reservas Online</span>
-                            <span>WhatsApp Delivery</span>
-                            <span>Google Maps</span>
-                        </div>
                         <div class="portfolio-actions">
                             <a href="#" class="btn btn-demo">
                                 <i class="fas fa-eye"></i> Ver demo
@@ -357,15 +428,15 @@
                             </a>
                         </div>
                     </div>
+                    <div class="portfolio-image">
+                        <img src="images/restaurant-hero.jpg" alt="Diseño web para restaurante">
+                    </div>
                 </div>
             </div>
 
             <!-- Real Estate Example -->
             <div class="portfolio-item" data-category="negocios">
                 <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="images/architecture-hero.jpg" alt="Diseño web para inmobiliaria">
-                    </div>
                     <div class="portfolio-content">
                         <div class="portfolio-header">
                             <h3><span class="emoji">🏠</span> Inmobiliaria</h3>
@@ -384,12 +455,6 @@
                             <p><i class="fas fa-check-circle" style="color: #10b981;"></i> Incluye: galería de propiedades, formulario de contacto, mapa de ubicación y sección de testimonios.</p>
                             <p><strong>Haz que te encuentren, te confíen y te contacten en un solo clic.</strong></p>
                         </div>
-                        <div class="portfolio-tech">
-                            <span>Galería Propiedades</span>
-                            <span>Filtros Búsqueda</span>
-                            <span>WhatsApp Contacto</span>
-                            <span>Mapa Ubicación</span>
-                        </div>
                         <div class="portfolio-actions">
                             <a href="#" class="btn btn-demo">
                                 <i class="fas fa-eye"></i> Ver demo
@@ -399,15 +464,15 @@
                             </a>
                         </div>
                     </div>
+                    <div class="portfolio-image">
+                        <img src="images/architecture-hero.jpg" alt="Diseño web para inmobiliaria">
+                    </div>
                 </div>
             </div>
 
             <!-- Nutritionist Example -->
             <div class="portfolio-item" data-category="salud">
                 <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="images/architecture-hero.jpg" alt="Diseño web para nutricionista">
-                    </div>
                     <div class="portfolio-content">
                         <div class="portfolio-header">
                             <h3><span class="emoji">🥗</span> Nutricionista</h3>
@@ -426,12 +491,6 @@
                             <p><i class="fas fa-check-circle" style="color: #10b981;"></i> Incluye: perfil profesional, servicios detallados, testimonios, galería de resultados, formulario de contacto y botón de citas (Calendly o WhatsApp).</p>
                             <p><strong>Conviértete en la opción número uno para quienes quieren transformar su salud.</strong></p>
                         </div>
-                        <div class="portfolio-tech">
-                            <span>Perfil Profesional</span>
-                            <span>Testimonios</span>
-                            <span>Galería Resultados</span>
-                            <span>Citas Online</span>
-                        </div>
                         <div class="portfolio-actions">
                             <a href="#" class="btn btn-demo">
                                 <i class="fas fa-eye"></i> Ver demo
@@ -441,15 +500,15 @@
                             </a>
                         </div>
                     </div>
+                    <div class="portfolio-image">
+                        <img src="images/architecture-hero.jpg" alt="Diseño web para nutricionista">
+                    </div>
                 </div>
             </div>
 
             <!-- Barbershop Example -->
             <div class="portfolio-item" data-category="profesionales">
                 <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="images/barbershop-hero.jpg" alt="Diseño web para barbería">
-                    </div>
                     <div class="portfolio-content">
                         <div class="portfolio-header">
                             <h3><span class="emoji">💈</span> Barbería</h3>
@@ -467,12 +526,6 @@
                             <p><i class="fas fa-check-circle" style="color: #10b981;"></i> Incluye: galería de cortes, testimonios, ubicación en Google Maps, precios destacados y botón de contacto.</p>
                             <p><strong>Haz que te encuentren, te admiren y te reserven desde su celular.</strong></p>
                         </div>
-                        <div class="portfolio-tech">
-                            <span>Galería de Cortes</span>
-                            <span>Testimonios</span>
-                            <span>Google Maps</span>
-                            <span>Reservas WhatsApp</span>
-                        </div>
                         <div class="portfolio-actions">
                             <a href="#" class="btn btn-demo">
                                 <i class="fas fa-eye"></i> Ver demo
@@ -482,89 +535,8 @@
                             </a>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Medical Office Example -->
-            <div class="portfolio-item" data-category="salud">
-                <div class="portfolio-card">
                     <div class="portfolio-image">
-                        <img src="images/medical-hero.jpg" alt="Diseño web para consultorio médico">
-                    </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-header">
-                            <h3><span class="emoji">🏥</span> Consultorio Médico</h3>
-                        </div>
-                        <p class="portfolio-description">
-                            Dale a tus pacientes la confianza que buscan desde el primer clic. Este diseño está 
-                            pensado para médicos, especialistas o consultorios que quieren mostrar profesionalismo, 
-                            experiencia y facilitar el contacto directo.
-                        </p>
-                        <p class="portfolio-description">
-                            Tu página incluirá tu perfil profesional, especialidades, horarios de atención, ubicación 
-                            y un sistema simple de citas por WhatsApp o teléfono. Ideal para generar más confianza 
-                            y conseguir más pacientes.
-                        </p>
-                        <div class="portfolio-features">
-                            <p><i class="fas fa-check-circle" style="color: #10b981;"></i> Incluye: perfil médico, especialidades, horarios, ubicación, testimonios y botón de citas.</p>
-                            <p><strong>Haz que te encuentren, confíen en ti y te contacten fácilmente.</strong></p>
-                        </div>
-                        <div class="portfolio-tech">
-                            <span>Perfil Médico</span>
-                            <span>Especialidades</span>
-                            <span>Citas Online</span>
-                            <span>Horarios</span>
-                        </div>
-                        <div class="portfolio-actions">
-                            <a href="#" class="btn btn-demo">
-                                <i class="fas fa-eye"></i> Ver demo
-                            </a>
-                            <a href="#" class="btn btn-order">
-                                <i class="fas fa-download"></i> Quiero este diseño
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Lawyer Example -->
-            <div class="portfolio-item" data-category="profesionales">
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="images/lawyer-hero.jpg" alt="Diseño web para abogado">
-                    </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-header">
-                            <h3><span class="emoji">⚖️</span> Abogados</h3>
-                        </div>
-                        <p class="portfolio-description">
-                            Proyecta seriedad y profesionalismo desde el primer clic. Este diseño está pensado para 
-                            abogados, estudios jurídicos o profesionales del derecho que quieren generar confianza 
-                            y conseguir más clientes a través de una presencia digital sólida.
-                        </p>
-                        <p class="portfolio-description">
-                            Tu página incluirá tu experiencia, especialidades legales, casos de éxito y un sistema 
-                            fácil de contacto para consultas. Ideal para diferenciarte de la competencia y establecer 
-                            autoridad en tu área.
-                        </p>
-                        <div class="portfolio-features">
-                            <p><i class="fas fa-check-circle" style="color: #10b981;"></i> Incluye: perfil profesional, especialidades legales, casos de éxito, testimonios y formulario de consulta.</p>
-                            <p><strong>Haz que te encuentren, confíen en tu experiencia y te contacten.</strong></p>
-                        </div>
-                        <div class="portfolio-tech">
-                            <span>Perfil Profesional</span>
-                            <span>Especialidades Legales</span>
-                            <span>Casos de Éxito</span>
-                            <span>Consultas Online</span>
-                        </div>
-                        <div class="portfolio-actions">
-                            <a href="#" class="btn btn-demo">
-                                <i class="fas fa-eye"></i> Ver demo
-                            </a>
-                            <a href="#" class="btn btn-order">
-                                <i class="fas fa-download"></i> Quiero este diseño
-                            </a>
-                        </div>
+                        <img src="images/barbershop-hero.jpg" alt="Diseño web para barbería">
                     </div>
                 </div>
             </div>
