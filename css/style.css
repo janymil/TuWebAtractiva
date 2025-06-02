@@ -1131,7 +1131,7 @@ a:hover {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-2xl);
-    max-width: 800px;
+    max-width: 1200px;
 }
 
 .portfolio-item {
