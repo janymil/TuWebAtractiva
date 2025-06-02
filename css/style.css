@@ -1129,8 +1129,9 @@ a:hover {
 
 .portfolio-grid .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: 1fr;
     gap: var(--spacing-2xl);
+    max-width: 800px;
 }
 
 .portfolio-item {
