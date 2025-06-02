@@ -266,7 +266,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 });
 
 // Serve uploads directory
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Admin dashboard route
 app.get('/admin', (req, res) => {
