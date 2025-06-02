@@ -71,11 +71,11 @@ class HTMLEditor {
 
   // Extract individual service cards
   extractServiceCards(html) {
-    const servicesSection = this.extractSection(html, 'servicios');
+    const servicesSection = this.extractSectionByClass(html, 'services-preview');
     if (!servicesSection) return [];
 
     const serviceCards = [];
-    const cardMatches = servicesSection.match(/<div class="service-card">[\s\S]*?<\/div>\s*<\/div>/g);
+    const cardMatches = servicesSection.match(/<div class="service-card">[\s\S]*?<\/a>\s*<\/div>/g);
     
     if (cardMatches) {
       cardMatches.forEach((card, index) => {
@@ -204,11 +204,11 @@ class HTMLEditor {
 
   // Update individual service card
   updateServiceCard(html, data) {
-    const servicesSection = this.extractSection(html, 'servicios');
+    const servicesSection = this.extractSectionByClass(html, 'services-preview');
     if (!servicesSection) return html;
 
     let updatedSection = servicesSection;
-    const cardMatches = servicesSection.match(/<div class="service-card">[\s\S]*?<\/div>\s*<\/div>/g);
+    const cardMatches = servicesSection.match(/<div class="service-card">[\s\S]*?<\/a>\s*<\/div>/g);
     
     if (cardMatches && data.id && cardMatches[data.id - 1]) {
       let cardHtml = cardMatches[data.id - 1];
@@ -235,7 +235,10 @@ class HTMLEditor {
       updatedSection = updatedSection.replace(cardMatches[data.id - 1], cardHtml);
     }
 
-    return html.replace(this.extractSection(html, 'servicios'), updatedSection);
+    const fullSectionRegex = new RegExp(`<section[^>]*class=["'][^"']*services-preview[^"']*["'][^>]*>([\\s\\S]*?)</section>`, 'i');
+    return html.replace(fullSectionRegex, (match) => {
+      return match.replace(servicesSection, updatedSection);
+    });
   }
 
   // Update individual feature
@@ -268,6 +271,12 @@ class HTMLEditor {
   // Helper methods
   extractSection(html, sectionId) {
     const regex = new RegExp(`<section[^>]*id=["']${sectionId}["'][^>]*>([\\s\\S]*?)</section>`, 'i');
+    const match = html.match(regex);
+    return match ? match[1] : null;
+  }
+
+  extractSectionByClass(html, className) {
+    const regex = new RegExp(`<section[^>]*class=["'][^"']*${className}[^"']*["'][^>]*>([\\s\\S]*?)</section>`, 'i');
     const match = html.match(regex);
     return match ? match[1] : null;
   }
