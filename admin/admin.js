@@ -129,6 +129,10 @@ function showSection(sectionName) {
     // Load section-specific data
     if (sectionName === 'gallery') {
         loadGalleryItems();
+    } else if (sectionName === 'services') {
+        loadServiceCards();
+    } else if (sectionName === 'features') {
+        loadFeatures();
     }
 }
 

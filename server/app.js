@@ -130,6 +130,64 @@ app.put('/api/content/:section', (req, res) => {
   }
 });
 
+// Get service cards
+app.get('/api/service-cards', (req, res) => {
+  const content = htmlEditor.readContent();
+  res.json(content.serviceCards || []);
+});
+
+// Update service card
+app.put('/api/service-cards/:id', upload.single('image'), (req, res) => {
+  const { id } = req.params;
+  const updateData = { id: parseInt(id), ...req.body };
+  
+  if (req.file) {
+    updateData.image = `/uploads/${req.file.filename}`;
+  }
+  
+  const success = htmlEditor.updateContent('serviceCard', updateData);
+  
+  if (success) {
+    res.json({ 
+      success: true, 
+      message: 'Service card updated successfully',
+      data: updateData
+    });
+  } else {
+    res.status(500).json({ 
+      success: false, 
+      message: 'Error updating service card' 
+    });
+  }
+});
+
+// Get features
+app.get('/api/features', (req, res) => {
+  const content = htmlEditor.readContent();
+  res.json(content.features || []);
+});
+
+// Update feature
+app.put('/api/features/:id', (req, res) => {
+  const { id } = req.params;
+  const updateData = { id: parseInt(id), ...req.body };
+  
+  const success = htmlEditor.updateContent('feature', updateData);
+  
+  if (success) {
+    res.json({ 
+      success: true, 
+      message: 'Feature updated successfully',
+      data: updateData
+    });
+  } else {
+    res.status(500).json({ 
+      success: false, 
+      message: 'Error updating feature' 
+    });
+  }
+});
+
 // Get gallery items
 app.get('/api/gallery', (req, res) => {
   res.json(galleryData.filter(item => item.isActive));

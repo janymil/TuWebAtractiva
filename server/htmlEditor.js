@@ -19,6 +19,8 @@ class HTMLEditor {
       return {
         hero: this.extractHeroSection(indexContent),
         services: this.extractServicesSection(indexContent),
+        serviceCards: this.extractServiceCards(indexContent),
+        features: this.extractFeatures(indexContent),
         portfolio: this.extractPortfolioSection(indexContent)
       };
     } catch (error) {
@@ -67,6 +69,63 @@ class HTMLEditor {
     };
   }
 
+  // Extract individual service cards
+  extractServiceCards(html) {
+    const servicesSection = this.extractSection(html, 'servicios');
+    if (!servicesSection) return [];
+
+    const serviceCards = [];
+    const cardMatches = servicesSection.match(/<div class="service-card">[\s\S]*?<\/div>\s*<\/div>/g);
+    
+    if (cardMatches) {
+      cardMatches.forEach((card, index) => {
+        const imageMatch = card.match(/<img[^>]*src="([^"]*)"[^>]*alt="([^"]*)"[^>]*>/);
+        const titleMatch = card.match(/<h3[^>]*>([^<]+)<\/h3>/);
+        const descriptionMatch = card.match(/<p[^>]*>([^<]+)<\/p>/);
+        const priceMatch = card.match(/<div class="service-price"[^>]*>([^<]+)<\/div>/);
+        const linkMatch = card.match(/<a[^>]*href="([^"]*)"[^>]*>/);
+
+        serviceCards.push({
+          id: index + 1,
+          image: imageMatch ? imageMatch[1] : '',
+          alt: imageMatch ? imageMatch[2] : '',
+          title: titleMatch ? titleMatch[1] : '',
+          description: descriptionMatch ? descriptionMatch[1] : '',
+          price: priceMatch ? priceMatch[1] : '',
+          link: linkMatch ? linkMatch[1] : ''
+        });
+      });
+    }
+
+    return serviceCards;
+  }
+
+  // Extract feature items
+  extractFeatures(html) {
+    const featuresSection = this.extractSection(html, 'why-choose-us');
+    if (!featuresSection) return [];
+
+    const features = [];
+    const featureMatches = featuresSection.match(/<div class="feature-item">[\s\S]*?<\/div>\s*<\/div>/g);
+    
+    if (featureMatches) {
+      featureMatches.forEach((feature, index) => {
+        const iconMatch = feature.match(/<i class="([^"]*)"[^>]*><\/i>/);
+        const titleMatch = feature.match(/<h3[^>]*>([^<]+)<\/h3>/);
+        const descriptionMatch = feature.match(/<p[^>]*>([^<]+)<\/p>/);
+
+        features.push({
+          id: index + 1,
+          icon: iconMatch ? iconMatch[1] : '',
+          title: titleMatch ? titleMatch[1] : '',
+          description: descriptionMatch ? descriptionMatch[1] : ''
+        });
+      });
+    }
+
+    return features;
+  }
+
   // Update content in HTML files
   updateContent(sectionName, data) {
     try {
@@ -78,6 +137,10 @@ class HTMLEditor {
         html = this.updateServicesSection(html, data);
       } else if (sectionName === 'portfolio') {
         html = this.updatePortfolioSection(html, data);
+      } else if (sectionName === 'serviceCard') {
+        html = this.updateServiceCard(html, data);
+      } else if (sectionName === 'feature') {
+        html = this.updateFeature(html, data);
       }
 
       fs.writeFileSync(this.htmlFiles.index, html, 'utf8');
@@ -137,6 +200,69 @@ class HTMLEditor {
     }
 
     return html;
+  }
+
+  // Update individual service card
+  updateServiceCard(html, data) {
+    const servicesSection = this.extractSection(html, 'servicios');
+    if (!servicesSection) return html;
+
+    let updatedSection = servicesSection;
+    const cardMatches = servicesSection.match(/<div class="service-card">[\s\S]*?<\/div>\s*<\/div>/g);
+    
+    if (cardMatches && data.id && cardMatches[data.id - 1]) {
+      let cardHtml = cardMatches[data.id - 1];
+      
+      if (data.image) {
+        cardHtml = cardHtml.replace(/(<img[^>]*src=")([^"]*)("[^>]*>)/, `$1${data.image}$3`);
+      }
+      if (data.alt) {
+        cardHtml = cardHtml.replace(/(<img[^>]*alt=")([^"]*)("[^>]*>)/, `$1${data.alt}$3`);
+      }
+      if (data.title) {
+        cardHtml = cardHtml.replace(/(<h3[^>]*>)([^<]+)(<\/h3>)/, `$1${data.title}$3`);
+      }
+      if (data.description) {
+        cardHtml = cardHtml.replace(/(<p[^>]*>)([^<]+)(<\/p>)/, `$1${data.description}$3`);
+      }
+      if (data.price) {
+        cardHtml = cardHtml.replace(/(<div class="service-price"[^>]*>)([^<]+)(<\/div>)/, `$1${data.price}$3`);
+      }
+      if (data.link) {
+        cardHtml = cardHtml.replace(/(<a[^>]*href=")([^"]*)("[^>]*>)/, `$1${data.link}$3`);
+      }
+
+      updatedSection = updatedSection.replace(cardMatches[data.id - 1], cardHtml);
+    }
+
+    return html.replace(this.extractSection(html, 'servicios'), updatedSection);
+  }
+
+  // Update individual feature
+  updateFeature(html, data) {
+    const featuresSection = this.extractSection(html, 'why-choose-us');
+    if (!featuresSection) return html;
+
+    let updatedSection = featuresSection;
+    const featureMatches = featuresSection.match(/<div class="feature-item">[\s\S]*?<\/div>\s*<\/div>/g);
+    
+    if (featureMatches && data.id && featureMatches[data.id - 1]) {
+      let featureHtml = featureMatches[data.id - 1];
+      
+      if (data.icon) {
+        featureHtml = featureHtml.replace(/(<i class=")([^"]*)("[^>]*><\/i>)/, `$1${data.icon}$3`);
+      }
+      if (data.title) {
+        featureHtml = featureHtml.replace(/(<h3[^>]*>)([^<]+)(<\/h3>)/, `$1${data.title}$3`);
+      }
+      if (data.description) {
+        featureHtml = featureHtml.replace(/(<p[^>]*>)([^<]+)(<\/p>)/, `$1${data.description}$3`);
+      }
+
+      updatedSection = updatedSection.replace(featureMatches[data.id - 1], featureHtml);
+    }
+
+    return html.replace(this.extractSection(html, 'why-choose-us'), updatedSection);
   }
 
   // Helper methods
