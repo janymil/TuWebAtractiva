@@ -1288,6 +1288,178 @@ a:hover {
     margin: 0;
 }
 
+/* Dark Mode for Contact Page */
+[data-theme="dark"] .page-header {
+    background: linear-gradient(135deg, hsl(var(--primary-dark) / 0.1), hsl(var(--accent-dark) / 0.05));
+}
+
+[data-theme="dark"] .page-header h1 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .page-header p {
+    color: hsl(var(--text-dark) / 0.7);
+}
+
+[data-theme="dark"] .contact-methods {
+    background: hsl(var(--background-dark));
+}
+
+[data-theme="dark"] .contact-method {
+    background: hsl(var(--secondary-dark));
+    border-color: hsl(var(--border-dark));
+}
+
+[data-theme="dark"] .contact-method.featured {
+    border-color: hsl(var(--primary-dark));
+    background: linear-gradient(135deg, hsl(var(--primary-dark) / 0.05), hsl(var(--secondary-dark)));
+}
+
+[data-theme="dark"] .contact-method h3 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .contact-method p {
+    color: hsl(var(--text-dark) / 0.7);
+}
+
+[data-theme="dark"] .contact-info span {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .contact-info p {
+    color: hsl(var(--text-dark) / 0.6);
+}
+
+[data-theme="dark"] .contact-form-section {
+    background: hsl(var(--background-dark));
+}
+
+[data-theme="dark"] .form-container {
+    background: hsl(var(--secondary-dark));
+}
+
+[data-theme="dark"] .form-header h2 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .form-header p {
+    color: hsl(var(--text-dark) / 0.7);
+}
+
+[data-theme="dark"] .form-group label {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+    background: hsl(var(--background-dark));
+    border-color: hsl(var(--border-dark));
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group select:focus,
+[data-theme="dark"] .form-group textarea:focus {
+    border-color: hsl(var(--primary-dark));
+    box-shadow: 0 0 0 3px hsl(var(--primary-dark) / 0.1);
+}
+
+[data-theme="dark"] .checkbox-label {
+    color: hsl(var(--text-dark) / 0.8);
+}
+
+[data-theme="dark"] .checkbox-label input[type="checkbox"] {
+    border-color: hsl(var(--border-dark));
+}
+
+[data-theme="dark"] .checkbox-label input[type="checkbox"]:checked {
+    background: hsl(var(--primary-dark));
+    border-color: hsl(var(--primary-dark));
+}
+
+[data-theme="dark"] .form-note {
+    color: hsl(var(--text-dark) / 0.6);
+}
+
+[data-theme="dark"] .quick-contact {
+    background: hsl(var(--secondary-dark));
+}
+
+[data-theme="dark"] .quick-contact .section-title {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .quick-option {
+    background: hsl(var(--background-dark));
+    border-color: hsl(var(--border-dark));
+}
+
+[data-theme="dark"] .quick-option h3 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .quick-option p {
+    color: hsl(var(--text-dark) / 0.7);
+}
+
+[data-theme="dark"] .location-section {
+    background: hsl(var(--background-dark));
+}
+
+[data-theme="dark"] .location-info h2 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .detail-item i {
+    color: hsl(var(--primary-dark));
+}
+
+[data-theme="dark"] .detail-item strong {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .detail-item p {
+    color: hsl(var(--text-dark) / 0.7);
+}
+
+[data-theme="dark"] .faq-section {
+    background: hsl(var(--secondary-dark));
+}
+
+[data-theme="dark"] .faq-section .section-title {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .faq-item {
+    border-color: hsl(var(--border-dark));
+}
+
+[data-theme="dark"] .faq-question {
+    background: hsl(var(--background-dark));
+}
+
+[data-theme="dark"] .faq-question:hover {
+    background: hsl(var(--border-dark) / 0.3);
+}
+
+[data-theme="dark"] .faq-question h3 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .faq-question i {
+    color: hsl(var(--primary-dark));
+}
+
+[data-theme="dark"] .faq-answer {
+    background: hsl(var(--secondary-dark));
+}
+
+[data-theme="dark"] .faq-answer p {
+    color: hsl(var(--text-dark) / 0.8);
+}
+
 /* Responsive Design for Contact Page */
 @media (max-width: 768px) {
     .form-row {
