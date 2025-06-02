@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Content save handlers
+    document.getElementById('saveHeroSectionBtn').addEventListener('click', saveHeroSection);
     document.getElementById('saveHeroBtn').addEventListener('click', () => saveContentSection('hero'));
     document.getElementById('saveServicesBtn').addEventListener('click', () => saveContentSection('services'));
     document.getElementById('savePortfolioBtn').addEventListener('click', () => saveContentSection('portfolio'));
@@ -44,6 +45,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // File upload handlers
+    document.getElementById('heroImageUpload').addEventListener('change', function() {
+        if (this.files[0]) {
+            const preview = document.createElement('img');
+            preview.style.width = '200px';
+            preview.style.height = '120px';
+            preview.style.objectFit = 'cover';
+            preview.style.borderRadius = '6px';
+            preview.src = URL.createObjectURL(this.files[0]);
+            
+            const previewContainer = document.getElementById('heroImagePreview');
+            previewContainer.innerHTML = '';
+            previewContainer.appendChild(preview);
+        }
+    });
+
     document.getElementById('heroBackgroundImage').addEventListener('change', function() {
         if (this.files[0]) {
             uploadImage(this.files[0], (imageUrl) => {
@@ -133,12 +149,15 @@ function showSection(sectionName) {
         loadServiceCards();
     } else if (sectionName === 'features') {
         loadFeatures();
+    } else if (sectionName === 'inicio') {
+        loadHeroData();
     }
 }
 
 async function loadAllData() {
     await Promise.all([
         loadContentData(),
+        loadHeroData(),
         loadSettings(),
         loadGalleryItems(),
         loadServiceCards(),

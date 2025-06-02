@@ -31,17 +31,38 @@ class HTMLEditor {
 
   // Extract hero section content
   extractHeroSection(html) {
-    const heroSection = this.extractSection(html, 'hero');
+    const heroSection = this.extractSection(html, 'inicio');
     if (!heroSection) return {};
 
+    // Extract title with two parts (regular and highlighted)
+    const titleMatch = heroSection.match(/<h1[^>]*class="hero-title"[^>]*>([\s\S]*?)<\/h1>/);
+    let titleRegular = '';
+    let titleHighlight = '';
+    
+    if (titleMatch) {
+      const titleContent = titleMatch[1];
+      const highlightMatch = titleContent.match(/<span[^>]*class="highlight"[^>]*>([^<]*)<\/span>/);
+      if (highlightMatch) {
+        titleHighlight = highlightMatch[1];
+        titleRegular = titleContent.replace(highlightMatch[0], '').trim();
+      } else {
+        titleRegular = titleContent.replace(/<[^>]*>/g, '').trim();
+      }
+    }
+
+    // Extract buttons
+    const primaryButtonMatch = heroSection.match(/<a[^>]*class="[^"]*btn[^"]*btn-primary[^"]*"[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/);
+    const secondaryButtonMatch = heroSection.match(/<a[^>]*class="[^"]*btn[^"]*btn-secondary[^"]*"[^>]*href="([^"]*)"[^>]*>([^<]*)<\/a>/);
+
     return {
-      title: this.extractText(heroSection, 'h1') || '',
+      titleRegular: titleRegular,
+      titleHighlight: titleHighlight,
       subtitle: this.extractText(heroSection, '.hero-subtitle') || '',
-      description: this.extractText(heroSection, '.hero-description') || '',
-      buttonText: this.extractText(heroSection, '.btn-primary') || '',
-      backgroundImage: this.extractAttribute(heroSection, '.hero-image img', 'src') || '',
-      textColor: this.extractCSSProperty(heroSection, 'color') || '#ffffff',
-      backgroundColor: this.extractCSSProperty(heroSection, 'background-color') || '#1a202c'
+      primaryButtonText: primaryButtonMatch ? primaryButtonMatch[2].replace(/<[^>]*>/g, '').trim() : '',
+      primaryButtonLink: primaryButtonMatch ? primaryButtonMatch[1] : '',
+      secondaryButtonText: secondaryButtonMatch ? secondaryButtonMatch[2].trim() : '',
+      secondaryButtonLink: secondaryButtonMatch ? secondaryButtonMatch[1] : '',
+      heroImage: this.extractAttribute(heroSection, '.hero-image img', 'src') || ''
     };
   }
 
@@ -133,6 +154,8 @@ class HTMLEditor {
 
       if (sectionName === 'hero') {
         html = this.updateHeroSection(html, data);
+      } else if (sectionName === 'inicio') {
+        html = this.updateHeroSection(html, data);
       } else if (sectionName === 'services') {
         html = this.updateServicesSection(html, data);
       } else if (sectionName === 'portfolio') {
@@ -153,23 +176,71 @@ class HTMLEditor {
 
   // Update hero section
   updateHeroSection(html, data) {
-    if (data.title) {
-      html = this.replaceText(html, 'section#hero h1', data.title);
-    }
-    if (data.subtitle) {
-      html = this.replaceText(html, 'section#hero .hero-subtitle', data.subtitle);
-    }
-    if (data.description) {
-      html = this.replaceText(html, 'section#hero .hero-description', data.description);
-    }
-    if (data.buttonText) {
-      html = this.replaceText(html, 'section#hero .btn-primary', data.buttonText);
-    }
-    if (data.backgroundImage) {
-      html = this.replaceAttribute(html, 'section#hero .hero-image img', 'src', data.backgroundImage);
+    const heroSection = this.extractSection(html, 'inicio');
+    if (!heroSection) return html;
+
+    let updatedSection = heroSection;
+
+    // Update title with two parts
+    if (data.titleRegular || data.titleHighlight) {
+      const titleRegular = data.titleRegular || '';
+      const titleHighlight = data.titleHighlight || '';
+      const newTitleContent = `${titleRegular} <span class="highlight">${titleHighlight}</span>`;
+      
+      updatedSection = updatedSection.replace(
+        /<h1[^>]*class="hero-title"[^>]*>[\s\S]*?<\/h1>/,
+        `<h1 class="hero-title">\n                    ${newTitleContent}\n                </h1>`
+      );
     }
 
-    return html;
+    // Update subtitle
+    if (data.subtitle) {
+      updatedSection = updatedSection.replace(
+        /<p[^>]*class="hero-subtitle"[^>]*>[\s\S]*?<\/p>/,
+        `<p class="hero-subtitle">\n                    ${data.subtitle}\n                </p>`
+      );
+    }
+
+    // Update primary button
+    if (data.primaryButtonText || data.primaryButtonLink) {
+      const currentPrimaryMatch = updatedSection.match(/<a[^>]*class="[^"]*btn[^"]*btn-primary[^"]*"[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/);
+      if (currentPrimaryMatch) {
+        const newLink = data.primaryButtonLink || currentPrimaryMatch[1];
+        const newText = data.primaryButtonText || currentPrimaryMatch[2].replace(/<[^>]*>/g, '').trim();
+        
+        updatedSection = updatedSection.replace(
+          /<a[^>]*class="[^"]*btn[^"]*btn-primary[^"]*"[^>]*>[\s\S]*?<\/a>/,
+          `<a href="${newLink}" class="btn btn-primary" target="_blank">\n                        <i class="fab fa-whatsapp"></i>\n                        ${newText}\n                    </a>`
+        );
+      }
+    }
+
+    // Update secondary button
+    if (data.secondaryButtonText || data.secondaryButtonLink) {
+      const currentSecondaryMatch = updatedSection.match(/<a[^>]*class="[^"]*btn[^"]*btn-secondary[^"]*"[^>]*href="([^"]*)"[^>]*>([^<]*)<\/a>/);
+      if (currentSecondaryMatch) {
+        const newLink = data.secondaryButtonLink || currentSecondaryMatch[1];
+        const newText = data.secondaryButtonText || currentSecondaryMatch[2].trim();
+        
+        updatedSection = updatedSection.replace(
+          /<a[^>]*class="[^"]*btn[^"]*btn-secondary[^"]*"[^>]*>[\s\S]*?<\/a>/,
+          `<a href="${newLink}" class="btn btn-secondary">\n                        ${newText}\n                    </a>`
+        );
+      }
+    }
+
+    // Update hero image
+    if (data.heroImage) {
+      updatedSection = updatedSection.replace(
+        /(<img[^>]*src=")([^"]*)("[^>]*>)/,
+        `$1${data.heroImage}$3`
+      );
+    }
+
+    const fullSectionRegex = new RegExp(`<section[^>]*id=["']inicio["'][^>]*>([\\s\\S]*?)</section>`, 'i');
+    return html.replace(fullSectionRegex, (match) => {
+      return match.replace(heroSection, updatedSection);
+    });
   }
 
   // Update services section

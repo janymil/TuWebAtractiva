@@ -296,15 +296,67 @@
         </div>
 
         <div class="admin-nav">
-            <button class="nav-btn active" data-section="content">Contenido</button>
+            <button class="nav-btn active" data-section="inicio">Inicio</button>
+            <button class="nav-btn" data-section="content">Contenido</button>
             <button class="nav-btn" data-section="services">Servicios</button>
             <button class="nav-btn" data-section="features">Características</button>
             <button class="nav-btn" data-section="gallery">Galería</button>
             <button class="nav-btn" data-section="settings">Configuración</button>
         </div>
 
+        <!-- Inicio Section -->
+        <div id="inicio" class="content-section active">
+            <h2 class="section-title">Editar Sección de Inicio</h2>
+            <div id="inicioMessage"></div>
+            
+            <div class="content-editor">
+                <h3>Título Principal</h3>
+                <div class="form-group">
+                    <label for="heroTitleRegular">Texto Principal (Color Normal):</label>
+                    <input type="text" id="heroTitleRegular" placeholder="Creamos tu página web profesional y atractiva">
+                </div>
+                <div class="form-group">
+                    <label for="heroTitleHighlight">Texto Destacado (Color Rojo):</label>
+                    <input type="text" id="heroTitleHighlight" placeholder="desde S/99">
+                </div>
+                
+                <h3 style="margin-top: 30px;">Subtítulo</h3>
+                <div class="form-group">
+                    <label for="heroSubtitle">Descripción:</label>
+                    <textarea id="heroSubtitle" rows="3" placeholder="Especialistas en diseño web para pequeñas empresas..."></textarea>
+                </div>
+
+                <h3 style="margin-top: 30px;">Botones</h3>
+                <div class="form-group">
+                    <label for="heroPrimaryButtonText">Texto del Botón Principal:</label>
+                    <input type="text" id="heroPrimaryButtonText" placeholder="Empezar Ahora">
+                </div>
+                <div class="form-group">
+                    <label for="heroPrimaryButtonLink">Enlace del Botón Principal:</label>
+                    <input type="url" id="heroPrimaryButtonLink" placeholder="https://wa.me/51999999999">
+                </div>
+                <div class="form-group">
+                    <label for="heroSecondaryButtonText">Texto del Botón Secundario:</label>
+                    <input type="text" id="heroSecondaryButtonText" placeholder="Ver Servicios">
+                </div>
+                <div class="form-group">
+                    <label for="heroSecondaryButtonLink">Enlace del Botón Secundario:</label>
+                    <input type="text" id="heroSecondaryButtonLink" placeholder="servicios.html">
+                </div>
+
+                <h3 style="margin-top: 30px;">Imagen</h3>
+                <div class="form-group">
+                    <label for="heroImageUpload">Imagen Principal:</label>
+                    <input type="file" id="heroImageUpload" accept="image/*">
+                    <div id="heroImagePreview" style="margin-top: 10px;"></div>
+                </div>
+                
+                <button id="saveHeroSectionBtn" class="btn">Guardar Sección de Inicio</button>
+            </div>
+        </div>
+
         <!-- Content Section -->
-        <div id="content" class="content-section active">
+        <div id="content" class="content-section">
             <h2 class="section-title">Editar Contenido</h2>
             <div id="contentMessage"></div>
             
