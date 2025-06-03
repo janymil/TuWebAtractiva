@@ -435,47 +435,8 @@ Lima, Perú<br>
     <!-- EmailJS Script -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
-    <!-- Dark Mode Toggle Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const html = document.documentElement;
-            const body = document.body;
-            
-            console.log('Dark mode script loaded, toggle element:', themeToggle);
-            
-            // Check for saved theme on page load
-            const savedTheme = localStorage.getItem('theme');
-            console.log('Saved theme:', savedTheme);
-            
-            if (savedTheme === 'dark-mode') {
-                html.classList.add('dark-mode');
-                body.classList.add('dark-mode');
-                console.log('Applied dark mode from storage');
-            }
-            
-            if (themeToggle) {
-                themeToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('Theme toggle clicked');
-                    
-                    html.classList.toggle('dark-mode');
-                    body.classList.toggle('dark-mode');
-                    
-                    // Save theme preference
-                    if (body.classList.contains('dark-mode')) {
-                        localStorage.setItem('theme', 'dark-mode');
-                        console.log('Switched to dark mode');
-                    } else {
-                        localStorage.setItem('theme', 'light-mode');
-                        console.log('Switched to light mode');
-                    }
-                });
-            } else {
-                console.error('Theme toggle button not found');
-            }
-        });
-    </script>
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
     
     <!-- Fixed EmailJS Contact Script -->
     <script src="js/emailjs-contact-fixed.js"></script>
