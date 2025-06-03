@@ -3052,40 +3052,7 @@ a:hover {
     color: hsl(var(--text));
 }
 
-/* Dark mode styles for footer */
-.dark-mode .footer {
-    background: hsl(var(--secondary));
-    border-top: 1px solid hsl(var(--border));
-}
-
-.dark-mode .footer-logo span {
-    color: hsl(var(--text));
-}
-
-.dark-mode .footer-links a {
-    color: hsl(var(--text) / 0.8);
-}
-
-.dark-mode .footer-links a:hover {
-    color: hsl(var(--primary));
-}
-
-.dark-mode .footer-social a {
-    color: hsl(var(--text) / 0.7);
-    background: hsl(var(--background));
-    border: 1px solid hsl(var(--border));
-}
-
-.dark-mode .footer-social a:hover {
-    color: hsl(var(--primary));
-    background: hsl(var(--primary) / 0.1);
-    border-color: hsl(var(--primary));
-}
-
-.dark-mode .footer-bottom {
-    color: hsl(var(--text) / 0.6);
-    border-top: 1px solid hsl(var(--border));
-}
+/* Footer remains dark in both light and dark modes - no changes needed */
 
 /* Dark mode styles for gracias.html (thank you page) */
 .dark-mode .thank-you-section {
@@ -3220,37 +3187,7 @@ a:hover {
     }
 }
 
-/* [data-theme="dark"] styles for footer */
-[data-theme="dark"] .footer {
-    background: hsl(var(--text-dark));
-    color: white;
-}
-
-[data-theme="dark"] .footer-logo span {
-    color: white;
-}
-
-[data-theme="dark"] .footer-links a {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-[data-theme="dark"] .footer-links a:hover {
-    color: white;
-}
-
-[data-theme="dark"] .footer-social a {
-    background: hsl(var(--primary-dark));
-    color: white;
-}
-
-[data-theme="dark"] .footer-social a:hover {
-    background: hsl(var(--primary-dark) / 0.8);
-    transform: translateY(-2px);
-}
-
-[data-theme="dark"] .footer-bottom {
-    color: rgba(255, 255, 255, 0.6);
-}
+/* Footer styling removed for dark mode - remains dark in both modes */
 
 /* Automatic dark mode for footer */
 @media (prefers-color-scheme: dark) {
