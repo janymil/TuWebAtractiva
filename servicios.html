@@ -22,7 +22,34 @@
 </head>
 <body>
     <!-- Navigation -->
-    {{HEADER}}
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/logo-new.svg" alt="Tu Web Atractiva Logo">
+                    <span>Tu Web Atractiva</span>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="servicios.html" class="nav-link active">Servicios</a>
+                <a href="ejemplos.html" class="nav-link">Ejemplos</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+                <a href="https://wa.me/51938693848?text=Hola,%20quiero%20información%20sobre%20sus%20servicios%20web" class="nav-cta" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+                    <i class="fas fa-moon moon-icon"></i>
+                    <i class="fas fa-sun sun-icon"></i>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -476,7 +503,33 @@
         </div>
     </section>
 
-    {{FOOTER}}
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo-new.svg" alt="Tu Web Atractiva">
+                    <span>Tu Web Atractiva</span>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="index.html">Inicio</a>
+                    <a href="ejemplos.html">Ejemplos</a>
+                    <a href="contacto.html">Contacto</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/51938693848" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                &copy; 2024 Tu Web Atractiva. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>

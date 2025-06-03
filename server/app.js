@@ -13,54 +13,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Function to inject header and footer into HTML pages
-function injectHeaderFooter(req, res, next) {
-  if (req.path.endsWith('.html') || req.path === '/') {
-    let filePath;
-    if (req.path === '/') {
-      filePath = path.join(__dirname, '..', 'index.html');
-    } else {
-      filePath = path.join(__dirname, '..', req.path);
-    }
-    
-    if (fs.existsSync(filePath)) {
-      try {
-        let htmlContent = fs.readFileSync(filePath, 'utf8');
-        const headerContent = fs.readFileSync(path.join(__dirname, '../includes/header.html'), 'utf8');
-        const footerContent = fs.readFileSync(path.join(__dirname, '../includes/footer.html'), 'utf8');
-        
-        // Replace header placeholder
-        if (htmlContent.includes('{{HEADER}}')) {
-          htmlContent = htmlContent.replace('{{HEADER}}', headerContent);
-        }
-        
-        // Replace footer placeholder
-        if (htmlContent.includes('{{FOOTER}}')) {
-          htmlContent = htmlContent.replace('{{FOOTER}}', footerContent);
-        }
-        
-        res.setHeader('Content-Type', 'text/html');
-        return res.send(htmlContent);
-      } catch (error) {
-        console.error('Error processing HTML file:', error);
-        return next();
-      }
-    }
-  }
-  next();
-}
-
-// Apply the middleware BEFORE static files
-app.use(injectHeaderFooter);
-
-// Serve static files from parent directory (excluding HTML files that are handled above)
-app.use(express.static(path.join(__dirname, '..'), {
-  setHeaders: (res, path) => {
-    if (path.endsWith('.html')) {
-      res.setHeader('Cache-Control', 'no-cache');
-    }
-  }
-}));
+// Serve static files from parent directory
+app.use(express.static(path.join(__dirname, '..')));
 
 // Configure multer for image uploads
 const storage = multer.diskStorage({
