@@ -7,7 +7,7 @@
         
         // Initialize EmailJS with your public key
         if (typeof emailjs !== 'undefined') {
-            emailjs.init('LCZm2DW6dqd8h1bWi');
+            emailjs.init('11U-5AJNZGlStMGgr');
             console.log('EmailJS initialized successfully');
         } else {
             console.error('EmailJS library not loaded');
@@ -82,7 +82,6 @@
         const serviceID = 'service_40mjh1h';
         const templateID = 'template_lhk5jbm';
         const userTemplateID = 'template_qkzlags';
-            11U-5AJNZGlStMGgr
         
         console.log('Sending email with config:', { serviceID, templateID });
         
