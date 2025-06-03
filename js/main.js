@@ -75,6 +75,9 @@ function initContactForm() {
     // Initialize EmailJS when available
     if (typeof emailjs !== 'undefined') {
         emailjs.init('LCZm2DW6dqd8h1bWi');
+        console.log('EmailJS initialized successfully');
+    } else {
+        console.error('EmailJS not loaded');
     }
 
     contactForm.addEventListener('submit', function(e) {
@@ -116,6 +119,8 @@ function initContactForm() {
 }
 
 function sendEmailViaEmailJS(formData, submitBtn) {
+    console.log('sendEmailViaEmailJS called with data:', formData);
+    
     // Check if EmailJS is available and configured
     if (typeof emailjs === 'undefined') {
         console.log('EmailJS not available, using WhatsApp fallback');
@@ -123,18 +128,24 @@ function sendEmailViaEmailJS(formData, submitBtn) {
         return;
     }
     
+    console.log('EmailJS is available, proceeding with email send');
+    
     // EmailJS configuration
     const serviceID = 'service_tkcskxl';
     const templateID = 'template_01oosn8';
     const userTemplateID = 'template_9lx7svc';
     
+    console.log('Using EmailJS config:', { serviceID, templateID, userTemplateID });
+    
     // Send main email to business
+    console.log('Attempting to send email via EmailJS...');
     emailjs.send(serviceID, templateID, formData)
         .then(function(response) {
             console.log('Email sent successfully:', response);
             
             // Send confirmation email to user if email provided
             if (formData.email && userTemplateID) {
+                console.log('Sending confirmation email to user:', formData.email);
                 emailjs.send(serviceID, userTemplateID, formData)
                     .then(() => console.log('Confirmation email sent'))
                     .catch(err => console.log('Confirmation email failed:', err));
@@ -149,7 +160,8 @@ function sendEmailViaEmailJS(formData, submitBtn) {
             }, 2000);
         })
         .catch(function(error) {
-            console.error('EmailJS failed:', error);
+            console.error('EmailJS failed with error:', error);
+            console.error('Error details:', error.text, error.status);
             handleEmailFallback(formData, submitBtn);
         });
 }
