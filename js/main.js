@@ -13,36 +13,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Navigation functionality
 function initNavigation() {
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
+    try {
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-    // Mobile menu toggle
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            navToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking on links
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+        // Only add navigation functionality if elements exist
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', function() {
+                navToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
             });
-        });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (navToggle && navMenu && e.target && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                navToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
+            // Close menu when clicking on links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside - simplified to avoid errors
+            document.addEventListener('click', function(e) {
+                if (e && e.target && navToggle && navMenu) {
+                    const clickedInsideNav = navToggle.contains(e.target) || navMenu.contains(e.target);
+                    if (!clickedInsideNav) {
+                        navToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                }
+            });
+        }
+
+        // Active nav link highlighting
+        highlightActiveNavLink();
+    } catch (error) {
+        console.log('Navigation initialization skipped:', error.message);
     }
-
-    // Active nav link highlighting
-    highlightActiveNavLink();
     window.addEventListener('scroll', highlightActiveNavLink);
 }
 
