@@ -72,15 +72,7 @@ function initContactForm() {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
 
-    // Update CC field with user's email when email field changes
-    const emailField = document.getElementById('email');
-    const ccField = document.getElementById('email-cc');
-    
-    if (emailField && ccField) {
-        emailField.addEventListener('input', function() {
-            ccField.value = emailField.value;
-        });
-    }
+
 
     contactForm.addEventListener('submit', function(e) {
         // Get form data
@@ -93,10 +85,7 @@ function initContactForm() {
             return;
         }
 
-        // Update CC field with user's email
-        if (ccField && data.email) {
-            ccField.value = data.email;
-        }
+
 
         // Show loading state
         const submitBtn = contactForm.querySelector('button[type="submit"]');
