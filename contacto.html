@@ -128,12 +128,10 @@
                     <p>Completa el formulario y te contactaremos en menos de 24 horas con una propuesta personalizada</p>
                 </div>
 
-                <form class="contact-form" id="contact-form" action="https://formsubmit.co/info@tuwebatractiva.com" method="POST">
-                    <!-- FormSubmit Configuration -->
-                    <input type="hidden" name="_next" value="gracias.html">
-                    <input type="hidden" name="_subject" value="Nueva solicitud de cotización web">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
+                <form class="contact-form" id="contact-form">
+                    <!-- EmailJS Configuration -->
+                    <input type="hidden" name="service_id" value="default_service">
+                    <input type="hidden" name="template_id" value="template_contacto">
                     
                     <!-- Honeypot para evitar spam -->
                     <input type="text" name="_honey" style="display:none">
@@ -434,6 +432,9 @@ Lima, Perú<br>
         </div>
     </footer>
 
+    <!-- EmailJS Script -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
     <!-- JavaScript -->
     <script src="js/main.js"></script>
 </body>
