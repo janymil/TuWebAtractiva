@@ -1728,7 +1728,7 @@ a:hover {
 
 /* Footer */
 .footer {
-    background: hsl(var(--text));
+    background: hsl(210 22% 22%); /* Fixed dark color - same in both light and dark modes */
     color: white;
     padding: var(--spacing-lg) 0;
 }
@@ -1779,7 +1779,7 @@ a:hover {
 .footer-social a {
     width: 32px;
     height: 32px;
-    background: hsl(var(--primary));
+    background: hsl(0 70% 47%); /* Fixed red color - same in both light and dark modes */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1790,7 +1790,7 @@ a:hover {
 }
 
 .footer-social a:hover {
-    background: hsl(var(--primary) / 0.8);
+    background: hsl(0 70% 40%); /* Fixed darker red on hover - same in both modes */
     transform: translateY(-2px);
 }
 
@@ -2971,10 +2971,7 @@ a:hover {
     border-bottom: 1px solid hsl(var(--border));
 }
 
-.dark-mode .footer {
-    background: hsl(var(--secondary));
-    border-top: 1px solid hsl(var(--border));
-}
+
 
 .dark-mode .hero-section,
 .dark-mode .contact-section,
@@ -3189,39 +3186,7 @@ a:hover {
 
 /* Footer styling removed for dark mode - remains dark in both modes */
 
-/* Automatic dark mode for footer */
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .footer {
-        background: hsl(var(--text-dark));
-        color: white;
-    }
 
-    :root:not([data-theme="light"]) .footer-logo span {
-        color: white;
-    }
-
-    :root:not([data-theme="light"]) .footer-links a {
-        color: rgba(255, 255, 255, 0.8);
-    }
-
-    :root:not([data-theme="light"]) .footer-links a:hover {
-        color: white;
-    }
-
-    :root:not([data-theme="light"]) .footer-social a {
-        background: hsl(var(--primary-dark));
-        color: white;
-    }
-
-    :root:not([data-theme="light"]) .footer-social a:hover {
-        background: hsl(var(--primary-dark) / 0.8);
-        transform: translateY(-2px);
-    }
-
-    :root:not([data-theme="light"]) .footer-bottom {
-        color: rgba(255, 255, 255, 0.6);
-    }
-}
 
 /* [data-theme="dark"] styles for gracias.html (thank you page) */
 [data-theme="dark"] .thank-you-section {
