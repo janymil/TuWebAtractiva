@@ -25,9 +25,15 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 def run_server():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     
+    # Allow socket reuse
+    socketserver.TCPServer.allow_reuse_address = True
+    
     with socketserver.TCPServer(("0.0.0.0", PORT), MyHTTPRequestHandler) as httpd:
         print(f"Static server running at http://0.0.0.0:{PORT}")
-        httpd.serve_forever()
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            print("\nServer stopped")
 
 if __name__ == "__main__":
     run_server()

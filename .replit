@@ -22,10 +22,10 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "StaticServer"
+args = "StaticWebsite"
 
 [[workflows.workflow]]
-name = "StaticServer"
+name = "StaticWebsite"
 author = "agent"
 
 [[workflows.workflow.tasks]]
