@@ -13,9 +13,34 @@ class SimpleHandler(http.server.SimpleHTTPRequestHandler):
         super().end_headers()
 
     def do_GET(self):
+        original_path = self.path
+        
+        # Handle root path
         if self.path == '/':
             self.path = '/index.html'
-        return super().do_GET()
+        
+        # Handle clean URLs without .html extension
+        elif not self.path.endswith('.html') and not '.' in self.path.split('/')[-1]:
+            # Try to find corresponding .html file
+            clean_path = self.path.strip('/')
+            if clean_path and os.path.exists(f'{clean_path}.html'):
+                self.path = f'/{clean_path}.html'
+        
+        # Check if file exists before serving
+        file_path = self.path.lstrip('/')
+        if os.path.exists(file_path):
+            return super().do_GET()
+        else:
+            # File not found, serve custom 404 page
+            self.send_response(404)
+            self.send_header('Content-type', 'text/html; charset=utf-8')
+            self.end_headers()
+            
+            if os.path.exists('404.html'):
+                with open('404.html', 'rb') as f:
+                    self.wfile.write(f.read())
+            else:
+                self.wfile.write(b'<h1>404 - Page Not Found</h1>')
 
     def log_message(self, format, *args):
         pass
