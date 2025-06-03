@@ -96,6 +96,67 @@ body {
     }
 }
 
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: hsl(var(--primary));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-lg);
+    cursor: pointer;
+    box-shadow: 0 4px 15px hsl(var(--primary) / 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: hsl(var(--primary) / 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px hsl(var(--primary) / 0.4);
+}
+
+.back-to-top:active {
+    transform: translateY(0);
+}
+
+/* Dark mode styles for back to top button */
+[data-theme="dark"] .back-to-top {
+    background: hsl(var(--primary-dark));
+    box-shadow: 0 4px 15px hsl(var(--primary-dark) / 0.3);
+}
+
+[data-theme="dark"] .back-to-top:hover {
+    background: hsl(var(--primary-dark) / 0.9);
+    box-shadow: 0 6px 20px hsl(var(--primary-dark) / 0.4);
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: var(--font-size-base);
+    }
+}
+
 /* Container */
 .container {
     max-width: var(--container-max-width);
