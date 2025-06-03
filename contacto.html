@@ -128,7 +128,14 @@
                     <p>Completa el formulario y te contactaremos en menos de 24 horas con una propuesta personalizada</p>
                 </div>
 
-                <form class="contact-form" id="contact-form">
+                <form class="contact-form" id="contact-form" action="https://formsubmit.co/info@tuwebatractiva.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_next" value="gracias.html">
+                    <input type="hidden" name="_subject" value="Nueva solicitud de cotización web">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_cc" value=""  id="email-cc">
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nombre">Nombre completo *</label>

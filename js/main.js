@@ -72,48 +72,41 @@ function initContactForm() {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
 
+    // Update CC field with user's email when email field changes
+    const emailField = document.getElementById('email');
+    const ccField = document.getElementById('email-cc');
+    
+    if (emailField && ccField) {
+        emailField.addEventListener('input', function() {
+            ccField.value = emailField.value;
+        });
+    }
+
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
         // Get form data
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
         
         // Validate form
         if (!validateContactForm(data)) {
+            e.preventDefault();
             return;
+        }
+
+        // Update CC field with user's email
+        if (ccField && data.email) {
+            ccField.value = data.email;
         }
 
         // Show loading state
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         if (!submitBtn) return;
         
-        const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         submitBtn.disabled = true;
-
-        // Create email content
-        const emailContent = createEmailContent(data);
         
-        // Create mailto link for info@tuwebatractiva.com
-        const subject = encodeURIComponent(`Nueva solicitud de ${data.nombre} - ${data.servicio || 'Consulta web'}`);
-        const body = encodeURIComponent(emailContent);
-        const mailtoLink = `mailto:info@tuwebatractiva.com?subject=${subject}&body=${body}&cc=${encodeURIComponent(data.email)}`;
-        
-        // Open email client
-        window.location.href = mailtoLink;
-        
-        // Show success message after a delay
-        setTimeout(() => {
-            showFormMessage('¡Formulario preparado! Se ha abierto tu cliente de email para enviar la solicitud.', 'success');
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Reset button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }, 1000);
+        // Form will submit naturally to FormSubmit
+        showFormMessage('Enviando formulario...', 'success');
     });
 }
 
