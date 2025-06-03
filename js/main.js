@@ -74,8 +74,7 @@ function initContactForm() {
 
     // Initialize EmailJS when available
     if (typeof emailjs !== 'undefined') {
-        const publicKey = 'YOUR_EMAILJS_PUBLIC_KEY'; // Replace with actual key
-        emailjs.init(publicKey);
+        emailjs.init('LCZm2DW6dqd8h1bWi');
     }
 
     contactForm.addEventListener('submit', function(e) {
@@ -124,10 +123,10 @@ function sendEmailViaEmailJS(formData, submitBtn) {
         return;
     }
     
-    // EmailJS configuration - these will be replaced with actual values
-    const serviceID = 'YOUR_SERVICE_ID';
-    const templateID = 'YOUR_TEMPLATE_ID';
-    const userTemplateID = 'YOUR_USER_TEMPLATE_ID';
+    // EmailJS configuration
+    const serviceID = 'service_tkcskxl';
+    const templateID = 'template_01oosn8';
+    const userTemplateID = 'template_9lx7svc';
     
     // Send main email to business
     emailjs.send(serviceID, templateID, formData)
@@ -135,7 +134,7 @@ function sendEmailViaEmailJS(formData, submitBtn) {
             console.log('Email sent successfully:', response);
             
             // Send confirmation email to user if email provided
-            if (formData.email && userTemplateID !== 'YOUR_USER_TEMPLATE_ID') {
+            if (formData.email && userTemplateID) {
                 emailjs.send(serviceID, userTemplateID, formData)
                     .then(() => console.log('Confirmation email sent'))
                     .catch(err => console.log('Confirmation email failed:', err));
