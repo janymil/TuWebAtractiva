@@ -13,10 +13,21 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         super().end_headers()
 
     def do_GET(self):
-        # Serve index.html for root path
+        # Handle root path
         if self.path == '/':
             self.path = '/index.html'
-        return super().do_GET()
+        
+        # Handle custom 404 page
+        try:
+            return super().do_GET()
+        except:
+            # If file not found, serve custom 404 page
+            if os.path.exists('404.html'):
+                self.path = '/404.html'
+                self.send_response(404)
+                return super().do_GET()
+            else:
+                return super().do_GET()
 
     def log_message(self, format, *args):
         # Suppress default logging
