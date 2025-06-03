@@ -3014,3 +3014,245 @@ a:hover {
     background: hsl(var(--secondary));
     border: 1px solid hsl(var(--border));
 }
+
+/* Dark mode styles for target-clients section */
+.dark-mode .target-clients {
+    background: hsl(var(--background));
+}
+
+.dark-mode .target-clients .section-header h2 {
+    color: hsl(var(--text));
+}
+
+.dark-mode .target-clients .section-header p {
+    color: hsl(var(--text) / 0.7);
+}
+
+.dark-mode .client-card {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 4px 15px hsl(var(--shadow) / 0.2);
+}
+
+.dark-mode .client-card h3 {
+    color: hsl(var(--text));
+}
+
+.dark-mode .client-card li {
+    color: hsl(var(--text) / 0.8);
+}
+
+.dark-mode .clients-cta {
+    background: hsl(var(--secondary));
+    border: 2px solid hsl(var(--primary) / 0.2);
+    box-shadow: 0 4px 15px hsl(var(--shadow) / 0.2);
+}
+
+.dark-mode .clients-cta p {
+    color: hsl(var(--text));
+}
+
+/* Dark mode styles for footer */
+.dark-mode .footer {
+    background: hsl(var(--secondary));
+    border-top: 1px solid hsl(var(--border));
+}
+
+.dark-mode .footer-logo span {
+    color: hsl(var(--text));
+}
+
+.dark-mode .footer-links a {
+    color: hsl(var(--text) / 0.8);
+}
+
+.dark-mode .footer-links a:hover {
+    color: hsl(var(--primary));
+}
+
+.dark-mode .footer-social a {
+    color: hsl(var(--text) / 0.7);
+    background: hsl(var(--background));
+    border: 1px solid hsl(var(--border));
+}
+
+.dark-mode .footer-social a:hover {
+    color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--primary));
+}
+
+.dark-mode .footer-bottom {
+    color: hsl(var(--text) / 0.6);
+    border-top: 1px solid hsl(var(--border));
+}
+
+/* Dark mode styles for gracias.html (thank you page) */
+.dark-mode .thank-you-section {
+    background: hsl(var(--background));
+}
+
+.dark-mode .thank-you-content h1 {
+    color: hsl(var(--text));
+}
+
+.dark-mode .thank-you-content .lead {
+    color: hsl(var(--text) / 0.8);
+}
+
+.dark-mode .next-steps h2 {
+    color: hsl(var(--text));
+}
+
+.dark-mode .step {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 4px 15px hsl(var(--shadow) / 0.1);
+}
+
+.dark-mode .step h3 {
+    color: hsl(var(--text));
+}
+
+.dark-mode .step p {
+    color: hsl(var(--text) / 0.7);
+}
+
+.dark-mode .step-number {
+    background: hsl(var(--primary));
+    color: white;
+}
+
+.dark-mode .confidence-message {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border));
+}
+
+.dark-mode .confidence-message h3 {
+    color: hsl(var(--text));
+}
+
+.dark-mode .confidence-message p {
+    color: hsl(var(--text) / 0.8);
+}
+
+/* [data-theme="dark"] styles for target-clients section */
+[data-theme="dark"] .target-clients {
+    background: hsl(var(--background-dark));
+}
+
+[data-theme="dark"] .target-clients .section-header h2 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .target-clients .section-header p {
+    color: hsl(var(--text-dark) / 0.7);
+}
+
+[data-theme="dark"] .client-card {
+    background: hsl(var(--secondary-dark));
+    border: 1px solid hsl(var(--border-dark));
+    box-shadow: 0 4px 15px hsl(var(--shadow-dark) / 0.2);
+}
+
+[data-theme="dark"] .client-card h3 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .client-card li {
+    color: hsl(var(--text-dark) / 0.8);
+}
+
+[data-theme="dark"] .clients-cta {
+    background: hsl(var(--secondary-dark));
+    border: 2px solid hsl(var(--primary-dark) / 0.2);
+    box-shadow: 0 4px 15px hsl(var(--shadow-dark) / 0.2);
+}
+
+[data-theme="dark"] .clients-cta p {
+    color: hsl(var(--text-dark));
+}
+
+/* [data-theme="dark"] styles for footer */
+[data-theme="dark"] .footer {
+    background: hsl(var(--secondary-dark));
+    border-top: 1px solid hsl(var(--border-dark));
+}
+
+[data-theme="dark"] .footer-logo span {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .footer-links a {
+    color: hsl(var(--text-dark) / 0.8);
+}
+
+[data-theme="dark"] .footer-links a:hover {
+    color: hsl(var(--primary-dark));
+}
+
+[data-theme="dark"] .footer-social a {
+    color: hsl(var(--text-dark) / 0.7);
+    background: hsl(var(--background-dark));
+    border: 1px solid hsl(var(--border-dark));
+}
+
+[data-theme="dark"] .footer-social a:hover {
+    color: hsl(var(--primary-dark));
+    background: hsl(var(--primary-dark) / 0.1);
+    border-color: hsl(var(--primary-dark));
+}
+
+[data-theme="dark"] .footer-bottom {
+    color: hsl(var(--text-dark) / 0.6);
+    border-top: 1px solid hsl(var(--border-dark));
+}
+
+/* [data-theme="dark"] styles for gracias.html (thank you page) */
+[data-theme="dark"] .thank-you-section {
+    background: hsl(var(--background-dark));
+}
+
+[data-theme="dark"] .thank-you-content h1 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .thank-you-content .lead {
+    color: hsl(var(--text-dark) / 0.8);
+}
+
+[data-theme="dark"] .next-steps h2 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .step {
+    background: hsl(var(--secondary-dark));
+    border: 1px solid hsl(var(--border-dark));
+    box-shadow: 0 4px 15px hsl(var(--shadow-dark) / 0.1);
+}
+
+[data-theme="dark"] .step h3 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .step p {
+    color: hsl(var(--text-dark) / 0.7);
+}
+
+[data-theme="dark"] .step-number {
+    background: hsl(var(--primary-dark));
+    color: white;
+}
+
+[data-theme="dark"] .confidence-message {
+    background: hsl(var(--secondary-dark));
+    border: 1px solid hsl(var(--border-dark));
+}
+
+[data-theme="dark"] .confidence-message h3 {
+    color: hsl(var(--text-dark));
+}
+
+[data-theme="dark"] .confidence-message p {
+    color: hsl(var(--text-dark) / 0.8);
+}
