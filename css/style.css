@@ -1728,9 +1728,10 @@ a:hover {
 
 /* Footer */
 .footer {
-    background: hsl(var(--text));
-    color: white;
+    background: hsl(var(--secondary));
+    color: hsl(var(--text));
     padding: var(--spacing-lg) 0;
+    border-top: 1px solid hsl(var(--border));
 }
 
 .footer-content {
@@ -1747,6 +1748,7 @@ a:hover {
     gap: var(--spacing-sm);
     font-size: var(--font-size-lg);
     font-weight: 700;
+    color: hsl(var(--text));
 }
 
 .footer-logo img {
@@ -1761,13 +1763,13 @@ a:hover {
 }
 
 .footer-links a {
-    color: rgba(255, 255, 255, 0.8);
+    color: hsl(var(--text) / 0.8);
     transition: var(--transition);
     text-decoration: none;
 }
 
 .footer-links a:hover {
-    color: white;
+    color: hsl(var(--primary));
 }
 
 .footer-social {
@@ -1796,9 +1798,11 @@ a:hover {
 
 .footer-bottom {
     text-align: center;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--text) / 0.6);
     font-size: var(--font-size-sm);
     margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid hsl(var(--border));
 }
 
 /* Page Header */
