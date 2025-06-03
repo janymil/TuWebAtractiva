@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     try { initSmoothScrolling(); } catch (e) { console.log('Smooth scrolling init error:', e); }
     try { initAnimations(); } catch (e) { console.log('Animations init error:', e); }
     try { initDarkMode(); } catch (e) { console.log('Dark mode init error:', e); }
+    try { initBackToTop(); } catch (e) { console.log('Back to top init error:', e); }
 });
 
 // Navigation functionality
@@ -380,6 +381,36 @@ function initDarkMode() {
         if (!localStorage.getItem('theme')) {
             htmlElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
         }
+    });
+}
+
+// Back to top functionality
+function initBackToTop() {
+    // Create back to top button
+    const backToTopBtn = document.createElement('button');
+    backToTopBtn.className = 'back-to-top';
+    backToTopBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+    backToTopBtn.setAttribute('aria-label', 'Volver arriba');
+    backToTopBtn.setAttribute('title', 'Volver arriba');
+    
+    // Add button to page
+    document.body.appendChild(backToTopBtn);
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    // Smooth scroll to top when clicked
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 }
 
