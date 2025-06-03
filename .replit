@@ -38,22 +38,6 @@ deploymentTarget = "static"
 publicDir = "/"
 run = ["sh", "-c", "python server.py"]
 
-[[deployment.rewrites]]
-from = "/contacto"
-to = "/contacto.html"
-
-[[deployment.rewrites]]
-from = "/servicios"
-to = "/servicios.html"
-
-[[deployment.rewrites]]
-from = "/ejemplos"
-to = "/ejemplos.html"
-
-[[deployment.rewrites]]
-from = "/gracias"
-to = "/gracias.html"
-
 [[ports]]
 localPort = 5000
 externalPort = 80
