@@ -2408,18 +2408,6 @@ a:hover {
 }
 
 .step-connector {
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 80px;
-    background: linear-gradient(to bottom, #e5e7eb, rgba(229, 231, 235, 0.3));
-    background: linear-gradient(to bottom, hsl(var(--border)), hsl(var(--border) / 0.3));
-    z-index: 1;
-}
-
-.workflow-step:last-child .step-connector {
     display: none;
 }
 
@@ -2719,10 +2707,7 @@ a:hover {
         margin: 0 0 var(--spacing-md) 0;
     }
     
-    .step-connector {
-        left: 50%;
-        transform: translateX(-50%);
-    }
+
     
     .section-title-white {
         font-size: 2rem;
