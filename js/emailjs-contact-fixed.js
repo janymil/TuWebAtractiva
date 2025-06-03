@@ -80,8 +80,9 @@
         
         // EmailJS configuration
         const serviceID = 'service_40mjh1h';
-        const templateID = 'template_01oosn8';
-        const userTemplateID = 'template_9lx7svc';
+        const templateID = 'template_lhk5jbm';
+        const userTemplateID = 'template_qkzlags';
+            11U-5AJNZGlStMGgr
         
         console.log('Sending email with config:', { serviceID, templateID });
         
