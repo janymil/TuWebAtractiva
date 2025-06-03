@@ -1,14 +1,14 @@
 // Tu Web Atractiva - Main JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
-    initNavigation();
-    initContactForm();
-    initPortfolioFilters();
-    initFAQ();
-    initSmoothScrolling();
-    initAnimations();
-    initDarkMode();
+    // Initialize each function safely to prevent errors from breaking the form
+    try { initNavigation(); } catch (e) { console.log('Navigation init error:', e); }
+    try { initContactForm(); } catch (e) { console.log('Contact form init error:', e); }
+    try { initPortfolioFilters(); } catch (e) { console.log('Portfolio init error:', e); }
+    try { initFAQ(); } catch (e) { console.log('FAQ init error:', e); }
+    try { initSmoothScrolling(); } catch (e) { console.log('Smooth scrolling init error:', e); }
+    try { initAnimations(); } catch (e) { console.log('Animations init error:', e); }
+    try { initDarkMode(); } catch (e) { console.log('Dark mode init error:', e); }
 });
 
 // Navigation functionality
@@ -34,7 +34,7 @@ function initNavigation() {
 
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (navToggle && navMenu && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            if (navToggle && navMenu && e.target && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
                 navToggle.classList.remove('active');
                 navMenu.classList.remove('active');
             }
