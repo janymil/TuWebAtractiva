@@ -5,16 +5,10 @@
     document.addEventListener('DOMContentLoaded', function() {
         console.log('EmailJS contact script loaded');
         
-        // Initialize EmailJS with environment variables
+        // Initialize EmailJS with your public key
         if (typeof emailjs !== 'undefined') {
-            // Get the public key from meta tag (set by server)
-            const publicKey = document.querySelector('meta[name="emailjs-public-key"]')?.content;
-            if (publicKey) {
-                emailjs.init(publicKey);
-                console.log('EmailJS initialized successfully');
-            } else {
-                console.error('EmailJS public key not found');
-            }
+            emailjs.init('11U-5AJNZGlStMGgr');
+            console.log('EmailJS initialized successfully');
         } else {
             console.error('EmailJS library not loaded');
         }
