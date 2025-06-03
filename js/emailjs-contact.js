@@ -79,15 +79,37 @@
             return;
         }
         
-        // EmailJS configuration
-        const serviceID = 'service_tkcskxl';
+        // EmailJS configuration - let's try with your actual service setup
+        console.log('Checking EmailJS account status...');
+        
+        // First, let's try to get available services
+        emailjs.listServices()
+            .then(services => {
+                console.log('Available services:', services);
+                if (services && services.length > 0) {
+                    const serviceID = services[0].service;
+                    console.log('Using service:', serviceID);
+                    sendEmailWithService(serviceID, formData);
+                } else {
+                    console.error('No services found');
+                    handleFallback(formData, submitBtn);
+                }
+            })
+            .catch(error => {
+                console.error('Failed to list services:', error);
+                // Try with default service names
+                tryDefaultServices(formData, submitBtn);
+            });
+    }
+    
+    function tryDefaultServices(formData, submitBtn) {
+        // Try common service patterns
+        const possibleServices = ['default_service', 'gmail', 'service_default'];
         const templateID = 'template_01oosn8';
-        const userTemplateID = 'template_9lx7svc';
         
-        console.log('Sending email with config:', { serviceID, templateID });
+        console.log('Trying default services...');
         
-        // Send main email
-        emailjs.send(serviceID, templateID, formData)
+        emailjs.send(possibleServices[0], templateID, formData)
             .then(function(response) {
                 console.log('Email sent successfully:', response);
                 

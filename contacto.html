@@ -435,6 +435,32 @@ Lima, Perú<br>
     <!-- EmailJS Script -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            
+            // Check for saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.classList.add(savedTheme);
+            }
+            
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    if (body.classList.contains('dark-mode')) {
+                        body.classList.remove('dark-mode');
+                        localStorage.setItem('theme', '');
+                    } else {
+                        body.classList.add('dark-mode');
+                        localStorage.setItem('theme', 'dark-mode');
+                    }
+                });
+            }
+        });
+    </script>
+    
     <!-- Dedicated EmailJS Contact Script (isolated from main.js) -->
     <script src="js/emailjs-contact.js"></script>
 </body>
