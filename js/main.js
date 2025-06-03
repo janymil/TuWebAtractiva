@@ -34,7 +34,7 @@ function initNavigation() {
 
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            if (navToggle && navMenu && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
                 navToggle.classList.remove('active');
                 navMenu.classList.remove('active');
             }
@@ -86,20 +86,26 @@ function initContactForm() {
 
         // Show loading state
         const submitBtn = contactForm.querySelector('button[type="submit"]');
+        if (!submitBtn) return;
+        
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         submitBtn.disabled = true;
 
-        // Simulate form submission (replace with actual endpoint)
+        // Create email content
+        const emailContent = createEmailContent(data);
+        
+        // Create mailto link for info@tuwebatractiva.com
+        const subject = encodeURIComponent(`Nueva solicitud de ${data.nombre} - ${data.servicio || 'Consulta web'}`);
+        const body = encodeURIComponent(emailContent);
+        const mailtoLink = `mailto:info@tuwebatractiva.com?subject=${subject}&body=${body}&cc=${encodeURIComponent(data.email)}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Show success message after a delay
         setTimeout(() => {
-            // Create WhatsApp message
-            const whatsappMessage = createWhatsAppMessage(data);
-            
-            // Open WhatsApp
-            window.open(`https://wa.me/51999999999?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
-            
-            // Show success message
-            showFormMessage('¡Formulario enviado! Te contactaremos pronto por WhatsApp.', 'success');
+            showFormMessage('¡Formulario preparado! Se ha abierto tu cliente de email para enviar la solicitud.', 'success');
             
             // Reset form
             contactForm.reset();
@@ -107,7 +113,7 @@ function initContactForm() {
             // Reset button
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-        }, 1500);
+        }, 1000);
     });
 }
 
@@ -213,6 +219,63 @@ function createWhatsAppMessage(data) {
     return message;
 }
 
+function createEmailContent(data) {
+    const serviceLabels = {
+        'web-simple': 'Web Simple (S/99)',
+        'landing-page': 'Landing Page (S/149)',
+        'rediseno': 'Rediseño Web (S/199)',
+        'contenido': 'Creación de Contenido (S/79)',
+        'google-negocio': 'Google Mi Negocio (S/79)',
+        'mantenimiento': 'Mantenimiento Web (S/49/mes)',
+        'hosting': 'Hosting y Dominio (S/99/año)',
+        'optimizacion-movil': 'Optimización Móvil (S/99)',
+        'no-seguro': 'No estoy seguro, necesito asesoría'
+    };
+
+    const businessLabels = {
+        'restaurante': 'Restaurante/Comida',
+        'salud': 'Salud/Medicina',
+        'psicologia': 'Psicología/Coaching',
+        'abogado': 'Servicios Legales',
+        'educacion': 'Educación/Cursos',
+        'belleza': 'Belleza/Estética',
+        'tienda': 'Tienda/E-commerce',
+        'inmobiliaria': 'Inmobiliaria',
+        'tecnico': 'Servicios Técnicos',
+        'consultoria': 'Consultoría',
+        'otro': 'Otro'
+    };
+
+    let emailContent = `NUEVA SOLICITUD DE COTIZACIÓN\n\n`;
+    emailContent += `DATOS DEL CLIENTE:\n`;
+    emailContent += `Nombre: ${data.nombre}\n`;
+    emailContent += `Teléfono: ${data.telefono}\n`;
+    emailContent += `Email: ${data.email}\n`;
+    
+    if (data.empresa) {
+        emailContent += `Empresa: ${data.empresa}\n`;
+    }
+    
+    emailContent += `\nDETALLES DEL PROYECTO:\n`;
+    emailContent += `Servicio solicitado: ${serviceLabels[data.servicio] || data.servicio}\n`;
+    emailContent += `Tipo de negocio: ${businessLabels[data['tipo-negocio']] || data['tipo-negocio']}\n`;
+    
+    if (data.presupuesto) {
+        emailContent += `Presupuesto: ${data.presupuesto}\n`;
+    }
+    
+    if (data.urgencia) {
+        emailContent += `Urgencia: ${data.urgencia}\n`;
+    }
+    
+    emailContent += `\nDESCRIPCIÓN DEL PROYECTO:\n${data.mensaje}\n\n`;
+    emailContent += `AUTORIZACIÓN:\n`;
+    emailContent += `El cliente autoriza el contacto por WhatsApp, email o teléfono.\n\n`;
+    emailContent += `---\nEnviado desde tuwebatractiva.com`;
+    
+    return emailContent;
+}
+
 function showFormMessage(message, type) {
     // Remove existing messages
     const existingMessages = document.querySelectorAll('.form-message');
@@ -225,7 +288,11 @@ function showFormMessage(message, type) {
     
     // Insert message
     const form = document.getElementById('contact-form');
+    if (!form) return;
+    
     const formActions = form.querySelector('.form-actions');
+    if (!formActions) return;
+    
     formActions.parentNode.insertBefore(messageDiv, formActions);
     
     // Scroll to message
@@ -233,7 +300,7 @@ function showFormMessage(message, type) {
     
     // Auto-remove after 8 seconds
     setTimeout(() => {
-        if (messageDiv.parentNode) {
+        if (messageDiv && messageDiv.parentNode) {
             messageDiv.remove();
         }
     }, 8000);
