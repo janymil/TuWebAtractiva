@@ -100,13 +100,12 @@ function initContactForm() {
 
         // Show loading state
         const submitBtn = contactForm.querySelector('button[type="submit"]');
-        if (!submitBtn) return;
+        if (submitBtn) {
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitBtn.disabled = true;
+        }
         
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-        submitBtn.disabled = true;
-        
-        // Form will submit naturally to FormSubmit
-        showFormMessage('Enviando formulario...', 'success');
+        // Let the form submit naturally to FormSubmit (don't prevent default)
     });
 }
 

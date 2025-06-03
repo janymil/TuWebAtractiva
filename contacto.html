@@ -134,7 +134,10 @@
                     <input type="hidden" name="_subject" value="Nueva solicitud de cotización web">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_cc" value=""  id="email-cc">
+                    <input type="hidden" name="_cc" value="" id="email-cc">
+                    
+                    <!-- Honeypot para evitar spam -->
+                    <input type="text" name="_honey" style="display:none">
                     
                     <div class="form-row">
                         <div class="form-group">
