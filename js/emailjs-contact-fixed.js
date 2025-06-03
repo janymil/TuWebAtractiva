@@ -79,7 +79,7 @@
         }
         
         // EmailJS configuration
-        const serviceID = 'service_tkcskxl';
+        const serviceID = 'service_40mjh1h';
         const templateID = 'template_01oosn8';
         const userTemplateID = 'template_9lx7svc';
         
