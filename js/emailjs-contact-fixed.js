@@ -5,7 +5,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         console.log('EmailJS contact script loaded');
         
-        // Initialize EmailJS
+        // Initialize EmailJS with your public key
         if (typeof emailjs !== 'undefined') {
             emailjs.init('LCZm2DW6dqd8h1bWi');
             console.log('EmailJS initialized successfully');

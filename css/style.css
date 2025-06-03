@@ -2887,3 +2887,69 @@ a:hover {
         gap: var(--spacing-md);
     }
 }
+
+/* Dark Mode Styles */
+.dark-mode {
+    --primary: var(--primary-dark);
+    --secondary: var(--secondary-dark);
+    --accent: var(--accent-dark);
+    --background: var(--background-dark);
+    --text: var(--text-dark);
+    --success: var(--success-dark);
+    --border: var(--border-dark);
+    --shadow: var(--shadow-dark);
+}
+
+.dark-mode body {
+    background: hsl(var(--background));
+    color: hsl(var(--text));
+}
+
+.dark-mode .navbar {
+    background: hsl(var(--secondary));
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.dark-mode .footer {
+    background: hsl(var(--secondary));
+    border-top: 1px solid hsl(var(--border));
+}
+
+.dark-mode .hero-section,
+.dark-mode .contact-section,
+.dark-mode .quick-contact,
+.dark-mode .location-section,
+.dark-mode .faq-section {
+    background: hsl(var(--background));
+}
+
+.dark-mode .contact-form {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border));
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group select,
+.dark-mode .form-group textarea {
+    background: hsl(var(--background));
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--text));
+}
+
+.dark-mode .form-group label {
+    color: hsl(var(--text));
+}
+
+.dark-mode .quick-option {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border));
+}
+
+.dark-mode .location-info {
+    background: hsl(var(--secondary));
+}
+
+.dark-mode .faq-item {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border));
+}
