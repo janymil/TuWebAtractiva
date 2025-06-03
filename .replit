@@ -22,15 +22,15 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "WebServer"
+args = "StaticServer"
 
 [[workflows.workflow]]
-name = "WebServer"
+name = "StaticServer"
 author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd server && node app.js"
+args = "python serve.py"
 waitForPort = 5000
 
 [deployment]
