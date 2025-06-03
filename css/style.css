@@ -11,7 +11,7 @@
     --success: 134 61% 41%; /* #28A745 green */
     --border: 220 13% 91%; /* #E5E7EB */
     --shadow: 220 13% 84%; /* #D1D5DB */
-
+    
     /* Dark theme colors */
     --primary-dark: 0 70% 52%; /* Slightly brighter red for dark mode */
     --secondary-dark: 220 13% 18%; /* #1F2937 dark grey */
@@ -21,7 +21,7 @@
     --success-dark: 134 61% 51%; /* Brighter green for dark mode */
     --border-dark: 220 13% 26%; /* #374151 medium grey */
     --shadow-dark: 220 13% 10%; /* #0F172A very dark shadow */
-
+    
     /* Typography */
     --font-primary: 'Montserrat', sans-serif;
     --font-size-xs: 0.75rem;
@@ -33,7 +33,7 @@
     --font-size-3xl: 1.875rem;
     --font-size-4xl: 2.25rem;
     --font-size-5xl: 3rem;
-
+    
     /* Spacing */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
@@ -42,7 +42,7 @@
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
     --spacing-3xl: 4rem;
-
+    
     /* Layout */
     --container-max-width: 1200px;
     --border-radius: 8px;
@@ -317,7 +317,7 @@ a:hover {
         order: 3;
         z-index: 1002;
     }
-
+    
     .nav-menu {
         position: fixed;
         top: 70px;
@@ -337,13 +337,13 @@ a:hover {
         max-height: calc(100vh - 70px);
         overflow-y: auto;
     }
-
+    
     .nav-menu.active {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
     }
-
+    
     .nav-link {
         display: block;
         padding: var(--spacing-lg) var(--spacing-xl);
@@ -353,16 +353,16 @@ a:hover {
         color: hsl(var(--text));
         font-weight: 500;
     }
-
+    
     .nav-link:hover {
         background-color: hsl(var(--background));
         color: hsl(var(--primary));
     }
-
+    
     .nav-link:last-of-type {
         border-bottom: 1px solid hsl(var(--border));
     }
-
+    
     .nav-cta {
         margin: var(--spacing-md) var(--spacing-xl);
         text-align: center;
@@ -375,12 +375,12 @@ a:hover {
         padding: var(--spacing-md) var(--spacing-lg);
         font-weight: 500;
     }
-
+    
     .nav-cta:hover {
         background-color: hsl(134 61% 35%);
         color: white !important;
     }
-
+    
     .theme-toggle {
         order: 2;
         margin-left: var(--spacing-md);
@@ -445,7 +445,7 @@ a:hover {
     :root:not([data-theme="light"]) .theme-toggle .sun-icon {
         display: inline;
     }
-
+    
     :root:not([data-theme="light"]) .theme-toggle .moon-icon {
         display: none;
     }
@@ -751,11 +751,11 @@ a:hover {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
-
+    
     .client-card {
         padding: var(--spacing-lg);
     }
-
+    
     .target-clients .section-header h2 {
         font-size: var(--font-size-2xl);
     }
@@ -1016,7 +1016,7 @@ a:hover {
 }
 
 .form-group input,
-.form-group<previous_generation>select,
+.form-group select,
 .form-group textarea {
     padding: 16px;
     border: 2px solid hsl(var(--border));
@@ -1246,11 +1246,11 @@ a:hover {
     .thank-you-content h1 {
         font-size: 2rem;
     }
-
+    
     .steps-grid {
         grid-template-columns: 1fr;
     }
-
+    
     .contact-options,
     .back-actions {
         flex-direction: column;
@@ -1635,31 +1635,31 @@ a:hover {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
-
+    
     .form-container {
         padding: var(--spacing-2xl) var(--spacing-lg);
         margin: 0 var(--spacing-md);
     }
-
+    
     .location-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
     }
-
+    
     .contact-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
-
+    
     .quick-options {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
-
+    
     .page-header h1 {
         font-size: var(--font-size-3xl);
     }
-
+    
     .form-header h2 {
         font-size: var(--font-size-2xl);
     }
@@ -2826,62 +2826,62 @@ a:hover {
         gap: var(--spacing-xl);
         text-align: center;
     }
-
+    
     .partner-text h2 {
         font-size: 2rem;
     }
-
+    
     .laptop-mockup {
         max-width: 400px;
     }
-
+    
     .screen-body h3 {
         font-size: 1.4rem;
     }
-
+    
     .portfolio-card {
         grid-template-columns: 1fr;
         gap: 0;
     }
-
+    
     .portfolio-image {
         min-height: 250px;
     }
-
+    
     .workflow-step {
         flex-direction: column !important;
         align-items: center;
         text-align: center;
     }
-
+    
     .workflow-step:nth-child(even) {
         flex-direction: column !important;
     }
-
+    
     .step-content {
         max-width: 100%;
         text-align: center !important;
     }
-
+    
     .step-icon {
         margin-left: auto !important;
         margin-right: auto !important;
     }
-
+    
     .step-details {
         justify-content: center !important;
     }
-
+    
     .step-number {
         margin: 0 0 var(--spacing-md) 0;
     }
+    
 
-
-
+    
     .section-title-white {
         font-size: 2rem;
     }
-
+    
     .workflow-stats {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-md);
@@ -2953,141 +2953,3 @@ a:hover {
     background: hsl(var(--secondary));
     border: 1px solid hsl(var(--border));
 }
-
-/* Back to Top Button */
-.back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: hsl(var(--primary));
-    color: white;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 4px 20px hsl(var(--primary) / 0.3);
-    z-index: 1000;
-    transition: all 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.back-to-top:hover {
-    background: hsl(var(--primary) / 0.9);
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 25px hsl(var(--primary) / 0.4);
-}
-
-.back-to-top:active {
-    transform: translateY(0) scale(0.95);
-}
-
-@media (max-width: 768px) {
-    .back-to-top {
-        bottom: 90px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
-        font-size: 16px;
-    }
-}
-
-/* Dark mode styles for back to top button */
-[data-theme="dark"] .back-to-top {
-    background: hsl(var(--primary-dark));
-    box-shadow: 0 4px 20px hsl(var(--primary-dark) / 0.3);
-}
-
-[data-theme="dark"] .back-to-top:hover {
-    background: hsl(var(--primary-dark) / 0.9);
-    box-shadow: 0 6px 25px hsl(var(--primary-dark) / 0.4);
-}
-
-/* WhatsApp floating button (optional enhancement) */
-function addFloatingWhatsApp() {
-    const floatingBtn = document.createElement('a');
-    floatingBtn.href = 'https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20diseño%20web';
-    floatingBtn.target = '_blank';
-    floatingBtn.className = 'floating-whatsapp';
-    floatingBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
-    floatingBtn.setAttribute('aria-label', 'Contactar por WhatsApp');
-
-    // Add CSS for floating button
-    const style = document.createElement('style');
-    style.textContent = `
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .floating-whatsapp:hover {
-            background: #128c7e;
-            transform: scale(1.1);
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .floating-whatsapp {
-                bottom: 15px;
-                right: 15px;
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-        }
-    `;
-
-    document.head.appendChild(style);
-    document.body.appendChild(floatingBtn);
-}
-
-// Add event listeners after the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function () {
-    // Back to top button functionality
-    const backToTopButton = document.createElement('button');
-    backToTopButton.classList.add('back-to-top');
-    backToTopButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
-    backToTopButton.setAttribute('aria-label', 'Volver arriba');
-    document.body.appendChild(backToTopButton);
-
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
-        }
-    });
-
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-});

@@ -435,39 +435,10 @@ Lima, Perú<br>
     <!-- EmailJS Script -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
-    <!-- Back to Top Button Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Create back to top button
-            const backToTopBtn = document.createElement('button');
-            backToTopBtn.className = 'back-to-top';
-            backToTopBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-            backToTopBtn.setAttribute('aria-label', 'Volver arriba');
-            backToTopBtn.setAttribute('title', 'Volver arriba');
-            
-            // Add button to page
-            document.body.appendChild(backToTopBtn);
-            
-            // Show/hide button based on scroll position
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
-            });
-            
-            // Smooth scroll to top when clicked
-            backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-    
-    <!-- JavaScript -->
+    <!-- Main JavaScript -->
     <script src="js/main.js"></script>
+    
+    <!-- Fixed EmailJS Contact Script -->
+    <script src="js/emailjs-contact-fixed.js"></script>
 </body>
 </html>

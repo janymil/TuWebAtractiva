@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     try { initSmoothScrolling(); } catch (e) { console.log('Smooth scrolling init error:', e); }
     try { initAnimations(); } catch (e) { console.log('Animations init error:', e); }
     try { initDarkMode(); } catch (e) { console.log('Dark mode init error:', e); }
-    try { initBackToTop(); } catch (e) { console.log('Back to top init error:', e); }
 });
 
 // Navigation functionality
@@ -384,131 +383,10 @@ function initDarkMode() {
     });
 }
 
-// Back to top functionality
-function initBackToTop() {
-    // Create back to top button
-    const backToTopBtn = document.createElement('button');
-    backToTopBtn.className = 'back-to-top';
-    backToTopBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-    backToTopBtn.setAttribute('aria-label', 'Volver arriba');
-    backToTopBtn.setAttribute('title', 'Volver arriba');
-    
-    // Add button to page
-    document.body.appendChild(backToTopBtn);
-    
-    // Show/hide button based on scroll position
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
-    });
-    
-    // Smooth scroll to top when clicked
-    backToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
-// Initialize EmailJS and contact form
+// Initialize real-time validation
 document.addEventListener('DOMContentLoaded', function() {
     initRealTimeValidation();
-    
-    // Initialize EmailJS
-    if (typeof emailjs !== 'undefined') {
-        emailjs.init('LCZm2DW6dqd8h1bWi');
-        console.log('EmailJS initialized successfully');
-        
-        // Setup contact form
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', handleContactFormSubmit);
-        }
-    }
 });
-
-// Handle contact form submission
-function handleContactFormSubmit(e) {
-    e.preventDefault();
-    
-    const form = e.target;
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    
-    // Disable submit button and show loading
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando...';
-    
-    // Get form data
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-    
-    // Send email via EmailJS
-    sendEmailViaEmailJS(data, submitBtn, originalText);
-}
-
-function sendEmailViaEmailJS(formData, submitBtn, originalText) {
-    const templateParams = {
-        nombre: formData.nombre,
-        email: formData.email,
-        telefono: formData.telefono || 'No proporcionado',
-        empresa: formData.empresa || 'No proporcionada',
-        servicio: formData.servicio,
-        mensaje: formData.mensaje,
-        to_email: 'info@tuwebatractiva.com'
-    };
-    
-    // Send business notification
-    emailjs.send('service_40mjh1h', 'template_business', templateParams)
-        .then(function() {
-            console.log('Business email sent successfully');
-            
-            // Send user confirmation
-            const userParams = {
-                ...templateParams,
-                to_email: formData.email
-            };
-            
-            return emailjs.send('service_40mjh1h', 'template_user', userParams);
-        })
-        .then(function() {
-            console.log('User confirmation sent successfully');
-            showSuccess(submitBtn, originalText);
-            setTimeout(() => {
-                window.location.href = 'gracias.html';
-            }, 1500);
-        })
-        .catch(function(error) {
-            console.error('EmailJS error:', error);
-            handleEmailError(submitBtn, originalText);
-        });
-}
-
-function showSuccess(submitBtn, originalText) {
-    submitBtn.textContent = '¡Enviado!';
-    submitBtn.style.background = '#4CAF50';
-    
-    setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-        submitBtn.style.background = '';
-    }, 3000);
-}
-
-function handleEmailError(submitBtn, originalText) {
-    submitBtn.textContent = 'Error - Intenta de nuevo';
-    submitBtn.style.background = '#f44336';
-    
-    setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-        submitBtn.style.background = '';
-    }, 3000);
-}
 
 // WhatsApp floating button (optional enhancement)
 function addFloatingWhatsApp() {
