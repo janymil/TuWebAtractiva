@@ -718,7 +718,7 @@ a:hover {
 }
 
 .client-card {
-    background: white;
+    background: hsl(var(--secondary));
     padding: var(--spacing-xl);
     border-radius: var(--border-radius-lg);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -792,7 +792,7 @@ a:hover {
 
 .clients-cta {
     text-align: center;
-    background: white;
+    background: hsl(var(--secondary));
     padding: var(--spacing-2xl);
     border-radius: var(--border-radius-lg);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
