@@ -101,7 +101,7 @@
                 // Show success and redirect
                 showSuccess(submitBtn);
                 setTimeout(() => {
-                    window.location.href = 'gracias.html';
+                    window.location.href = '/gracias';
                 }, 2000);
             })
             .catch(function(error) {
@@ -128,7 +128,7 @@
         // Open WhatsApp and redirect
         setTimeout(() => {
             window.open(`https://wa.me/51938693848?text=${encodeURIComponent(message)}`, '_blank');
-            window.location.href = 'gracias.html';
+            window.location.href = '/gracias';
         }, 1000);
     }
     
