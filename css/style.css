@@ -3163,6 +3163,10 @@ a:hover {
     color: hsl(var(--text-dark) / 0.8);
 }
 
+[data-theme="dark"] .client-card li::before {
+    color: hsl(var(--primary-dark));
+}
+
 [data-theme="dark"] .clients-cta {
     background: hsl(var(--secondary-dark));
     border: 2px solid hsl(var(--primary-dark) / 0.2);
@@ -3173,39 +3177,113 @@ a:hover {
     color: hsl(var(--text-dark));
 }
 
+/* Automatic dark mode for target-clients section */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .target-clients {
+        background: hsl(var(--background-dark));
+    }
+
+    :root:not([data-theme="light"]) .target-clients .section-header h2 {
+        color: hsl(var(--text-dark));
+    }
+
+    :root:not([data-theme="light"]) .target-clients .section-header p {
+        color: hsl(var(--text-dark) / 0.7);
+    }
+
+    :root:not([data-theme="light"]) .client-card {
+        background: hsl(var(--secondary-dark));
+        border: 1px solid hsl(var(--border-dark));
+        box-shadow: 0 4px 15px hsl(var(--shadow-dark) / 0.2);
+    }
+
+    :root:not([data-theme="light"]) .client-card h3 {
+        color: hsl(var(--text-dark));
+    }
+
+    :root:not([data-theme="light"]) .client-card li {
+        color: hsl(var(--text-dark) / 0.8);
+    }
+
+    :root:not([data-theme="light"]) .client-card li::before {
+        color: hsl(var(--primary-dark));
+    }
+
+    :root:not([data-theme="light"]) .clients-cta {
+        background: hsl(var(--secondary-dark));
+        border: 2px solid hsl(var(--primary-dark) / 0.2);
+        box-shadow: 0 4px 15px hsl(var(--shadow-dark) / 0.2);
+    }
+
+    :root:not([data-theme="light"]) .clients-cta p {
+        color: hsl(var(--text-dark));
+    }
+}
+
 /* [data-theme="dark"] styles for footer */
 [data-theme="dark"] .footer {
-    background: hsl(var(--secondary-dark));
-    border-top: 1px solid hsl(var(--border-dark));
+    background: hsl(var(--text-dark));
+    color: white;
 }
 
 [data-theme="dark"] .footer-logo span {
-    color: hsl(var(--text-dark));
+    color: white;
 }
 
 [data-theme="dark"] .footer-links a {
-    color: hsl(var(--text-dark) / 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 [data-theme="dark"] .footer-links a:hover {
-    color: hsl(var(--primary-dark));
+    color: white;
 }
 
 [data-theme="dark"] .footer-social a {
-    color: hsl(var(--text-dark) / 0.7);
-    background: hsl(var(--background-dark));
-    border: 1px solid hsl(var(--border-dark));
+    background: hsl(var(--primary-dark));
+    color: white;
 }
 
 [data-theme="dark"] .footer-social a:hover {
-    color: hsl(var(--primary-dark));
-    background: hsl(var(--primary-dark) / 0.1);
-    border-color: hsl(var(--primary-dark));
+    background: hsl(var(--primary-dark) / 0.8);
+    transform: translateY(-2px);
 }
 
 [data-theme="dark"] .footer-bottom {
-    color: hsl(var(--text-dark) / 0.6);
-    border-top: 1px solid hsl(var(--border-dark));
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Automatic dark mode for footer */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .footer {
+        background: hsl(var(--text-dark));
+        color: white;
+    }
+
+    :root:not([data-theme="light"]) .footer-logo span {
+        color: white;
+    }
+
+    :root:not([data-theme="light"]) .footer-links a {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    :root:not([data-theme="light"]) .footer-links a:hover {
+        color: white;
+    }
+
+    :root:not([data-theme="light"]) .footer-social a {
+        background: hsl(var(--primary-dark));
+        color: white;
+    }
+
+    :root:not([data-theme="light"]) .footer-social a:hover {
+        background: hsl(var(--primary-dark) / 0.8);
+        transform: translateY(-2px);
+    }
+
+    :root:not([data-theme="light"]) .footer-bottom {
+        color: rgba(255, 255, 255, 0.6);
+    }
 }
 
 /* [data-theme="dark"] styles for gracias.html (thank you page) */
@@ -3221,14 +3299,18 @@ a:hover {
     color: hsl(var(--text-dark) / 0.8);
 }
 
+[data-theme="dark"] .next-steps {
+    background: hsl(var(--secondary-dark));
+    border: 1px solid hsl(var(--border-dark));
+    box-shadow: 0 4px 15px hsl(var(--shadow-dark) / 0.1);
+}
+
 [data-theme="dark"] .next-steps h2 {
     color: hsl(var(--text-dark));
 }
 
 [data-theme="dark"] .step {
-    background: hsl(var(--secondary-dark));
-    border: 1px solid hsl(var(--border-dark));
-    box-shadow: 0 4px 15px hsl(var(--shadow-dark) / 0.1);
+    text-align: center;
 }
 
 [data-theme="dark"] .step h3 {
@@ -3244,15 +3326,52 @@ a:hover {
     color: white;
 }
 
-[data-theme="dark"] .confidence-message {
-    background: hsl(var(--secondary-dark));
-    border: 1px solid hsl(var(--border-dark));
-}
-
-[data-theme="dark"] .confidence-message h3 {
+[data-theme="dark"] .contact-info h3 {
     color: hsl(var(--text-dark));
 }
 
-[data-theme="dark"] .confidence-message p {
-    color: hsl(var(--text-dark) / 0.8);
+/* Automatic dark mode for gracias.html (thank you page) */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .thank-you-section {
+        background: hsl(var(--background-dark));
+    }
+
+    :root:not([data-theme="light"]) .thank-you-content h1 {
+        color: hsl(var(--text-dark));
+    }
+
+    :root:not([data-theme="light"]) .thank-you-content .lead {
+        color: hsl(var(--text-dark) / 0.8);
+    }
+
+    :root:not([data-theme="light"]) .next-steps {
+        background: hsl(var(--secondary-dark));
+        border: 1px solid hsl(var(--border-dark));
+        box-shadow: 0 4px 15px hsl(var(--shadow-dark) / 0.1);
+    }
+
+    :root:not([data-theme="light"]) .next-steps h2 {
+        color: hsl(var(--text-dark));
+    }
+
+    :root:not([data-theme="light"]) .step {
+        text-align: center;
+    }
+
+    :root:not([data-theme="light"]) .step h3 {
+        color: hsl(var(--text-dark));
+    }
+
+    :root:not([data-theme="light"]) .step p {
+        color: hsl(var(--text-dark) / 0.7);
+    }
+
+    :root:not([data-theme="light"]) .step-number {
+        background: hsl(var(--primary-dark));
+        color: white;
+    }
+
+    :root:not([data-theme="light"]) .contact-info h3 {
+        color: hsl(var(--text-dark));
+    }
 }
