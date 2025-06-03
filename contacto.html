@@ -441,27 +441,28 @@ Lima, Perú<br>
             const themeToggle = document.getElementById('theme-toggle');
             const body = document.body;
             
-            // Check for saved theme
+            // Check for saved theme on page load
             const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                body.classList.add(savedTheme);
+            if (savedTheme === 'dark-mode') {
+                body.classList.add('dark-mode');
             }
             
             if (themeToggle) {
                 themeToggle.addEventListener('click', function() {
+                    body.classList.toggle('dark-mode');
+                    
+                    // Save theme preference
                     if (body.classList.contains('dark-mode')) {
-                        body.classList.remove('dark-mode');
-                        localStorage.setItem('theme', '');
-                    } else {
-                        body.classList.add('dark-mode');
                         localStorage.setItem('theme', 'dark-mode');
+                    } else {
+                        localStorage.setItem('theme', 'light-mode');
                     }
                 });
             }
         });
     </script>
     
-    <!-- Dedicated EmailJS Contact Script (isolated from main.js) -->
-    <script src="js/emailjs-contact.js"></script>
+    <!-- Fixed EmailJS Contact Script -->
+    <script src="js/emailjs-contact-fixed.js"></script>
 </body>
 </html>

@@ -79,41 +79,36 @@
             return;
         }
         
-        // EmailJS configuration - let's try with your actual service setup
-        console.log('Checking EmailJS account status...');
-        
-        // First, let's try to get available services
-        emailjs.listServices()
-            .then(services => {
-                console.log('Available services:', services);
-                if (services && services.length > 0) {
-                    const serviceID = services[0].service;
-                    console.log('Using service:', serviceID);
-                    sendEmailWithService(serviceID, formData);
-                } else {
-                    console.error('No services found');
-                    handleFallback(formData, submitBtn);
-                }
-            })
-            .catch(error => {
-                console.error('Failed to list services:', error);
-                // Try with default service names
-                tryDefaultServices(formData, submitBtn);
-            });
-    }
-    
-    function tryDefaultServices(formData, submitBtn) {
-        // Try common service patterns
-        const possibleServices = ['default_service', 'gmail', 'service_default'];
+        // EmailJS configuration
+        const serviceID = 'service_tkcskxl';
         const templateID = 'template_01oosn8';
+        const userTemplateID = 'template_9lx7svc';
         
-        console.log('Trying default services...');
+        console.log('Sending email with config:', { serviceID, templateID });
         
-        emailjs.send(possibleServices[0], templateID, formData)
+        // Send main email
+        emailjs.send(serviceID, templateID, formData)
             .then(function(response) {
                 console.log('Email sent successfully:', response);
                 
                 // Send user confirmation if email provided
+                if (formData.email && userTemplateID) {
+                    console.log('Sending confirmation email to:', formData.email);
+                    emailjs.send(serviceID, userTemplateID, formData)
+                        .then(() => console.log('Confirmation email sent'))
+                        .catch(err => console.log('Confirmation email failed:', err));
+                }
+                
+                // Show success and redirect
+                showSuccess();
+                setTimeout(() => {
+                    window.location.href = 'gracias.html';
+                }, 2000);
+            })
+            .catch(function(error) {
+                console.error('EmailJS failed:', error);
+                handleFallback(formData, submitBtn);
+            });
                 if (formData.email && userTemplateID) {
                     console.log('Sending confirmation email to:', formData.email);
                     emailjs.send(serviceID, userTemplateID, formData)
