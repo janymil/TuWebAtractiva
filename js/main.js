@@ -72,20 +72,28 @@ function initContactForm() {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
 
-
+    // Initialize EmailJS when available
+    if (typeof emailjs !== 'undefined') {
+        const publicKey = 'YOUR_EMAILJS_PUBLIC_KEY'; // Replace with actual key
+        emailjs.init(publicKey);
+    }
 
     contactForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Always prevent default for EmailJS handling
+        
         // Get form data
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
         
+        // Check honeypot (spam protection)
+        if (data._honey) {
+            return; // Silent fail for spam
+        }
+        
         // Validate form
         if (!validateContactForm(data)) {
-            e.preventDefault();
             return;
         }
-
-
 
         // Show loading state
         const submitBtn = contactForm.querySelector('button[type="submit"]');
@@ -94,8 +102,79 @@ function initContactForm() {
             submitBtn.disabled = true;
         }
         
-        // Let the form submit naturally to FormSubmit (don't prevent default)
+        // Add timestamp
+        data.fecha_envio = new Date().toLocaleString('es-PE', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        
+        // Try EmailJS first, fallback to WhatsApp
+        sendEmailViaEmailJS(data, submitBtn);
     });
+}
+
+function sendEmailViaEmailJS(formData, submitBtn) {
+    // Check if EmailJS is available and configured
+    if (typeof emailjs === 'undefined') {
+        console.log('EmailJS not available, using WhatsApp fallback');
+        handleEmailFallback(formData, submitBtn);
+        return;
+    }
+    
+    // EmailJS configuration - these will be replaced with actual values
+    const serviceID = 'YOUR_SERVICE_ID';
+    const templateID = 'YOUR_TEMPLATE_ID';
+    const userTemplateID = 'YOUR_USER_TEMPLATE_ID';
+    
+    // Send main email to business
+    emailjs.send(serviceID, templateID, formData)
+        .then(function(response) {
+            console.log('Email sent successfully:', response);
+            
+            // Send confirmation email to user if email provided
+            if (formData.email && userTemplateID !== 'YOUR_USER_TEMPLATE_ID') {
+                emailjs.send(serviceID, userTemplateID, formData)
+                    .then(() => console.log('Confirmation email sent'))
+                    .catch(err => console.log('Confirmation email failed:', err));
+            }
+            
+            // Show success message
+            showFormMessage('¡Solicitud enviada exitosamente! Te contactaremos pronto.', 'success');
+            
+            // Redirect to thank you page after delay
+            setTimeout(() => {
+                window.location.href = 'gracias.html';
+            }, 2000);
+        })
+        .catch(function(error) {
+            console.error('EmailJS failed:', error);
+            handleEmailFallback(formData, submitBtn);
+        });
+}
+
+function handleEmailFallback(formData, submitBtn) {
+    // Reset button state
+    if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Solicitud';
+    }
+    
+    // Show fallback message
+    showFormMessage('Redirigiendo a WhatsApp para completar tu solicitud...', 'info');
+    
+    // Create WhatsApp message and redirect
+    setTimeout(() => {
+        const whatsappMessage = createWhatsAppMessage(formData);
+        window.open(`https://wa.me/51938693848?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+        
+        // Also redirect to thank you page
+        setTimeout(() => {
+            window.location.href = 'gracias.html';
+        }, 1000);
+    }, 2000);
 }
 
 function validateContactForm(data) {
