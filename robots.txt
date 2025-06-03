@@ -2,6 +2,10 @@
 User-agent: *
 Allow: /
 
+# Disallow thank you page (only accessible after form submission)
+Disallow: /gracias.html
+Disallow: /gracias
+
 # Sitemap location
 Sitemap: https://yoursite.com/sitemap.xml
 
