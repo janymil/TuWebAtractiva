@@ -5,7 +5,7 @@ import os
 
 PORT = 5000
 
-class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
+class SimpleHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
@@ -13,22 +13,18 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         super().end_headers()
 
     def do_GET(self):
-        # Serve index.html for root path
         if self.path == '/':
             self.path = '/index.html'
         return super().do_GET()
 
     def log_message(self, format, *args):
-        # Suppress default logging
         pass
 
 def run_server():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    
-    # Allow socket reuse
     socketserver.TCPServer.allow_reuse_address = True
     
-    with socketserver.TCPServer(("0.0.0.0", PORT), MyHTTPRequestHandler) as httpd:
+    with socketserver.TCPServer(("0.0.0.0", PORT), SimpleHandler) as httpd:
         print(f"Static server running at http://0.0.0.0:{PORT}")
         try:
             httpd.serve_forever()
