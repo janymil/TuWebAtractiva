@@ -368,26 +368,12 @@
             background: linear-gradient(135deg, #dc143c 0%, #f7931e 100%);
             color: white;
             padding: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
             font-weight: 600;
             font-family: 'Amaranth', cursive;
             position: relative;
         }
 
-        .articulo-faq-question::after {
-            content: '+';
-            position: absolute;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
 
-        .articulo-faq-question.active::after {
-            transform: translateY(-50%) rotate(45deg);
-        }
 
         .articulo-faq-question:hover {
             background: linear-gradient(135deg, #b8001a 0%, #d67b1a 100%);
@@ -396,7 +382,7 @@
         .articulo-faq-answer {
             padding: 25px;
             background: linear-gradient(135deg, #fff8f0, #ffe8d6);
-            display: none;
+            display: block;
             border-top: 1px solid #f0f0f0;
         }
 
@@ -675,23 +661,12 @@
             }, 1000);
         }
 
-        // Simplified animations that work in WordPress
+        // Simplified for WordPress compatibility
         function initScrollAnimations() {
             // Make all sections visible immediately
             document.querySelectorAll('.articulo-section').forEach(section => {
                 section.classList.add('visible', 'wave-animation');
             });
-
-            // Animate all counters immediately
-            setTimeout(() => {
-                document.querySelectorAll('.articulo-stat-number').forEach((counter, index) => {
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    const suffix = counter.getAttribute('data-suffix') || '';
-                    setTimeout(() => {
-                        animateCounter(counter, target, suffix);
-                    }, index * 300);
-                });
-            }, 1000);
 
             // Animate trust badges
             document.querySelectorAll('.articulo-trust-badge').forEach((badge, index) => {
@@ -701,31 +676,9 @@
             });
         }
 
-        // FAQ functionality
+        // No FAQ functionality needed - all sections are open by default
         function initFAQ() {
-            document.querySelectorAll('.articulo-faq-question').forEach(question => {
-                question.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const answer = this.nextElementSibling;
-                    const isOpen = answer.style.display === 'block';
-                    
-                    // Close all other answers
-                    document.querySelectorAll('.articulo-faq-answer').forEach(a => {
-                        a.style.display = 'none';
-                    });
-                    document.querySelectorAll('.articulo-faq-question').forEach(q => {
-                        q.classList.remove('active');
-                    });
-                    
-                    // Toggle current answer
-                    if (!isOpen) {
-                        answer.style.display = 'block';
-                        this.classList.add('active');
-                    }
-                });
-            });
+            // FAQ sections are permanently open
         }
 
         // Initialize everything when DOM is loaded
@@ -814,15 +767,15 @@
             
             <div class="articulo-stats-grid">
                 <div class="articulo-stat-card">
-                    <span class="articulo-stat-number" data-target="59" data-suffix="%">0%</span>
+                    <span class="articulo-stat-number">59%</span>
                     <span class="articulo-stat-label">Compras online por móvil en 2021</span>
                 </div>
                 <div class="articulo-stat-card">
-                    <span class="articulo-stat-number" data-target="90" data-suffix="%">0%</span>
+                    <span class="articulo-stat-number">90%</span>
                     <span class="articulo-stat-label">Peruanos navegan desde móviles</span>
                 </div>
                 <div class="articulo-stat-card">
-                    <span class="articulo-stat-number" data-target="50" data-suffix="%">0%</span>
+                    <span class="articulo-stat-number">50%</span>
                     <span class="articulo-stat-label">Visitan el negocio el mismo día</span>
                 </div>
             </div>
