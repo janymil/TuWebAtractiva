@@ -643,7 +643,7 @@
         // Animated counters
         function animateCounter(element, target, suffix = '') {
             let current = 0;
-            const increment = target / 100;
+            const increment = target / 50; // Faster animation
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
@@ -651,7 +651,7 @@
                     clearInterval(timer);
                 }
                 element.textContent = Math.floor(current) + suffix;
-            }, 25);
+            }, 30);
         }
 
         // Sparkle effect
@@ -683,13 +683,15 @@
             });
 
             // Animate all counters immediately
-            document.querySelectorAll('.articulo-stat-number').forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'));
-                const suffix = counter.getAttribute('data-suffix') || '';
-                setTimeout(() => {
-                    animateCounter(counter, target, suffix);
-                }, 500);
-            });
+            setTimeout(() => {
+                document.querySelectorAll('.articulo-stat-number').forEach((counter, index) => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const suffix = counter.getAttribute('data-suffix') || '';
+                    setTimeout(() => {
+                        animateCounter(counter, target, suffix);
+                    }, index * 300);
+                });
+            }, 1000);
 
             // Animate trust badges
             document.querySelectorAll('.articulo-trust-badge').forEach((badge, index) => {
@@ -702,8 +704,11 @@
         // FAQ functionality
         function initFAQ() {
             document.querySelectorAll('.articulo-faq-question').forEach(question => {
-                question.addEventListener('click', () => {
-                    const answer = question.nextElementSibling;
+                question.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const answer = this.nextElementSibling;
                     const isOpen = answer.style.display === 'block';
                     
                     // Close all other answers
@@ -717,7 +722,7 @@
                     // Toggle current answer
                     if (!isOpen) {
                         answer.style.display = 'block';
-                        question.classList.add('active');
+                        this.classList.add('active');
                     }
                 });
             });
