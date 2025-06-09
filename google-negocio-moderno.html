@@ -672,32 +672,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* Floating Action Button */
-        .fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            text-decoration: none;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
 
-        .fab:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-xl);
-            text-decoration: none;
-            color: white;
-        }
     </style>
 
     <script>
@@ -784,20 +759,9 @@
                 }, 2000);
             });
 
-            // Floating action button show/hide
+            // Update progress on scroll
             $(window).scroll(function() {
                 updateProgress();
-                if ($(this).scrollTop() > 300) {
-                    $('.fab').fadeIn();
-                } else {
-                    $('.fab').fadeOut();
-                }
-            });
-
-            // Back to top
-            $('.fab').on('click', function(e) {
-                e.preventDefault();
-                $('html, body').animate({scrollTop: 0}, 800);
             });
 
             // Initialize
@@ -1008,10 +972,10 @@
                     <div class="feature-grid">
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fab fa-whatsapp"></i>
+                                <i class="fas fa-comments"></i>
                             </div>
-                            <h3 class="feature-title">Integración WhatsApp</h3>
-                            <p class="feature-description">Conexión directa con WhatsApp Business para comunicación fluida con clientes peruanos.</p>
+                            <h3 class="feature-title">Mensajería Mejorada</h3>
+                            <p class="feature-description">Sistema de chat empresarial renovado para comunicación fluida con clientes peruanos.</p>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">
@@ -1524,9 +1488,6 @@
         </div>
     </main>
 
-    <!-- Floating Action Button -->
-    <a href="#" class="fab">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+
 </body>
 </html>
