@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Mi Negocio para Emprendedores Peruanos 2025</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #06b6d4;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --dark-color: #1f2937;
+            --light-color: #f8fafc;
+            --border-color: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-success: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            margin-top: -50px;
+            border-radius: 30px 30px 0 0;
+            position: relative;
+            z-index: 10;
+            padding: 60px 0;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        /* Steps */
+        .steps-container {
+            counter-reset: step-counter;
+        }
+
+        .step {
+            counter-increment: step-counter;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateX(5px);
+        }
+
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: -15px;
+            top: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .step h3 {
+            margin-left: 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .step-content {
+            margin-left: 60px;
+        }
+
+        .step ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .step li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .step li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Tables */
+        .table-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            margin: 40px 0;
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .comparison-table th {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table th:first-child {
+            border-radius: 15px 0 0 0;
+        }
+
+        .comparison-table th:last-child {
+            border-radius: 0 15px 0 0;
+        }
+
+        .comparison-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .comparison-table tr:hover {
+            background: var(--light-color);
+        }
+
+        .comparison-table .highlight {
+            background: var(--gradient-success);
+            color: white;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Alert Boxes */
+        .alert {
+            padding: 25px 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid;
+            position: relative;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            border-color: var(--primary-color);
+            color: #1e40af;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            border-color: var(--warning-color);
+            color: #92400e;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            border-color: var(--success-color);
+            color: #065f46;
+        }
+
+        .alert-danger {
+            background: #fee2e2;
+            border-color: var(--danger-color);
+            color: #991b1b;
+        }
+
+        .alert::before {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 1.5rem;
+        }
+
+        .alert-info::before { content: '💡'; }
+        .alert-warning::before { content: '⚠️'; }
+        .alert-success::before { content: '🎯'; }
+        .alert-danger::before { content: '🚫'; }
+
+        .alert h4 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .checklist-item {
+            background: white;
+            padding: 20px 25px;
+            margin: 15px 0;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .checklist-item::before {
+            content: '☐';
+            position: absolute;
+            left: 20px;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .checklist-item.checked::before {
+            content: '✅';
+        }
+
+        .checklist-item.checked {
+            background: var(--light-color);
+            border-color: var(--success-color);
+        }
+
+        /* Image placeholder */
+        .image-placeholder {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px dashed var(--primary-color);
+            border-radius: 15px;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 30px 0;
+            color: var(--primary-color);
+        }
+
+        .image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .image-placeholder p {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Interactive Elements */
+        .interactive-demo {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .demo-phone {
+            width: 300px;
+            height: 600px;
+            background: #000;
+            border-radius: 30px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .demo-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .demo-screen i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .step {
+                padding: 30px 20px;
+            }
+
+            .step h3,
+            .step-content {
+                margin-left: 40px;
+            }
+
+            .step::before {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                left: -10px;
+            }
+
+            .table-container {
+                padding: 20px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 15px 10px;
+                font-size: 0.9rem;
+            }
+
+            .demo-phone {
+                width: 250px;
+                height: 500px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl);
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            // Progress bar
+            function updateProgress() {
+                const scrollTop = $(window).scrollTop();
+                const docHeight = $(document).height() - $(window).height();
+                const progress = (scrollTop / docHeight) * 100;
+                $('.progress-bar').css('width', progress + '%');
+            }
+
+            // Smooth scroll to anchors
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                const target = $(this.getAttribute('href'));
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 80
+                    }, 800);
+                }
+            });
+
+            // Animated counters
+            function animateCounters() {
+                $('.stat-number').each(function() {
+                    const $this = $(this);
+                    const target = parseInt($this.text().replace(/\D/g, ''));
+                    const suffix = $this.text().replace(/\d/g, '');
+                    
+                    if (target && !$this.hasClass('animated')) {
+                        $this.addClass('animated');
+                        let current = 0;
+                        const increment = target / 60;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                $this.text(target + suffix);
+                                clearInterval(timer);
+                            } else {
+                                $this.text(Math.floor(current) + suffix);
+                            }
+                        }, 30);
+                    }
+                });
+            }
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                        if (entry.target.classList.contains('stat-card')) {
+                            animateCounters();
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements
+            $('.stat-card, .card, .step, .feature-item').each(function() {
+                observer.observe(this);
+            });
+
+            // Interactive checklist
+            $('.checklist-item').on('click', function() {
+                $(this).toggleClass('checked');
+                $(this).css('transform', 'scale(1.05)');
+                setTimeout(() => {
+                    $(this).css('transform', '');
+                }, 200);
+            });
+
+            // Interactive demo
+            $('.demo-phone').on('click', function() {
+                $(this).addClass('animate-pulse');
+                setTimeout(() => {
+                    $(this).removeClass('animate-pulse');
+                }, 2000);
+            });
+
+            // Floating action button show/hide
+            $(window).scroll(function() {
+                updateProgress();
+                if ($(this).scrollTop() > 300) {
+                    $('.fab').fadeIn();
+                } else {
+                    $('.fab').fadeOut();
+                }
+            });
+
+            // Back to top
+            $('.fab').on('click', function(e) {
+                e.preventDefault();
+                $('html, body').animate({scrollTop: 0}, 800);
+            });
+
+            // Initialize
+            updateProgress();
+        });
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fab fa-google"></i> Mi Negocio 2025
+                </div>
+                <div style="color: var(--primary-color); font-weight: 600;">
+                    Guía Completa para Perú
+                </div>
+            </div>
+        </div>
+        <div class="progress-bar"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Google Mi Negocio para Emprendedores Peruanos 2025</h1>
+                <p>Transforma tu negocio local en una potencia digital. Descubre cómo miles de emprendedores peruanos están conquistando Google Maps y las búsquedas locales.</p>
+                <a href="#introduccion" class="cta-button">
+                    <i class="fas fa-rocket"></i>
+                    Comenzar Ahora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Stats Section -->
+            <section id="estadisticas" class="section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">76%</div>
+                        <div class="stat-label">de personas visitan tiendas locales en 24 horas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1250</div>
+                        <div class="stat-label">visitas mensuales promedio por negocio</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">28%</div>
+                        <div class="stat-label">de búsquedas locales resultan en compras</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">86%</div>
+                        <div class="stat-label">usan Google Maps para buscar empresas</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Introduction -->
+            <section id="introduccion" class="section">
+                <div class="card">
+                    <h3><i class="fas fa-map-marker-alt"></i> ¿Por qué tu negocio necesita estar en Google?</h3>
+                    <p>¡Hola, emprendedores peruanos! ¿Sabías que miles de tus potenciales clientes están buscando exactamente lo que ofreces, pero simplemente no te encuentran en Google? En un país donde el comercio electrónico y la búsqueda local crecen constantemente, no tener presencia digital es como tener el mejor puesto en Gamarra pero sin letrero.</p>
+                    
+                    <div class="alert alert-success">
+                        <h4>Oportunidad de Oro</h4>
+                        <p>Para aprovechar esta oportunidad, no necesitas una gran inversión, sino una herramienta gratuita y poderosa: Google Mi Negocio. Esta plataforma es esencial para mejorar la visibilidad online de tu emprendimiento en Perú.</p>
+                    </div>
+
+                    <p>En esta guía actualizada para 2025, te mostraremos paso a paso cómo crear, verificar y optimizar tu perfil de Google Mi Negocio, adaptado específicamente para emprendedores peruanos. Desde cómo destacar en las búsquedas locales en Lima, Arequipa o Cusco, hasta cómo aprovechar las últimas funciones y evitar errores comunes.</p>
+                </div>
+            </section>
+
+            <!-- What is Google My Business -->
+            <section id="que-es" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">¿Qué es Google Mi Negocio?</h2>
+                    <p class="section-subtitle">La herramienta que conecta tu negocio con miles de clientes potenciales</p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="feature-title">Visibilidad Total</h3>
+                        <p class="feature-description">Aparece en Google Search, Google Maps y el Knowledge Panel cuando los clientes busquen negocios como el tuyo.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="feature-title">Análisis Detallados</h3>
+                        <p class="feature-description">Monitorea cómo los clientes encuentran e interactúan con tu negocio con estadísticas detalladas.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="feature-title">Comunicación Directa</h3>
+                        <p class="feature-description">Conecta con clientes a través de reseñas, mensajes y publicaciones actualizadas.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Cómo funciona Google Mi Negocio</h3>
+                    <p>Esta herramienta actúa como un punto de encuentro entre tu negocio y los clientes que buscan tus productos o servicios. Cuando alguien realiza una búsqueda local en Google, tu perfil puede aparecer destacado en tres ubicaciones clave:</p>
+                    
+                    <div class="table-container">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Ubicación en Google</th>
+                                    <th>Descripción</th>
+                                    <th>Impacto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Resultados de Búsqueda</strong></td>
+                                    <td>Panel de información en el lado derecho</td>
+                                    <td class="highlight">Alto</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Paquete Local</strong></td>
+                                    <td>Top 3 empresas destacadas con mapa</td>
+                                    <td class="highlight">Muy Alto</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Google Maps</strong></td>
+                                    <td>Marcador en el mapa con información</td>
+                                    <td class="highlight">Alto</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <h4>Dato Sorprendente</h4>
+                        <p>8 de cada 10 personas descubren negocios precisamente a través de estos canales. ¡Tu competencia ya está aprovechando esta oportunidad!</p>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>Visualiza tu Presencia Digital</h3>
+                    <p>Así es como los clientes ven tu negocio en dispositivos móviles:</p>
+                    <div class="demo-phone">
+                        <div class="demo-screen">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Mi Restaurante</h4>
+                            <p>★★★★★ (127 reseñas)</p>
+                            <p>📍 Miraflores, Lima</p>
+                            <p>🕒 Abierto hasta 22:00</p>
+                            <button style="background: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 25px; margin: 5px;">Llamar</button>
+                            <button style="background: var(--secondary-color); color: white; border: none; padding: 10px 20px; border-radius: 25px; margin: 5px;">Cómo llegar</button>
+                        </div>
+                    </div>
+                    <p><em>Haz clic en el teléfono para ver la animación</em></p>
+                </div>
+            </section>
+
+            <!-- Benefits for Peruvian Entrepreneurs -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Ventajas para Emprendedores Peruanos</h2>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="feature-title">100% Gratuito</h3>
+                        <p class="feature-description">Sin costos ocultos ni inversión inicial. Perfecto para mipymes peruanas que buscan maximizar su presencia digital.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="feature-title">Visibilidad Inmediata</h3>
+                        <p class="feature-description">Comienza a aparecer en búsquedas locales desde el primer día de verificación.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-target"></i>
+                        </div>
+                        <h3 class="feature-title">Clientes Locales</h3>
+                        <p class="feature-description">Conecta específicamente con personas en tu zona: Lima, Arequipa, Cusco, Trujillo y toda ciudad peruana.</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-success">
+                    <h4>Estadísticas que Impactan</h4>
+                    <p>Un negocio local promedio en Google recibe aproximadamente 1,250 visitas mensuales. El 28% de estas búsquedas culminan en una compra dentro de las siguientes 24 horas. ¡Imagínate el potencial para tu negocio!</p>
+                </div>
+            </section>
+
+            <!-- Recent Changes -->
+            <section class="section">
+                <div class="card">
+                    <h3><i class="fas fa-sparkles"></i> Novedades 2025 en Google Mi Negocio</h3>
+                    <p>Google ha implementado varias actualizaciones significativas que benefician directamente a los emprendedores peruanos:</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h3 class="feature-title">Integración WhatsApp</h3>
+                            <p class="feature-description">Conexión directa con WhatsApp Business para comunicación fluida con clientes peruanos.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3 class="feature-title">IA para Restaurantes</h3>
+                            <p class="feature-description">Carga menús mediante fotografías que se convierten automáticamente en información estructurada.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <h3 class="feature-title">Áreas Específicas</h3>
+                            <p class="feature-description">Define exactamente en qué distritos de Lima o ciudades del Perú ofreces tus servicios.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step by Step Guide -->
+            <section id="paso-a-paso" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Cómo crear tu cuenta paso a paso</h2>
+                    <p class="section-subtitle">Guía completa para emprendedores peruanos</p>
+                </div>
+
+                <div class="steps-container">
+                    <div class="step">
+                        <h3>Crear o acceder a tu cuenta de Google</h3>
+                        <div class="step-content">
+                            <p>Para utilizar Google Mi Negocio, necesitas una cuenta de Google. Si ya tienes Gmail, úsala directamente. Si no, crea una nueva preferiblemente con el dominio de tu empresa.</p>
+                            
+                            <div class="alert alert-info">
+                                <h4>Recomendación Pro</h4>
+                                <p>Usa una cuenta que represente a tu negocio, no personal. Ejemplo: contacto@tuempresa.com en lugar de tu-nombre-personal@gmail.com</p>
+                            </div>
+
+                            <ul>
+                                <li>Visita accounts.google.com/signup</li>
+                                <li>Selecciona "Para gestionar mi negocio"</li>
+                                <li>Completa con datos de tu empresa</li>
+                                <li>Verifica tu correo electrónico</li>
+                            </ul>
+
+                            <div class="image-placeholder">
+                                <i class="fas fa-user-plus"></i>
+                                <p>Pantalla de registro de Google Business</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <h3>Registrar tu negocio en Google</h3>
+                        <div class="step-content">
+                            <p>Ahora registra tu negocio. Puede que ya exista un perfil que debes reclamar, o necesites crear uno nuevo.</p>
+                            
+                            <div class="table-container">
+                                <table class="comparison-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Situación</th>
+                                            <th>Acción Requerida</th>
+                                            <th>Tiempo Estimado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tu negocio YA aparece en Google</td>
+                                            <td>Reclamar el perfil existente</td>
+                                            <td>5-10 minutos</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tu negocio NO aparece en Google</td>
+                                            <td>Crear perfil desde cero</td>
+                                            <td>15-20 minutos</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <ul>
+                                <li>Ve a business.google.com/create</li>
+                                <li>Busca tu empresa por nombre y ubicación</li>
+                                <li>Si aparece: reclámala siguiendo las instrucciones</li>
+                                <li>Si no aparece: "Añadir tu empresa a Google"</li>
+                                <li>Completa nombre exacto, categoría, ubicación y contacto</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <h3>Verificar tu empresa</h3>
+                        <div class="step-content">
+                            <p>La verificación es CRUCIAL. Sin ella, no podrás gestionar tu perfil completamente. Google ofrece varios métodos:</p>
+                            
+                            <div class="feature-grid">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <h3 class="feature-title">Correo Postal</h3>
+                                    <p class="feature-description">Tarjeta con código a tu dirección. Demora 7-14 días pero es el más confiable.</p>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <h3 class="feature-title">Teléfono/SMS</h3>
+                                    <p class="feature-description">Código inmediato por llamada o mensaje. No disponible para todos los negocios.</p>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <h3 class="feature-title">Videollamada</h3>
+                                    <p class="feature-description">Verificación en vivo con representante de Google. Disponible en casos especiales.</p>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-warning">
+                                <h4>Importante Durante la Verificación</h4>
+                                <p>NO modifiques nombre, dirección o categoría durante el proceso de verificación. Esto puede retrasar hasta 30 días adicionales.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <h3>Completar información básica</h3>
+                        <div class="step-content">
+                            <p>Un perfil completo tiene 70% más posibilidades de atraer visitas y 50% más de generar ventas. ¡No dejes campos vacíos!</p>
+                            
+                            <div class="checklist">
+                                <div class="checklist-item">Descripción detallada (750 caracteres máximo)</div>
+                                <div class="checklist-item">Horarios de atención actualizados</div>
+                                <div class="checklist-item">Fotografías de calidad (mínimo 5 fotos)</div>
+                                <div class="checklist-item">Atributos específicos (WiFi, accesibilidad, pagos)</div>
+                                <div class="checklist-item">Servicios o productos principales</div>
+                                <div class="checklist-item">Número de WhatsApp Business</div>
+                                <div class="checklist-item">Enlace a tu sitio web o redes sociales</div>
+                            </div>
+
+                            <div class="alert alert-success">
+                                <h4>Dato Clave</h4>
+                                <p>Es 2.7 veces más probable que los clientes consideren confiable una empresa con perfil completo en Google.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Optimization -->
+            <section id="optimizacion" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Optimiza tu perfil para destacar</h2>
+                    <p class="section-subtitle">Estrategias avanzadas para dominar las búsquedas locales</p>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-camera"></i> Fotos y Videos de Calidad</h3>
+                    <p>Las imágenes son el factor #1 para generar confianza. Los negocios con fotos reciben 42% más llamadas.</p>
+                    
+                    <div class="table-container">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Tipo de Foto</th>
+                                    <th>Propósito</th>
+                                    <th>Especificaciones</th>
+                                    <th>Impacto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Fachada/Exterior</strong></td>
+                                    <td>Reconocimiento del local</td>
+                                    <td>720x720px, JPG/PNG</td>
+                                    <td class="highlight">Alto</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Interior/Ambiente</strong></td>
+                                    <td>Mostrar atmósfera</td>
+                                    <td>Buena iluminación</td>
+                                    <td class="highlight">Medio</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Productos/Servicios</strong></td>
+                                    <td>Catálogo visual</td>
+                                    <td>Alta resolución</td>
+                                    <td class="highlight">Muy Alto</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Equipo/Personal</strong></td>
+                                    <td>Generar confianza</td>
+                                    <td>Profesional, sonrientes</td>
+                                    <td class="highlight">Alto</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <h4>Especificaciones Técnicas</h4>
+                        <p><strong>Formato:</strong> JPG o PNG | <strong>Tamaño:</strong> 10 KB - 5 MB | <strong>Resolución:</strong> Mínimo 720x720 píxeles</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-bullhorn"></i> Publicaciones Estratégicas</h3>
+                    <p>Las publicaciones te permiten comunicarte directamente con clientes locales. Tipos de publicaciones efectivas:</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <h3 class="feature-title">Novedades</h3>
+                            <p class="feature-description">Información general sobre tu empresa, nuevos servicios, logros.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                            <h3 class="feature-title">Ofertas</h3>
+                            <p class="feature-description">Descuentos, promociones especiales con fechas específicas.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3 class="feature-title">Eventos</h3>
+                            <p class="feature-description">Actividades, talleres, inauguraciones con hora y fecha.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3 class="feature-title">Productos</h3>
+                            <p class="feature-description">Catálogo visual de lo que ofreces con precios.</p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <h4>Frecuencia Recomendada</h4>
+                        <p>Publica al menos 1-2 veces por semana para mantener tu perfil activo y mejorar tu posicionamiento en búsquedas locales.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-star"></i> Gestión de Reseñas</h3>
+                    <p>Las reseñas son el nuevo "boca a boca" digital. 87% de consumidores leen reseñas antes de decidir.</p>
+                    
+                    <div class="checklist">
+                        <div class="checklist-item">Responde TODAS las reseñas en menos de 24 horas</div>
+                        <div class="checklist-item">Agradece las reseñas positivas mencionando detalles específicos</div>
+                        <div class="checklist-item">En reseñas negativas: disculpas + solución + invitación privada</div>
+                        <div class="checklist-item">Crea enlace directo para facilitar reseñas</div>
+                        <div class="checklist-item">Solicita reseñas después de experiencias positivas</div>
+                        <div class="checklist-item">Nunca compres reseñas falsas (Google las detecta)</div>
+                    </div>
+
+                    <div class="alert alert-danger">
+                        <h4>Prohibido por Google</h4>
+                        <p>NO ofrezcas incentivos económicos a cambio de reseñas. Esto viola las políticas y puede resultar en penalizaciones severas.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-search-location"></i> Palabras Clave Locales</h3>
+                    <p>Incorpora términos específicos de ubicación para mejorar significativamente tu visibilidad:</p>
+                    
+                    <div class="table-container">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Tipo de Negocio</th>
+                                    <th>Palabras Clave Genéricas</th>
+                                    <th>Palabras Clave Locales</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Restaurante</td>
+                                    <td>"restaurante peruano"</td>
+                                    <td>"mejor ceviche en Miraflores"</td>
+                                </tr>
+                                <tr>
+                                    <td>Clínica Dental</td>
+                                    <td>"dentista"</td>
+                                    <td>"clínica dental en San Isidro"</td>
+                                </tr>
+                                <tr>
+                                    <td>Peluquería</td>
+                                    <td>"salón de belleza"</td>
+                                    <td>"peluquería en Surco"</td>
+                                </tr>
+                                <tr>
+                                    <td>Ferretería</td>
+                                    <td>"herramientas"</td>
+                                    <td>"ferretería 24 horas Lima Norte"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Common Errors -->
+            <section id="errores" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Errores Comunes que Debes Evitar</h2>
+                    <p class="section-subtitle">Aprende de los errores más frecuentes de emprendedores peruanos</p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <h3 class="feature-title">No Verificar</h3>
+                        <p class="feature-description">Sin verificación, no puedes editar información ni acceder a estadísticas. ¡Es el error más costoso!</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-times"></i>
+                        </div>
+                        <h3 class="feature-title">Info Desactualizada</h3>
+                        <p class="feature-description">Horarios incorrectos frustran clientes. Actualiza inmediatamente cualquier cambio.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-comment-slash"></i>
+                        </div>
+                        <h3 class="feature-title">Ignorar Reseñas</h3>
+                        <p class="feature-description">No responder reseñas negativas las hace más visibles. Siempre responde profesionalmente.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <h3 class="feature-title">Sin Fotos</h3>
+                        <p class="feature-description">Perfiles sin fotos pierden 42% de interacciones. Sube mínimo 5 fotos de calidad.</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning">
+                    <h4>Error Crítico en Perú</h4>
+                    <p>Muchos emprendedores peruanos olvidan actualizar información durante feriados largos o temporada alta. Esto genera llamadas frustrantes y pérdida de clientes.</p>
+                </div>
+            </section>
+
+            <!-- Advanced Tips -->
+            <section id="consejos" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Consejos Avanzados para Maximizar Resultados</h2>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-chart-bar"></i> Usa Estadísticas para Mejorar</h3>
+                    <p>El panel de métricas te da insights valiosos para optimizar tu estrategia:</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3 class="feature-title">Búsquedas</h3>
+                            <p class="feature-description">Términos exactos que usan para encontrarte. Úsalos en tu descripción.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3 class="feature-title">Visitas al Perfil</h3>
+                            <p class="feature-description">Visitantes únicos. Si es bajo, mejora fotos y descripción.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-route"></i>
+                            </div>
+                            <h3 class="feature-title">Solicitudes de Ruta</h3>
+                            <p class="feature-description">Clientes que buscaron cómo llegar. Indica interés real de compra.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3 class="feature-title">Llamadas Directas</h3>
+                            <p class="feature-description">Interacciones directas. El mejor indicador de conversión.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-comments"></i> Activa Mensajería Directa</h3>
+                    <p>La mensajería permite comunicación instantánea y mejora tu posicionamiento:</p>
+                    
+                    <div class="checklist">
+                        <div class="checklist-item">Instala Google My Business app en tu celular</div>
+                        <div class="checklist-item">Activa notificaciones en tiempo real</div>
+                        <div class="checklist-item">Configura respuesta automática de bienvenida</div>
+                        <div class="checklist-item">Responde en menos de 1 hora para mejor ranking</div>
+                        <div class="checklist-item">Usa mensajes para programar citas o cotizaciones</div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <h4>Ventaja Competitiva</h4>
+                        <p>Google premia con mejor posicionamiento a negocios que mantienen alta tasa de respuesta en mensajes.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-ad"></i> Conexión con Google Ads (Opcional)</h3>
+                    <p>Si quieres amplificar tu alcance, conecta con campañas publicitarias:</p>
+                    
+                    <div class="table-container">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Beneficio</th>
+                                    <th>Sin Google Ads</th>
+                                    <th>Con Google Ads</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Alcance Geográfico</td>
+                                    <td>Local orgánico</td>
+                                    <td>Expandido a toda Lima/Perú</td>
+                                </tr>
+                                <tr>
+                                    <td>Visibilidad</td>
+                                    <td>Dependes del SEO</td>
+                                    <td>Apareces en top resultados</td>
+                                </tr>
+                                <tr>
+                                    <td>Control de Audiencia</td>
+                                    <td>Limitado</td>
+                                    <td>Segmentación avanzada</td>
+                                </tr>
+                                <tr>
+                                    <td>Costo</td>
+                                    <td>Gratuito</td>
+                                    <td>Desde S/ 10/día</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <h4>Recomendación</h4>
+                        <p>Empieza con el perfil gratuito. Solo considera Google Ads cuando tengas más de 50 reseñas y perfil optimizado al 100%.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Conclusion -->
+            <section id="conclusion" class="section">
+                <div class="card">
+                    <h3><i class="fas fa-flag-checkered"></i> Tu Negocio en el Mapa Digital Peruano</h3>
+                    <p>Google Mi Negocio representa, sin duda, una herramienta fundamental para cualquier emprendedor peruano que desee destacar en el entorno digital actual. A lo largo de esta guía, hemos explorado desde los conceptos básicos hasta estrategias avanzadas para maximizar tu presencia local.</p>
+                    
+                    <p>La visibilidad online ya no constituye un lujo, sino una necesidad imperiosa para sobrevivir en el competitivo mercado peruano. Las estadísticas hablan por sí solas: un perfil bien optimizado puede generar visitas reales a tu negocio dentro de las 24 horas siguientes a una búsqueda.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3 class="feature-title">Verificación Completa</h3>
+                            <p class="feature-description">Establece credibilidad ante Google y tus potenciales clientes peruanos.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h3 class="feature-title">Información Actualizada</h3>
+                            <p class="feature-description">Evita confusiones y frustraciones manteniendo datos precisos.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-camera-retro"></i>
+                            </div>
+                            <h3 class="feature-title">Fotografías de Calidad</h3>
+                            <p class="feature-description">Transmite profesionalismo y confianza a tu audiencia local.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-reply-all"></i>
+                            </div>
+                            <h3 class="feature-title">Respuesta a Reseñas</h3>
+                            <p class="feature-description">Demuestra compromiso con la satisfacción del cliente.</p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <h4>El Momento es Ahora</h4>
+                        <p>Google Mi Negocio evoluciona constantemente. Las actualizaciones de 2025 ofrecen posibilidades inéditas para emprendedores peruanos: desde integración con WhatsApp hasta implementación de inteligencia artificial. ¡No te quedes atrás!</p>
+                    </div>
+
+                    <p>Finalmente, considera esta plataforma como tu aliado estratégico para el crecimiento de tu negocio. El tiempo invertido en optimizar tu perfil generará retornos significativos a corto y largo plazo.</p>
+
+                    <div style="text-align: center; margin-top: 40px;">
+                        <a href="https://business.google.com/create" class="cta-button" target="_blank">
+                            <i class="fas fa-rocket"></i>
+                            ¡Crear Mi Perfil Ahora!
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Floating Action Button -->
+    <a href="#" class="fab">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</body>
+</html>
