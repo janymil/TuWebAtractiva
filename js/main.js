@@ -18,6 +18,7 @@ function initNavigation() {
         const navToggle = document.getElementById('nav-toggle');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
+        const navDropdowns = document.querySelectorAll('.nav-dropdown');
 
         // Only add navigation functionality if elements exist
         if (navToggle && navMenu) {
@@ -45,6 +46,39 @@ function initNavigation() {
                 }
             });
         }
+
+        // Handle dropdown menus on mobile
+        navDropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+            
+            if (toggle) {
+                toggle.addEventListener('click', function(e) {
+                    // Only prevent default and toggle on mobile
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                        
+                        // Close other dropdowns
+                        navDropdowns.forEach(other => {
+                            if (other !== dropdown) {
+                                other.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        // Close dropdowns when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                navDropdowns.forEach(dropdown => {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            }
+        });
 
         // Active nav link highlighting
         highlightActiveNavLink();
