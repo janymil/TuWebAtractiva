@@ -7,7 +7,7 @@ Disallow: /gracias.html
 Disallow: /gracias
 
 # Sitemap location
-Sitemap: https://yoursite.com/sitemap.xml
+Sitemap: https://tuwebatractiva.com/sitemap.xml
 
 # Disallow admin areas if any
 # Disallow: /admin/
