@@ -1,0 +1,13 @@
+# Default hosting .htaccess for tuwebatractiva.com
+# Clean URL rewriting for .html files
+
+RewriteEngine On
+
+# Redirect .html URLs to clean URLs (external redirect)
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1? [NC,L,R=301]
+
+# Internal rewrite: serve .html file for clean URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
