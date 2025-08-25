@@ -598,34 +598,38 @@ function initLeadMagnet() {
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner"></i> Enviando...';
         
-        // Send email using EmailJS
-        emailjs.send('service_tuwebatractiva', 'template_lead_magnet', {
-            to_name: data.name,
-            to_email: data.email,
-            business_type: data.business,
-            from_name: 'Tu Web Atractiva',
-            reply_to: data.email
+        // Send email using our backend
+        fetch('/api/email-handler.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
         })
-        .then(function(response) {
-            console.log('Lead magnet email sent successfully:', response);
-            showLeadSuccess(data.name);
-            
-            // Track conversion
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'conversion', {
-                    'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
-                    'value': 1.0,
-                    'currency': 'PEN'
-                });
+        .then(response => response.json())
+        .then(function(result) {
+            if (result.success) {
+                console.log('Lead magnet email sent successfully');
+                showLeadSuccess(data.name, result.downloadTokens);
+                
+                // Track conversion
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+                        'value': 1.0,
+                        'currency': 'PEN'
+                    });
+                }
+                
+                // Reset form
+                leadForm.reset();
+            } else {
+                throw new Error(result.error || 'Error desconocido');
             }
-            
-            // Reset form
-            leadForm.reset();
-            
         })
         .catch(function(error) {
             console.error('Lead magnet email error:', error);
-            showLeadMessage('Hubo un error al enviar. Por favor intenta nuevamente o escríbenos por WhatsApp.', 'error');
+            showLeadMessage(error.message || 'Hubo un error al enviar. Por favor intenta nuevamente o escríbenos por WhatsApp.', 'error');
         })
         .finally(function() {
             // Remove loading state
@@ -666,7 +670,7 @@ function showLeadMessage(message, type) {
     }, 5000);
 }
 
-function showLeadSuccess(name) {
+function showLeadSuccess(name, downloadTokens) {
     const leadMagnetForm = document.querySelector('.lead-magnet-form');
     if (!leadMagnetForm) return;
     
@@ -678,17 +682,15 @@ function showLeadSuccess(name) {
             <p>Los recursos han sido enviados a tu email. Mientras tanto, puedes descargarlos directamente:</p>
             
             <div class="download-links">
-                <a href="/downloads/guia-10-elementos-esenciales-web.pdf" 
+                <a href="/api/download.php?token=${encodeURIComponent(downloadTokens.guide)}" 
                    class="download-btn" 
-                   download
                    target="_blank">
                     <i class="fas fa-download"></i>
                     Descargar Guía Completa
                 </a>
                 
-                <a href="/downloads/checklist-antes-lanzar-web.pdf" 
+                <a href="/api/download.php?token=${encodeURIComponent(downloadTokens.checklist)}" 
                    class="download-btn" 
-                   download
                    target="_blank">
                     <i class="fas fa-download"></i>
                     Descargar Checklist
@@ -789,7 +791,7 @@ function initPriceCalculator() {
     }); // Debug
 
     if (!floatingBtn || !modal) {
-        console.error('Calculator elements not found!');
+        console.log('Calculator elements not found - skipping initialization');
         return;
     }
 

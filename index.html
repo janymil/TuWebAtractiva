@@ -118,6 +118,76 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Mailchimp Form Styling -->
+    <style type="text/css">
+        /* Override Mailchimp default styles to match our design */
+        #mc_embed_signup {
+            background: transparent !important;
+            clear: left;
+            font: inherit !important;
+            width: 100% !important;
+        }
+        
+        #mc_embed_signup form {
+            padding: 0 !important;
+        }
+        
+        #mc_embed_signup input[type="email"],
+        #mc_embed_signup input[type="text"],
+        #mc_embed_signup select {
+            width: 100% !important;
+            padding: 12px 15px !important;
+            border: 2px solid #e5e7eb !important;
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            background: white !important;
+            color: #333 !important;
+            font-family: inherit !important;
+            margin-bottom: 15px !important;
+        }
+        
+        #mc_embed_signup input[type="email"]:focus,
+        #mc_embed_signup input[type="text"]:focus,
+        #mc_embed_signup select:focus {
+            border-color: #C4302B !important;
+            outline: none !important;
+            box-shadow: 0 0 0 3px rgba(196, 48, 43, 0.1) !important;
+        }
+        
+        #mc_embed_signup .button,
+        #mc_embed_signup input[type="submit"] {
+            background: #C4302B !important;
+            color: white !important;
+            border: none !important;
+            padding: 15px 30px !important;
+            font-size: 18px !important;
+            font-weight: bold !important;
+            border-radius: 8px !important;
+            cursor: pointer !important;
+            width: 100% !important;
+            margin-top: 10px !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        #mc_embed_signup .button:hover,
+        #mc_embed_signup input[type="submit"]:hover {
+            background: #A02622 !important;
+            transform: translateY(-2px) !important;
+        }
+        
+        #mc_embed_signup .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2C3E50;
+        }
+        
+        /* Hide Mailchimp responses - we'll handle success differently */
+        #mce-responses {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -618,43 +688,78 @@
                         <p>Solo necesitamos tu email para enviarte los recursos</p>
                     </div>
                     
-                    <form id="leadMagnetForm" class="lead-form">
-                        <div class="form-group">
-                            <label for="leadName">Nombre</label>
-                            <input type="text" id="leadName" name="name" required placeholder="Ej: María García">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="leadEmail">Email</label>
-                            <input type="email" id="leadEmail" name="email" required placeholder="maria@gmail.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="leadBusiness">Tipo de negocio (opcional)</label>
-                            <select id="leadBusiness" name="business">
-                                <option value="">Selecciona tu rubro</option>
-                                <option value="restaurante">Restaurante/Comida</option>
-                                <option value="profesional">Profesional Independiente</option>
-                                <option value="servicios">Servicios Personales</option>
-                                <option value="inmobiliaria">Bienes Raíces</option>
-                                <option value="tecnico">Técnico/Oficio</option>
-                                <option value="educacion">Educación</option>
-                                <option value="turismo">Turismo</option>
-                                <option value="mascotas">Servicios Mascotas</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary-lg">
-                            <i class="fas fa-download"></i>
-                            Descargar Recursos GRATIS
-                        </button>
+                    
+                    <!-- Mailchimp Embedded Form -->
+                    <div id="mc_embed_signup">
+                        <form action="https://tuwebatractiva.us22.list-manage.com/subscribe/post?u=fd8b24713a4f498d023910578&amp;id=e867db6cc2&amp;f_id=00b1c2e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate lead-form" target="_blank">
+                            <div id="mc_embed_signup_scroll">
+                                
+                                <div class="form-group">
+                                    <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email * (Ej: maria@gmail.com)">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="text" name="FNAME" class="text" id="mce-FNAME" placeholder="Nombre (Ej: María)">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="text" name="LNAME" class="text" id="mce-LNAME" placeholder="Apellido (Ej: García)">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="text" name="COMPANY" class="text" id="mce-COMPANY" placeholder="Empresa (opcional - Ej: Mi Restaurante SAC)">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="mce-BUSINESS">Tipo de negocio</label>
+                                    <select name="BUSINESS" class="" id="mce-BUSINESS">
+                                        <option value="">Selecciona tu rubro</option>
+                                        <option value="Restaurante/Comida">Restaurante/Comida</option>
+                                        <option value="Profesional Independiente">Profesional Independiente</option>
+                                        <option value="Servicios Personales">Servicios Personales</option>
+                                        <option value="Bienes Raíces">Bienes Raíces</option>
+                                        <option value="Técnico/Oficio">Técnico/Oficio</option>
+                                        <option value="Educación">Educación</option>
+                                        <option value="Turismo">Turismo</option>
+                                        <option value="Servicios Mascotas">Servicios Mascotas</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Hidden field to prevent bots -->
+                                <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                    <input type="text" name="b_fd8b24713a4f498d023910578_e867db6cc2" tabindex="-1" value="">
+                                </div>
+                                
+                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary-lg" value="Descargar Recursos GRATIS">
+                                
+                                <div id="mce-responses" class="clear foot" style="display: none;">
+                                    <div class="response" id="mce-error-response" style="display: none;"></div>
+                                    <div class="response" id="mce-success-response" style="display: none;"></div>
+                                </div>
+                                
+                            </div>
+                        </form>
                         
                         <p class="form-disclaimer">
                             <i class="fas fa-lock"></i>
                             Tu información está segura. No spam, solo contenido valioso.
                         </p>
-                    </form>
+                    </div>
+                        
+                        <!-- Download Links (shown after subscription) -->
+                        <div id="download-links" style="display: none;">
+                            <h3>¡Gracias! Descarga tus recursos:</h3>
+                            <div class="download-buttons">
+                                <a href="/downloads/checklist-antes-lanzar-web.pdf" class="btn btn-success" target="_blank">
+                                    <i class="fas fa-download"></i> Checklist PDF
+                                </a>
+                                <a href="/downloads/guia-10-elementos-esenciales-web.pdf" class="btn btn-success" target="_blank">
+                                    <i class="fas fa-download"></i> Guía PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -863,5 +968,97 @@
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>
+    
+    <!-- Mailchimp Form Validation -->
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+    <script type="text/javascript">
+        (function($) {
+            window.fnames = new Array(); 
+            window.ftypes = new Array();
+            fnames[0]='EMAIL';ftypes[0]='email';
+            fnames[1]='FNAME';ftypes[1]='text';
+            fnames[2]='LNAME';ftypes[2]='text';
+            fnames[6]='COMPANY';ftypes[6]='text';
+            fnames[3]='BUSINESS';ftypes[3]='dropdown';
+        }(jQuery));
+        var $mcj = jQuery.noConflict(true);
+    </script>
+    
+    <!-- Custom redirect after form submission -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('mc-embedded-subscribe-form');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    // Let the form submit to Mailchimp first
+                    setTimeout(function() {
+                        // After a short delay, redirect to download thank you page
+                        window.location.href = '/gracias-descarga.html';
+                    }, 1000);
+                });
+            }
+        });
+    </script>
+    
+    <style>
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            min-width: 300px;
+            z-index: 10000;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .notification-success .notification-content {
+            background: #28a745;
+        }
+        
+        .notification-error .notification-content {
+            background: #dc3545;
+        }
+        
+        .notification-content i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: white;
+            margin-left: auto;
+            padding: 5px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        
+        .notification-close:hover {
+            opacity: 1;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </body>
 </html>
