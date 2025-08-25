@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist: Antes de Lanzar tu Página Web</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            border-bottom: 3px solid #C4302B;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #C4302B;
+            margin-bottom: 10px;
+        }
+        .checklist-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-style: italic;
+        }
+        .intro {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #FFD700;
+        }
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #C4302B;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .section-icon {
+            display: inline-block;
+            background: #C4302B;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #C4302B;
+            border-radius: 4px;
+            margin-right: 15px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .item-content {
+            flex: 1;
+        }
+        .item-title {
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 5px;
+        }
+        .item-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+        .priority {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-left: 10px;
+        }
+        .priority-critical {
+            background: #fee;
+            color: #c53030;
+        }
+        .priority-important {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .priority-nice {
+            background: #d4edda;
+            color: #155724;
+        }
+        .tip {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px 0;
+            border-top: 2px solid #e5e7eb;
+            background: #f8f9fa;
+        }
+        .progress-tracker {
+            background: #C4302B;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            height: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: #FFD700;
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Tu Web Atractiva</div>
+        <h1 class="checklist-title">Checklist: Antes de Lanzar tu Página Web</h1>
+        <p class="subtitle">La lista definitiva para evitar errores costosos</p>
+    </div>
+
+    <div class="intro">
+        <h2>📋 Cómo usar este checklist</h2>
+        <p>Esta lista contiene <strong>47 elementos críticos</strong> que debes verificar antes de lanzar tu página web. Cada elemento está marcado con su nivel de prioridad:</p>
+        
+        <div style="margin: 20px 0;">
+            <span class="priority priority-critical">Crítico</span> - Puede arruinar tu lanzamiento<br><br>
+            <span class="priority priority-important">Importante</span> - Afecta significativamente el rendimiento<br><br>
+            <span class="priority priority-nice">Deseable</span> - Mejora la experiencia
+        </div>
+        
+        <p><strong>🎯 Meta:</strong> Completa al menos todos los elementos "Críticos" e "Importantes" antes del lanzamiento.</p>
+    </div>
+
+    <div class="progress-tracker">
+        <h3>Tu Progreso</h3>
+        <div id="progress-text">0 de 47 elementos completados (0%)</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <small>Marca las casillas mientras revisas cada elemento</small>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">
+            <span class="section-icon">🎨</span>
+            Diseño y Usabilidad
+        </h3>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">El diseño se ve perfecto en móviles <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">Prueba en diferentes tamaños de pantalla. En Perú, 80% del tráfico es móvil.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">La navegación es intuitiva y clara <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">Un visitante debe encontrar lo que busca en máximo 3 clics.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Los colores y fuentes son legibles <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Contraste adecuado y texto mínimo de 16px en móvil.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Las imágenes tienen buena calidad y están optimizadas <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Máximo 100KB por imagen, formato WebP preferible.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">El logo se ve bien en todos los tamaños <span class="priority priority-nice">Deseable</span></div>
+                <div class="item-description">Versiones para fondo claro y oscuro disponibles.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">
+            <span class="section-icon">⚡</span>
+            Rendimiento y Velocidad
+        </h3>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">La página carga en menos de 3 segundos <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">Usa PageSpeed Insights de Google para medir.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Todas las imágenes están comprimidas <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Sin excepción. Cada imagen debe estar optimizada para web.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">El caché está activado <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Mejora significativamente la velocidad de carga.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">No hay plugins o código innecesario <span class="priority priority-nice">Deseable</span></div>
+                <div class="item-description">Cada plugin afecta la velocidad.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">
+            <span class="section-icon">📞</span>
+            Información de Contacto
+        </h3>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">WhatsApp con enlace directo funciona perfectamente <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">El botón debe abrir WhatsApp con mensaje predefinido.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Teléfono es clickeable en móviles <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Link tel: funcional para llamadas directas.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Dirección física visible y correcta <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Aumenta la confianza y ayuda con SEO local.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Horarios de atención claramente indicados <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Evita llamadas y consultas fuera de horario.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Google Maps integrado (si corresponde) <span class="priority priority-nice">Deseable</span></div>
+                <div class="item-description">Facilita que los clientes te encuentren físicamente.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">
+            <span class="section-icon">📝</span>
+            Contenido y Textos
+        </h3>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Todos los textos están revisados sin errores <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">Errores de ortografía destruyen la credibilidad.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">La propuesta de valor está clara desde el inicio <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">¿Qué haces y por qué elegirte? Debe estar obvio en 5 segundos.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Los servicios están descritos claramente <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Con beneficios específicos, no solo características.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Hay testimonios reales de clientes <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Con nombres y fotos reales si es posible.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Las llamadas a la acción son claras y atractivas <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">"Cotizar ahora", "Reservar cita", etc. Deben destacar visualmente.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Precios o rangos de precios están incluidos <span class="priority priority-nice">Deseable</span></div>
+                <div class="item-description">Filtra clientes y mejora la calidad de consultas.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">
+            <span class="section-icon">🔒</span>
+            Seguridad y Confianza
+        </h3>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Certificado SSL instalado (https://) <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">Google penaliza sitios sin SSL. Los usuarios desconfían.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Política de privacidad disponible <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Requerido por ley y por las plataformas de pago.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Términos y condiciones actualizados <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Protegen tu negocio legalmente.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Formularios de contacto protegidos contra spam <span class="priority priority-nice">Deseable</span></div>
+                <div class="item-description">reCAPTCHA o similar implementado.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">
+            <span class="section-icon">🔍</span>
+            SEO Básico
+        </h3>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Títulos de página optimizados (Title tags) <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">Únicos para cada página, con palabras clave relevantes.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Descripciones meta escritas (Meta descriptions) <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Aparecen en resultados de Google. Deben ser atractivas.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">URLs amigables configuradas <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">ejemplo.com/servicios en lugar de ejemplo.com/?p=123</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Google My Business conectado <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Esencial para negocios locales en Perú.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Sitemap XML generado y enviado a Google <span class="priority priority-nice">Deseable</span></div>
+                <div class="item-description">Ayuda a Google a indexar tu sitio más rápido.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Google Search Console configurado <span class="priority priority-nice">Deseable</span></div>
+                <div class="item-description">Herramienta gratuita para monitorear SEO.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">
+            <span class="section-icon">📊</span>
+            Analíticas y Seguimiento
+        </h3>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Google Analytics 4 instalado y funcionando <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Imprescindible para medir el rendimiento.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Objetivos de conversión configurados <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Formularios enviados, llamadas, etc.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Facebook Pixel instalado (si usas Facebook Ads) <span class="priority priority-nice">Deseable</span></div>
+                <div class="item-description">Para remarketing y medición de anuncios.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">
+            <span class="section-icon">🔧</span>
+            Aspectos Técnicos
+        </h3>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Todos los enlaces internos funcionan <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">Ningún link roto. Verifica menús, botones, enlaces en texto.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Los formularios envían correctamente <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">Prueba enviando formularios reales y verifica que lleguen.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Página 404 personalizada creada <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Mejor experiencia cuando alguien llega a una página inexistente.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Favicon instalado correctamente <span class="priority priority-nice">Deseable</span></div>
+                <div class="item-description">El ícono que aparece en la pestaña del navegador.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Copias de seguridad automáticas configuradas <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Fundamental para proteger tu inversión.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">
+            <span class="section-icon">🧪</span>
+            Pruebas Finales
+        </h3>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Probado en Chrome, Firefox, Safari y Edge <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">Al menos en los navegadores más populares.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Probado en diferentes dispositivos móviles <span class="priority priority-critical">Crítico</span></div>
+                <div class="item-description">iPhone, Android, tabletas de diferentes tamaños.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Velocidad probada en 3G/4G <span class="priority priority-important">Importante</span></div>
+                <div class="item-description">Muchos usuarios en Perú aún usan conexiones lentas.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox" onchange="updateProgress()">
+            <div class="item-content">
+                <div class="item-title">Revisión por persona externa completada <span class="priority priority-nice">Deseable</span></div>
+                <div class="item-description">Ojos frescos pueden encontrar errores que pasaste por alto.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tip">
+        <strong>💡 Tip Pro:</strong> Imprime este checklist y revisa cada elemento físicamente. Es fácil "saltar" elementos cuando solo los revisas en pantalla.
+    </div>
+
+    <div class="warning">
+        <strong>⚠️ Antes del lanzamiento:</strong> Haz una copia de seguridad completa. Siempre puede salir algo mal y necesitarás poder revertir cambios rápidamente.
+    </div>
+
+    <div class="progress-tracker">
+        <h3>🎉 ¿Completaste todo?</h3>
+        <p>Si marcaste todos los elementos críticos e importantes, ¡estás listo para lanzar!</p>
+        <p><strong>Recuerda:</strong> El lanzamiento es solo el inicio. Una web exitosa requiere mantenimiento y mejoras constantes.</p>
+    </div>
+
+    <div class="footer">
+        <div class="logo">Tu Web Atractiva</div>
+        <p>Especialistas en páginas web para pequeñas empresas en Perú</p>
+        <p><strong>WhatsApp:</strong> +51 938 693 848</p>
+        <p><strong>Web:</strong> tuwebatractiva.com</p>
+        <p style="font-size: 12px; color: #666; margin-top: 20px;">
+            © 2025 Tu Web Atractiva. Esta guía es gratuita para uso personal. 
+            Prohibida su venta o distribución comercial sin autorización.
+        </p>
+    </div>
+
+    <script>
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const total = checkboxes.length;
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const percentage = Math.round((checked / total) * 100);
+            
+            document.getElementById('progress-text').textContent = 
+                `${checked} de ${total} elementos completados (${percentage}%)`;
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+            
+            // Guardas el progreso en localStorage
+            localStorage.setItem('checklist-progress', JSON.stringify({
+                total: total,
+                checked: checked,
+                percentage: percentage
+            }));
+        }
+        
+        // Cargar progreso guardado al cargar la página
+        window.onload = function() {
+            const saved = localStorage.getItem('checklist-progress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                document.getElementById('progress-text').textContent = 
+                    `${progress.checked} de ${progress.total} elementos completados (${progress.percentage}%)`;
+                document.getElementById('progress-fill').style.width = `${progress.percentage}%`;
+            }
+        }
+    </script>
+</body>
+</html>
