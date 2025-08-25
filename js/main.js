@@ -89,6 +89,11 @@ function initNavigation() {
 }
 
 function highlightActiveNavLink() {
+    // Only run this function on the homepage
+    if (window.location.pathname !== '/' && !window.location.pathname.includes('index.html')) {
+        return;
+    }
+    
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
     

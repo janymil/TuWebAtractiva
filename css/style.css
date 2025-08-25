@@ -296,8 +296,22 @@ a:hover {
 }
 
 .nav-logo img {
-    width: 40px;
-    height: 40px;
+    width: 200px;
+    height: auto;
+    max-height: 70px;
+}
+
+/* Logo theme switching */
+.nav-logo .logo-dark {
+    display: none;
+}
+
+[data-theme="dark"] .nav-logo .logo-light {
+    display: none;
+}
+
+[data-theme="dark"] .nav-logo .logo-dark {
+    display: block;
 }
 
 .nav-menu {
@@ -310,6 +324,17 @@ a:hover {
     color: hsl(var(--text));
     font-weight: 500;
     position: relative;
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* Ensure desktop navigation links have correct color */
+@media (min-width: 769px) {
+    .nav-link {
+        color: hsl(var(--text)) !important;
+        text-decoration: none !important;
+        border-bottom: none !important;
+    }
 }
 
 .nav-link:hover,
@@ -1922,8 +1947,9 @@ a:hover {
 }
 
 .footer-logo img {
-    width: 28px;
-    height: 28px;
+    width: 200px;
+    height: auto;
+    max-height: 70px;
 }
 
 .footer-links {
