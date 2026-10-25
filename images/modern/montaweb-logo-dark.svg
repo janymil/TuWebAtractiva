@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 52" fill="none">
+  <defs>
+    <linearGradient id="mw-brand-dark" x1="0" y1="0" x2="52" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="55%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="4" width="44" height="44" rx="12" fill="url(#mw-brand-dark)"/>
+  <path d="M11 35V17L20 27.5L24 21L28 27.5L37 17V35" stroke="#0B0F19" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="58" y="34" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="800" font-size="26" fill="#F8FAFC" letter-spacing="-0.8">Monta<tspan fill="#38BDF8">Web</tspan></text>
+  <circle cx="204" cy="30" r="4" fill="#34D399"/>
+</svg>

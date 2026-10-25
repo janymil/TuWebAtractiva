@@ -1,6 +1,6 @@
-# Tu Web Atractiva
+# MontaWeb
 
-Professional website for Tu Web Atractiva - Web design services for small businesses and entrepreneurs in Peru.
+Professional website for MontaWeb - Web design services for small businesses and entrepreneurs in Peru.
 
 ## 🚀 Features
 
@@ -44,7 +44,7 @@ Professional website for Tu Web Atractiva - Web design services for small busine
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/tu-web-atractiva.git
+git clone https://github.com/yourusername/montaweb.git
 ```
 
 2. No build process required - this is a static HTML site
@@ -99,10 +99,10 @@ Edit CSS variables in `css/style.css`:
 
 ## 📄 License
 
-All rights reserved © 2024 Tu Web Atractiva
+All rights reserved © 2026 MontaWeb (Servicios SAAS — RUC 10411592982)
 
 ## 👥 Contact
 
-- Website: https://tuwebatractiva.com
-- WhatsApp: +51 938 693 848
-- Email: info@tuwebatractiva.com
+- Website: https://MontaWeb.com
+- WhatsApp: +51 965 403 196
+- Email: info@MontaWeb.com

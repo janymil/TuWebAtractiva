@@ -1,169 +1,142 @@
-// Tu Web Atractiva - Main JavaScript
+// ==========================================================================
+// MontaWeb by Servicios SAAS (RUC 10411592982)
+// Interactive Experience & Smart Tools (2026 Edition)
+// ==========================================================================
+
+const MONTAWEB_CONFIG = {
+    brand: 'MontaWeb',
+    provider: 'Servicios SAAS',
+    ruc: '10411592982',
+    phone: '965403196',
+    whatsappNumber: '51965403196'
+};
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize each function safely to prevent errors from breaking the form
-    try { initNavigation(); } catch (e) { console.log('Navigation init error:', e); }
-    try { initContactForm(); } catch (e) { console.log('Contact form init error:', e); }
-    try { initPortfolioFilters(); } catch (e) { console.log('Portfolio init error:', e); }
-    try { initFAQ(); } catch (e) { console.log('FAQ init error:', e); }
-    try { initSmoothScrolling(); } catch (e) { console.log('Smooth scrolling init error:', e); }
-    try { initAnimations(); } catch (e) { console.log('Animations init error:', e); }
-    try { initDarkMode(); } catch (e) { console.log('Dark mode init error:', e); }
-    try { initBackToTop(); } catch (e) { console.log('Back to top init error:', e); }
-    try { initLeadMagnet(); } catch (e) { console.log('Lead magnet init error:', e); }
+    try { initNavigation(); } catch (e) { console.warn('Navigation init error:', e); }
+    try { initDarkMode(); } catch (e) { console.warn('Dark mode init error:', e); }
+    try { initPortfolioFilters(); } catch (e) { console.warn('Portfolio filter error:', e); }
+    try { initFAQ(); } catch (e) { console.warn('FAQ init error:', e); }
+    try { initSmoothScrolling(); } catch (e) { console.warn('Smooth scroll error:', e); }
+    try { initAnimations(); } catch (e) { console.warn('Animations error:', e); }
+    try { initBackToTop(); } catch (e) { console.warn('Back to top error:', e); }
+    try { initFloatingWidgets(); } catch (e) { console.warn('Floating widgets error:', e); }
+    try { initPriceCalculator(); } catch (e) { console.warn('Price calculator error:', e); }
+    try { initProjectQuiz(); } catch (e) { console.warn('Project quiz error:', e); }
+    try { initContactFormWhatsApp(); } catch (e) { console.warn('Contact form error:', e); }
+    try { initLeadMagnetDownload(); } catch (e) { console.warn('Lead magnet error:', e); }
 });
 
-// Navigation functionality
+// ==========================================================================
+// 1. Navigation & Mobile Menu
+// ==========================================================================
 function initNavigation() {
-    try {
-        const navToggle = document.getElementById('nav-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const navDropdowns = document.querySelectorAll('.nav-dropdown');
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navDropdowns = document.querySelectorAll('.nav-dropdown');
 
-        // Only add navigation functionality if elements exist
-        if (navToggle && navMenu) {
-            navToggle.addEventListener('click', function() {
-                navToggle.classList.toggle('active');
-                navMenu.classList.toggle('active');
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
             });
+        });
 
-            // Close menu when clicking on links
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
+        document.addEventListener('click', function(e) {
+            if (e && e.target && navToggle && navMenu) {
+                const clickedInside = navToggle.contains(e.target) || navMenu.contains(e.target);
+                if (!clickedInside) {
                     navToggle.classList.remove('active');
                     navMenu.classList.remove('active');
-                });
-            });
+                }
+            }
+        });
+    }
 
-            // Close menu when clicking outside - simplified to avoid errors
-            document.addEventListener('click', function(e) {
-                if (e && e.target && navToggle && navMenu) {
-                    const clickedInsideNav = navToggle.contains(e.target) || navMenu.contains(e.target);
-                    if (!clickedInsideNav) {
-                        navToggle.classList.remove('active');
-                        navMenu.classList.remove('active');
-                    }
+    navDropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+        if (toggle) {
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
                 }
             });
         }
-
-        // Handle dropdown menus on mobile
-        navDropdowns.forEach(dropdown => {
-            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
-            
-            if (toggle) {
-                toggle.addEventListener('click', function(e) {
-                    // Only prevent default and toggle on mobile
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        dropdown.classList.toggle('active');
-                        
-                        // Close other dropdowns
-                        navDropdowns.forEach(other => {
-                            if (other !== dropdown) {
-                                other.classList.remove('active');
-                            }
-                        });
-                    }
-                });
-            }
-        });
-
-        // Close dropdowns when clicking outside on mobile
-        document.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                navDropdowns.forEach(dropdown => {
-                    if (!dropdown.contains(e.target)) {
-                        dropdown.classList.remove('active');
-                    }
-                });
-            }
-        });
-
-        // Active nav link highlighting
-        highlightActiveNavLink();
-    } catch (error) {
-        console.log('Navigation initialization skipped:', error.message);
-    }
-    window.addEventListener('scroll', highlightActiveNavLink);
-}
-
-function highlightActiveNavLink() {
-    // Only run this function on the homepage
-    if (window.location.pathname !== '/' && !window.location.pathname.includes('index.html')) {
-        return;
-    }
-    
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
-            link.classList.add('active');
-        }
     });
 }
 
-// Portfolio filters functionality
+// ==========================================================================
+// 2. Dark / Light Theme Switcher
+// ==========================================================================
+function initDarkMode() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('montaweb_theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme) {
+        htmlEl.setAttribute('data-theme', savedTheme);
+    } else if (systemDark) {
+        htmlEl.setAttribute('data-theme', 'dark');
+    } else {
+        htmlEl.setAttribute('data-theme', 'light');
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const current = htmlEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            htmlEl.setAttribute('data-theme', next);
+            localStorage.setItem('montaweb_theme', next);
+        });
+    }
+}
+
+// ==========================================================================
+// 3. Portfolio Category Filtering
+// ==========================================================================
 function initPortfolioFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
+
     if (!filterBtns.length || !portfolioItems.length) return;
-    
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
-            
-            // Update active button
             filterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            
-            // Filter portfolio items
+
             portfolioItems.forEach(item => {
                 const category = item.getAttribute('data-category');
-                
                 if (filter === 'all' || category === filter) {
                     item.style.display = 'block';
-                    item.classList.remove('hidden');
                 } else {
                     item.style.display = 'none';
-                    item.classList.add('hidden');
                 }
             });
         });
     });
 }
 
-// FAQ functionality
+// ==========================================================================
+// 4. FAQ Accordion
+// ==========================================================================
 function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
-    
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
-        
-        if (question && answer) {
+        if (question) {
             question.addEventListener('click', function() {
                 const isActive = item.classList.contains('active');
-                
-                // Close all other FAQs
-                faqItems.forEach(otherItem => {
-                    otherItem.classList.remove('active');
-                });
-                
-                // Toggle current FAQ
+                faqItems.forEach(other => other.classList.remove('active'));
                 if (!isActive) {
                     item.classList.add('active');
                 }
@@ -172,22 +145,19 @@ function initFAQ() {
     });
 }
 
-// Smooth scrolling for anchor links
+// ==========================================================================
+// 5. Smooth Scrolling & Scroll Animations
+// ==========================================================================
 function initSmoothScrolling() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href === '#') return;
-            
+            if (!href || href === '#') return;
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
-                const offsetTop = target.offsetTop - 80; // Account for fixed navbar
-                
                 window.scrollTo({
-                    top: offsetTop,
+                    top: target.offsetTop - 88,
                     behavior: 'smooth'
                 });
             }
@@ -195,744 +165,438 @@ function initSmoothScrolling() {
     });
 }
 
-// Scroll animations
 function initAnimations() {
-    // Fade in animation for cards and sections
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
+    if (!('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
-    
-    // Observe elements that should animate
-    const animatedElements = document.querySelectorAll(`
-        .service-card,
-        .testimonial-card,
-        .feature-item,
-        .portfolio-card,
-        .contact-method,
-        .process-step,
-        .quick-option
-    `);
-    
-    animatedElements.forEach(el => {
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    const els = document.querySelectorAll('.bento-card, .service-card, .service-card-new, .client-card, .portfolio-card, .testimonial-card, .feature-item, .workflow-step, .contact-method');
+    els.forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        el.style.transform = 'translateY(18px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         observer.observe(el);
     });
-    
-    // Parallax effect for hero section
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const heroImage = document.querySelector('.hero-image img');
-        
-        if (heroImage) {
-            const rate = scrolled * -0.5;
-            heroImage.style.transform = `translateY(${rate}px)`;
-        }
-    });
-    
-    // Number counter animation
-    const counterElements = document.querySelectorAll('.result-item strong');
-    counterElements.forEach(counter => {
-        const target = counter.textContent;
-        const match = target.match(/\+(\d+)%?/);
-        
-        if (match) {
-            const number = parseInt(match[1]);
-            animateCounter(counter, number, target.includes('%') ? '%' : '');
-        }
-    });
 }
 
-function animateCounter(element, target, suffix) {
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                let current = 0;
-                const increment = target / 50;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
-                    element.textContent = `+${Math.floor(current)}${suffix}`;
-                }, 40);
-                
-                observer.unobserve(element);
-            }
-        });
-    });
-    
-    observer.observe(element);
-}
-
-// Utility functions
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Handle form validation in real-time
-function initRealTimeValidation() {
-    const form = document.getElementById('contact-form');
-    if (!form) return;
-    
-    const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
-    
-    inputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            validateField(this);
-        });
-        
-        input.addEventListener('input', debounce(function() {
-            if (this.classList.contains('error')) {
-                validateField(this);
-            }
-        }, 500));
-    });
-}
-
-function validateField(field) {
-    const value = field.value.trim();
-    let isValid = true;
-    let errorMessage = '';
-    
-    // Remove existing error styling
-    field.classList.remove('error');
-    removeFieldError(field);
-    
-    // Check if field is required and empty
-    if (field.hasAttribute('required') && !value) {
-        isValid = false;
-        errorMessage = 'Este campo es obligatorio';
-    }
-    
-    // Field-specific validations
-    if (value) {
-        switch (field.type) {
-            case 'email':
-                if (!isValidEmail(value)) {
-                    isValid = false;
-                    errorMessage = 'Ingresa un email válido';
-                }
-                break;
-            case 'tel':
-                if (!isValidPhone(value)) {
-                    isValid = false;
-                    errorMessage = 'Ingresa un teléfono válido';
-                }
-                break;
-        }
-        
-        // Special validations
-        if (field.name === 'mensaje' && value.length < 10) {
-            isValid = false;
-            errorMessage = 'El mensaje debe tener al menos 10 caracteres';
-        }
-        
-        if (field.name === 'nombre' && value.length < 2) {
-            isValid = false;
-            errorMessage = 'El nombre debe tener al menos 2 caracteres';
-        }
-    }
-    
-    if (!isValid) {
-        field.classList.add('error');
-        showFieldError(field, errorMessage);
-    }
-    
-    return isValid;
-}
-
-function showFieldError(field, message) {
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'field-error';
-    errorDiv.textContent = message;
-    errorDiv.style.color = 'hsl(var(--primary))';
-    errorDiv.style.fontSize = 'var(--font-size-sm)';
-    errorDiv.style.marginTop = 'var(--spacing-xs)';
-    
-    field.parentNode.appendChild(errorDiv);
-}
-
-function removeFieldError(field) {
-    const existingError = field.parentNode.querySelector('.field-error');
-    if (existingError) {
-        existingError.remove();
-    }
-}
-
-// Dark mode functionality
-function initDarkMode() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-    
-    // Check for saved theme preference or default to system preference
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    // Set initial theme
-    if (savedTheme) {
-        htmlElement.setAttribute('data-theme', savedTheme);
-    } else if (systemPrefersDark) {
-        htmlElement.setAttribute('data-theme', 'dark');
-    } else {
-        htmlElement.setAttribute('data-theme', 'light');
-    }
-    
-    // Theme toggle functionality
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // Add smooth transition effect
-            document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
-            setTimeout(() => {
-                document.body.style.transition = '';
-            }, 300);
-        });
-    }
-    
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-        if (!localStorage.getItem('theme')) {
-            htmlElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-        }
-    });
-}
-
-// Back to top functionality
 function initBackToTop() {
-    // Create back to top button
-    const backToTopButton = document.createElement('button');
-    backToTopButton.className = 'back-to-top';
-    backToTopButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
-    backToTopButton.setAttribute('aria-label', 'Volver arriba');
-    backToTopButton.setAttribute('title', 'Volver arriba');
-    
-    // Add button to body
-    document.body.appendChild(backToTopButton);
-    
-    // Show/hide button based on scroll position
-    function toggleBackToTopButton() {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('show');
+    const btn = document.createElement('button');
+    btn.className = 'back-to-top';
+    btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    btn.setAttribute('aria-label', 'Volver arriba');
+    document.body.appendChild(btn);
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 360) {
+            btn.classList.add('show');
         } else {
-            backToTopButton.classList.remove('show');
+            btn.classList.remove('show');
         }
-    }
-    
-    // Scroll to top when button is clicked
-    backToTopButton.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
     });
-    
-    // Listen for scroll events
-    window.addEventListener('scroll', debounce(toggleBackToTopButton, 100));
-    
-    // Initial check
-    toggleBackToTopButton();
-}
 
-// Initialize real-time validation
-document.addEventListener('DOMContentLoaded', function() {
-    initRealTimeValidation();
-});
-
-// WhatsApp floating button (optional enhancement)
-function addFloatingWhatsApp() {
-    const floatingBtn = document.createElement('a');
-    floatingBtn.href = 'https://wa.me/51999999999?text=Hola,%20quiero%20información%20sobre%20diseño%20web';
-    floatingBtn.target = '_blank';
-    floatingBtn.className = 'floating-whatsapp';
-    floatingBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
-    floatingBtn.setAttribute('aria-label', 'Contactar por WhatsApp');
-    
-    // Add CSS for floating button
-    const style = document.createElement('style');
-    style.textContent = `
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .floating-whatsapp:hover {
-            background: #128c7e;
-            transform: scale(1.1);
-            color: white;
-        }
-        
-        @media (max-width: 768px) {
-            .floating-whatsapp {
-                bottom: 15px;
-                right: 15px;
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-        }
-    `;
-    
-    document.head.appendChild(style);
-    document.body.appendChild(floatingBtn);
-}
-
-// Uncomment to add floating WhatsApp button
-// addFloatingWhatsApp();
-
-// Page loading optimization
-window.addEventListener('load', function() {
-    // Hide loading spinner if exists
-    const loader = document.querySelector('.loader');
-    if (loader) {
-        loader.style.opacity = '0';
-        setTimeout(() => loader.remove(), 300);
-    }
-    
-    // Initialize lazy loading for images
-    if ('IntersectionObserver' in window) {
-        const lazyImages = document.querySelectorAll('img[data-src]');
-        const imageObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        lazyImages.forEach(img => imageObserver.observe(img));
-    }
-});
-
-// Error handling for missing elements
-window.addEventListener('error', function(e) {
-    console.warn('Tu Web Atractiva: Error capturado:', e.error);
-});
-
-// Performance monitoring
-if ('performance' in window) {
-    window.addEventListener('load', function() {
-        setTimeout(() => {
-            const navigation = performance.getEntriesByType('navigation')[0];
-            console.log(`Tiempo de carga: ${navigation.loadEventEnd - navigation.loadEventStart}ms`);
-        }, 0);
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
-// Lead Magnet Functionality
-function initLeadMagnet() {
-    const leadForm = document.getElementById('leadMagnetForm');
-    
-    if (!leadForm) return;
-    
-    leadForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(leadForm);
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            business: formData.get('business') || 'No especificado'
-        };
-        
-        // Basic validation
-        if (!data.name || !data.email) {
-            showLeadMessage('Por favor completa todos los campos requeridos.', 'error');
-            return;
-        }
-        
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.email)) {
-            showLeadMessage('Por favor ingresa un email válido.', 'error');
-            return;
-        }
-        
-        // Show loading state
-        leadForm.classList.add('loading');
-        const submitBtn = leadForm.querySelector('.btn-primary-lg');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner"></i> Enviando...';
-        
-        // Send email using our backend
-        fetch('/api/email-handler.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(function(result) {
-            if (result.success) {
-                console.log('Lead magnet email sent successfully');
-                showLeadSuccess(data.name, result.downloadTokens);
-                
-                // Track conversion
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'conversion', {
-                        'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
-                        'value': 1.0,
-                        'currency': 'PEN'
-                    });
-                }
-                
-                // Reset form
-                leadForm.reset();
-            } else {
-                throw new Error(result.error || 'Error desconocido');
-            }
-        })
-        .catch(function(error) {
-            console.error('Lead magnet email error:', error);
-            showLeadMessage(error.message || 'Hubo un error al enviar. Por favor intenta nuevamente o escríbenos por WhatsApp.', 'error');
-        })
-        .finally(function() {
-            // Remove loading state
-            leadForm.classList.remove('loading');
-            submitBtn.innerHTML = originalText;
-        });
-    });
-}
-
-function showLeadMessage(message, type) {
-    const leadForm = document.getElementById('leadMagnetForm');
-    if (!leadForm) return;
-    
-    // Remove existing messages
-    const existingMessage = leadForm.querySelector('.form-message');
-    if (existingMessage) {
-        existingMessage.remove();
+// ==========================================================================
+// 6. Global Floating WhatsApp & Price Comparator Injection
+// ==========================================================================
+function initFloatingWidgets() {
+    // Ensure floating WhatsApp button exists on all pages
+    if (!document.querySelector('.whatsapp-float')) {
+        const waBtn = document.createElement('a');
+        waBtn.href = `https://wa.me/${MONTAWEB_CONFIG.whatsappNumber}?text=${encodeURIComponent('Hola MontaWeb, quiero información sobre sus servicios de diseño web.')}`;
+        waBtn.target = '_blank';
+        waBtn.className = 'whatsapp-float';
+        waBtn.setAttribute('aria-label', 'Contactar por WhatsApp');
+        waBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
+        document.body.appendChild(waBtn);
     }
-    
-    // Create message element
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `form-message form-message-${type}`;
-    messageDiv.innerHTML = `
-        <div class="message-content">
-            <i class="fas fa-${type === 'error' ? 'exclamation-triangle' : 'check-circle'}"></i>
-            <span>${message}</span>
-        </div>
-    `;
-    
-    // Insert message
-    leadForm.insertBefore(messageDiv, leadForm.firstChild);
-    
-    // Auto remove after 5 seconds
-    setTimeout(() => {
-        if (messageDiv.parentNode) {
-            messageDiv.remove();
-        }
-    }, 5000);
-}
 
-function showLeadSuccess(name, downloadTokens) {
-    const leadMagnetForm = document.querySelector('.lead-magnet-form');
-    if (!leadMagnetForm) return;
-    
-    // Replace form with success message and download links
-    leadMagnetForm.innerHTML = `
-        <div class="form-success">
-            <i class="fas fa-check-circle"></i>
-            <h3>¡Perfecto, ${name}!</h3>
-            <p>Los recursos han sido enviados a tu email. Mientras tanto, puedes descargarlos directamente:</p>
-            
-            <div class="download-links">
-                <a href="/api/download.php?token=${encodeURIComponent(downloadTokens.guide)}" 
-                   class="download-btn" 
-                   target="_blank">
-                    <i class="fas fa-download"></i>
-                    Descargar Guía Completa
-                </a>
-                
-                <a href="/api/download.php?token=${encodeURIComponent(downloadTokens.checklist)}" 
-                   class="download-btn" 
-                   target="_blank">
-                    <i class="fas fa-download"></i>
-                    Descargar Checklist
-                </a>
+    // Ensure Floating Price Comparator exists on main pages if not already in DOM
+    if (!document.getElementById('floatingCalculatorBtn')) {
+        const calcBtn = document.createElement('div');
+        calcBtn.className = 'floating-calculator-btn';
+        calcBtn.id = 'floatingCalculatorBtn';
+        calcBtn.innerHTML = `
+            <div class="floating-btn-content">
+                <i class="fas fa-calculator"></i>
+                <span class="floating-btn-text">Comparar Precios</span>
             </div>
-            
-            <p class="success-note">
-                <i class="fas fa-heart"></i>
-                ¡Gracias por confiar en Tu Web Atractiva!
-            </p>
-            
-            <a href="https://wa.me/51938693848?text=Hola,%20descargué%20los%20recursos%20gratuitos%20y%20me%20gustaría%20conversar%20sobre%20mi%20proyecto%20web" 
-               class="btn btn-primary" 
-               target="_blank">
-                <i class="fab fa-whatsapp"></i>
-                ¿Tienes dudas? Conversemos por WhatsApp
-            </a>
-        </div>
-    `;
-    
-    // Scroll to success message
-    leadMagnetForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        `;
+        document.body.appendChild(calcBtn);
+    }
+
+    if (!document.getElementById('calculatorModal')) {
+        const modal = document.createElement('div');
+        modal.className = 'calculator-modal';
+        modal.id = 'calculatorModal';
+        modal.innerHTML = `
+            <div class="modal-overlay" id="modalOverlay"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-scale-balanced" style="color:var(--mw-primary);margin-right:8px;"></i> Comparador de Precios Web</h3>
+                    <button class="modal-close" id="modalClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="calculator-form">
+                    <div class="form-section">
+                        <label for="projectType">1. Selecciona el tipo de proyecto:</label>
+                        <select id="projectType" onchange="calculatePrice()">
+                            <option value="">Elige el tipo de web...</option>
+                            <option value="landing">Landing Page de Alta Conversión (S/ 50)</option>
+                            <option value="simple">Web Simple Profesional 1-3 secciones (S/ 99)</option>
+                            <option value="redesign">Rediseño de Web Existente (S/ 199)</option>
+                            <option value="corporate">Web Corporativa / Empresarial (S/ 249)</option>
+                            <option value="ecommerce">Tienda Online / E-commerce con Yape y Plin (S/ 299)</option>
+                            <option value="custom">Sistema / Proyecto a Medida (S/ 399)</option>
+                        </select>
+                    </div>
+                    <div class="form-section">
+                        <label>2. Incluye funcionalidades adicionales:</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="checkbox" value="seo" checked onchange="calculatePrice()"><span>SEO en Google (Gratis)</span></label>
+                            <label class="checkbox-item"><input type="checkbox" value="hosting" checked onchange="calculatePrice()"><span>Hosting + SSL (Gratis)</span></label>
+                            <label class="checkbox-item"><input type="checkbox" value="content" onchange="calculatePrice()"><span>Redacción de textos (+S/ 40)</span></label>
+                            <label class="checkbox-item"><input type="checkbox" value="gmb" onchange="calculatePrice()"><span>Google Mi Negocio (+S/ 79)</span></label>
+                            <label class="checkbox-item"><input type="checkbox" value="maintenance" onchange="calculatePrice()"><span>Soporte Mensual (+S/ 49)</span></label>
+                            <label class="checkbox-item"><input type="checkbox" value="analytics" checked onchange="calculatePrice()"><span>WhatsApp + Analytics (Gratis)</span></label>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <label for="timeline">3. Prioridad de entrega:</label>
+                        <select id="timeline" onchange="calculatePrice()">
+                            <option value="normal">Estándar (3 a 7 días hábiles)</option>
+                            <option value="urgent">Express Prioritario (48 - 72 horas)</option>
+                            <option value="flexible">Flexible (2 semanas)</option>
+                        </select>
+                    </div>
+                    <div class="results-section" id="resultsSection" style="display: none;">
+                        <div class="price-comparison">
+                            <div class="competitor-price">
+                                <div class="price-label">Otras Agencias en Perú</div>
+                                <div class="price-range" id="competitorPrice">S/ 900 - S/ 2,200</div>
+                                <small style="color:var(--text-muted)">Cobros extras por hosting y SSL</small>
+                            </div>
+                            <div class="vs-divider"><span>VS</span></div>
+                            <div class="our-price">
+                                <div class="price-label">Precio MontaWeb</div>
+                                <div class="price-range our-price-highlight" id="ourPrice">S/ 99</div>
+                                <small style="color:var(--mw-accent);font-weight:600;">Todo incluido • Garantía 100%</small>
+                            </div>
+                        </div>
+                        <div class="savings-highlight" id="savingsHighlight">
+                            <div class="savings-badge">
+                                <i class="fas fa-piggy-bank"></i>
+                                <span>¡Ahorras hasta S/ 1,800 con MontaWeb!</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/51965403196" id="calcWhatsappCta" class="btn btn-primary-calc" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Solicitar este presupuesto por WhatsApp
+                        </a>
+                        <button type="button" class="btn btn-secondary-calc" onclick="resetCalculator()">
+                            <i class="fas fa-redo"></i> Calcular otra combinación
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
 }
 
-// ===========================
-// PRICE CALCULATOR FUNCTIONS
-// ===========================
-
-// Price data for Peru market 2025
+// ==========================================================================
+// 7. Upgraded Price Comparator Logic (2.0)
+// ==========================================================================
 window.priceData = {
     projectTypes: {
-        simple: {
-            name: 'Página Web Simple',
-            competitorMin: 800,
-            competitorMax: 2500,
-            ourPrice: 199
-        },
-        landing: {
-            name: 'Landing Page',
-            competitorMin: 500,
-            competitorMax: 1800,
-            ourPrice: 99
-        },
-        corporate: {
-            name: 'Sitio Corporativo',
-            competitorMin: 1500,
-            competitorMax: 4500,
-            ourPrice: 299
-        },
-        ecommerce: {
-            name: 'Tienda Online',
-            competitorMin: 2500,
-            competitorMax: 8000,
-            ourPrice: 499
-        },
-        redesign: {
-            name: 'Rediseño Web',
-            competitorMin: 800,
-            competitorMax: 3500,
-            ourPrice: 249
-        },
-        custom: {
-            name: 'Proyecto Personalizado',
-            competitorMin: 2000,
-            competitorMax: 6000,
-            ourPrice: 399
-        }
+        landing: { name: 'Landing Page', competitorMin: 550, competitorMax: 1400, ourPrice: 50 },
+        simple: { name: 'Web Simple Profesional', competitorMin: 850, competitorMax: 2200, ourPrice: 99 },
+        redesign: { name: 'Rediseño Web Moderno', competitorMin: 900, competitorMax: 2500, ourPrice: 199 },
+        corporate: { name: 'Web Corporativa', competitorMin: 1500, competitorMax: 3800, ourPrice: 249 },
+        ecommerce: { name: 'Tienda Online E-commerce', competitorMin: 2400, competitorMax: 6000, ourPrice: 299 },
+        custom: { name: 'Proyecto a Medida', competitorMin: 2800, competitorMax: 7500, ourPrice: 399 }
     },
     addons: {
-        seo: { name: 'SEO Básico', competitorPrice: 300, ourPrice: 0 },
-        content: { name: 'Creación de Contenido', competitorPrice: 400, ourPrice: 50 },
-        hosting: { name: 'Hosting (1 año)', competitorPrice: 200, ourPrice: 0 },
-        maintenance: { name: 'Mantenimiento (3 meses)', competitorPrice: 350, ourPrice: 0 },
-        ssl: { name: 'Certificado SSL', competitorPrice: 100, ourPrice: 0 },
+        seo: { name: 'SEO Básico', competitorPrice: 250, ourPrice: 0 },
+        content: { name: 'Creación de Contenido', competitorPrice: 300, ourPrice: 40 },
+        hosting: { name: 'Hosting + SSL', competitorPrice: 220, ourPrice: 0 },
+        gmb: { name: 'Google Mi Negocio', competitorPrice: 280, ourPrice: 79 },
+        maintenance: { name: 'Mantenimiento Mensual', competitorPrice: 250, ourPrice: 49 },
+        ssl: { name: 'Certificado SSL', competitorPrice: 120, ourPrice: 0 },
         analytics: { name: 'Google Analytics', competitorPrice: 150, ourPrice: 0 }
     },
     timelines: {
-        urgent: { multiplier: 1.5, name: 'Urgente (1-7 días)' },
-        normal: { multiplier: 1, name: 'Normal (2-4 semanas)' },
-        flexible: { multiplier: 0.9, name: 'Flexible (1-3 meses)' }
+        urgent: { multiplier: 1.25, name: 'Express (48-72h)' },
+        normal: { multiplier: 1.0, name: 'Estándar (3-7 días)' },
+        flexible: { multiplier: 1.0, name: 'Flexible' }
     }
 };
 
-// Initialize price calculator
 function initPriceCalculator() {
-    console.log('Initializing price calculator...'); // Debug
-    
     const floatingBtn = document.getElementById('floatingCalculatorBtn');
     const modal = document.getElementById('calculatorModal');
     const modalOverlay = document.getElementById('modalOverlay');
     const modalClose = document.getElementById('modalClose');
 
-    console.log('Elements found:', {
-        floatingBtn: !!floatingBtn,
-        modal: !!modal,
-        modalOverlay: !!modalOverlay,
-        modalClose: !!modalClose
-    }); // Debug
+    if (!floatingBtn || !modal) return;
 
-    if (!floatingBtn || !modal) {
-        console.log('Calculator elements not found - skipping initialization');
-        return;
-    }
-
-    // Show modal
     floatingBtn.addEventListener('click', function(e) {
-        console.log('Calculator button clicked!'); // Debug
         e.preventDefault();
         modal.classList.add('show');
         document.body.style.overflow = 'hidden';
     });
 
-    // Hide modal
     function hideModal() {
-        console.log('Hiding modal...'); // Debug
         modal.classList.remove('show');
         document.body.style.overflow = '';
     }
 
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', hideModal);
-    }
-    
-    if (modalClose) {
-        modalClose.addEventListener('click', hideModal);
-    }
+    if (modalOverlay) modalOverlay.addEventListener('click', hideModal);
+    if (modalClose) modalClose.addEventListener('click', hideModal);
 
-    // Close modal with Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.classList.contains('show')) {
             hideModal();
         }
     });
-    
-    console.log('Calculator initialized successfully!'); // Debug
+
+    // Trigger open from any button with data-open-calculator
+    document.querySelectorAll('[data-open-calculator]').forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+    });
 }
 
-// Calculate price based on selections
 window.calculatePrice = function() {
-    console.log('calculatePrice called'); // Debug log
-    
-    const projectType = document.getElementById('projectType').value;
-    const timeline = document.getElementById('timeline').value;
-    const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked');
+    const projectTypeEl = document.getElementById('projectType');
+    const timelineEl = document.getElementById('timeline');
     const resultsSection = document.getElementById('resultsSection');
+    if (!projectTypeEl || !resultsSection) return;
 
-    console.log('Project type:', projectType); // Debug log
+    const projectType = projectTypeEl.value;
+    const timeline = timelineEl ? timelineEl.value : 'normal';
+    const checkboxes = document.querySelectorAll('#calculatorModal .checkbox-group input[type="checkbox"]:checked');
 
     if (!projectType) {
         resultsSection.style.display = 'none';
         return;
     }
 
-    const project = priceData.projectTypes[projectType];
+    const project = window.priceData.projectTypes[projectType];
     if (!project) return;
 
-    // Calculate base prices
     let competitorMin = project.competitorMin;
     let competitorMax = project.competitorMax;
     let ourPrice = project.ourPrice;
 
-    // Add addon costs
-    let competitorAddonCost = 0;
-    let ourAddonCost = 0;
-
-    checkboxes.forEach(checkbox => {
-        const addonKey = checkbox.value;
-        const addon = priceData.addons[addonKey];
+    let selectedAddons = [];
+    checkboxes.forEach(cb => {
+        const addon = window.priceData.addons[cb.value];
         if (addon) {
-            competitorAddonCost += addon.competitorPrice;
-            ourAddonCost += addon.ourPrice;
+            competitorMin += addon.competitorPrice;
+            competitorMax += addon.competitorPrice;
+            ourPrice += addon.ourPrice;
+            selectedAddons.push(addon.name);
         }
     });
 
-    // Apply timeline multiplier
-    if (timeline && priceData.timelines[timeline]) {
-        const multiplier = priceData.timelines[timeline].multiplier;
-        competitorMin = Math.round(competitorMin * multiplier);
-        competitorMax = Math.round(competitorMax * multiplier);
-        ourPrice = Math.round(ourPrice * multiplier);
+    if (timeline && window.priceData.timelines[timeline]) {
+        const mult = window.priceData.timelines[timeline].multiplier;
+        competitorMin = Math.round(competitorMin * mult);
+        competitorMax = Math.round(competitorMax * mult);
+        ourPrice = Math.round(ourPrice * mult);
     }
 
-    // Add addon costs
-    competitorMin += competitorAddonCost;
-    competitorMax += competitorAddonCost;
-    ourPrice += ourAddonCost;
-
-    // Update display
-    updatePriceDisplay(competitorMin, competitorMax, ourPrice);
-    resultsSection.style.display = 'block';
-    
-    // Smooth scroll to results
-    setTimeout(() => {
-        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 100);
-}
-
-// Update price display
-function updatePriceDisplay(competitorMin, competitorMax, ourPrice) {
-    const competitorPriceEl = document.getElementById('competitorPrice');
-    const ourPriceEl = document.getElementById('ourPrice');
+    const compEl = document.getElementById('competitorPrice');
+    const ourEl = document.getElementById('ourPrice');
     const savingsEl = document.getElementById('savingsHighlight');
+    const waCta = document.getElementById('calcWhatsappCta') || resultsSection.querySelector('.btn-primary-calc');
 
-    if (competitorPriceEl) {
-        competitorPriceEl.textContent = `S/ ${competitorMin.toLocaleString()} - S/ ${competitorMax.toLocaleString()}`;
-    }
+    if (compEl) compEl.textContent = `S/ ${competitorMin.toLocaleString()} - S/ ${competitorMax.toLocaleString()}`;
+    if (ourEl) ourEl.textContent = `S/ ${ourPrice.toLocaleString()}`;
 
-    if (ourPriceEl) {
-        ourPriceEl.textContent = `S/ ${ourPrice.toLocaleString()}`;
-    }
-
-    // Calculate savings
-    const minSavings = competitorMin - ourPrice;
-    const maxSavings = competitorMax - ourPrice;
+    const minSavings = Math.max(0, competitorMin - ourPrice);
+    const maxSavings = Math.max(0, competitorMax - ourPrice);
 
     if (savingsEl) {
-        const savingsBadge = savingsEl.querySelector('.savings-badge span');
-        if (savingsBadge) {
-            savingsBadge.textContent = `¡Ahorras entre S/ ${minSavings.toLocaleString()} - S/ ${maxSavings.toLocaleString()}!`;
+        const span = savingsEl.querySelector('.savings-badge span');
+        if (span) {
+            span.textContent = `¡Ahorras entre S/ ${minSavings.toLocaleString()} y S/ ${maxSavings.toLocaleString()}!`;
         }
+    }
+
+    if (waCta) {
+        const msg = `Hola MontaWeb, usé el Comparador de Precios y quiero cotizar:\n• Proyecto: ${project.name}\n• Extras: ${selectedAddons.join(', ') || 'Estándar'}\n• Precio estimado MontaWeb: S/ ${ourPrice}`;
+        waCta.href = `https://wa.me/${MONTAWEB_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+    }
+
+    resultsSection.style.display = 'block';
+};
+
+window.resetCalculator = function() {
+    const projectTypeEl = document.getElementById('projectType');
+    const resultsSection = document.getElementById('resultsSection');
+    if (projectTypeEl) projectTypeEl.value = '';
+    if (resultsSection) resultsSection.style.display = 'none';
+};
+
+// ==========================================================================
+// 8. Interactive Plan Recommender Quiz (New Feature on Home & Servicios)
+// ==========================================================================
+function initProjectQuiz() {
+    const quizBox = document.getElementById('montaweb-quiz');
+    if (!quizBox) return;
+
+    const state = { goal: '', stage: '', content: '' };
+
+    quizBox.querySelectorAll('[data-quiz-step="1"] .quiz-option-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            state.goal = this.getAttribute('data-value');
+            setQuizStep(2);
+        });
+    });
+
+    quizBox.querySelectorAll('[data-quiz-step="2"] .quiz-option-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            state.stage = this.getAttribute('data-value');
+            setQuizStep(3);
+        });
+    });
+
+    quizBox.querySelectorAll('[data-quiz-step="3"] .quiz-option-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            state.content = this.getAttribute('data-value');
+            showQuizRecommendation(state);
+        });
+    });
+
+    const restartBtn = document.getElementById('quizRestartBtn');
+    if (restartBtn) {
+        restartBtn.addEventListener('click', function() {
+            setQuizStep(1);
+        });
+    }
+
+    function setQuizStep(stepNum) {
+        quizBox.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+        const target = quizBox.querySelector(`[data-quiz-step="${stepNum}"]`);
+        if (target) target.classList.add('active');
+
+        quizBox.querySelectorAll('.quiz-dot').forEach((dot, idx) => {
+            dot.classList.toggle('active', idx < stepNum);
+        });
+    }
+
+    function showQuizRecommendation(st) {
+        let planName = 'Web Simple Profesional';
+        let basePrice = 99;
+        let desc = 'Ideal para presentar tu negocio con hasta 3 secciones modernas, botón directo a WhatsApp, SEO básico y hosting gratis por 6 meses.';
+
+        if (st.goal === 'campaign') {
+            planName = 'Landing Page de Conversión';
+            basePrice = 50;
+            desc = 'Página estratégica de aterrizaje diseñada para campañas de anuncios, promociones o captación rápida de clientes por WhatsApp.';
+        } else if (st.goal === 'store') {
+            planName = 'Tienda Online E-commerce';
+            basePrice = 299;
+            desc = 'Catálogo completo de productos, carrito de compras y pagos integrados con Yape, Plin, tarjetas y pedidos por WhatsApp.';
+        } else if (st.stage === 'redesign') {
+            planName = 'Rediseño Web Moderno';
+            basePrice = 199;
+            desc = 'Transformamos tu web antigua en una plataforma ultrarrápida, moderna y adaptada a celulares manteniendo tu posicionamiento.';
+        }
+
+        let extrasText = [];
+        if (st.content === 'need-content') {
+            basePrice += 40;
+            extrasText.push('Creación de Textos e Imágenes (+S/ 40)');
+        }
+        if (st.stage === 'maps') {
+            basePrice += 79;
+            extrasText.push('Ficha Google Mi Negocio (+S/ 79)');
+        }
+
+        const titleEl = document.getElementById('quizResultTitle');
+        const priceEl = document.getElementById('quizResultPrice');
+        const descEl = document.getElementById('quizResultDesc');
+        const waEl = document.getElementById('quizResultWhatsapp');
+
+        if (titleEl) titleEl.textContent = planName + (extrasText.length ? ' + Pack Impulso' : '');
+        if (priceEl) priceEl.textContent = `S/ ${basePrice} pago único`;
+        if (descEl) descEl.textContent = desc + (extrasText.length ? ` Incluye: ${extrasText.join(' + ')}.` : '');
+
+        if (waEl) {
+            const msg = `Hola MontaWeb, hice el test en la web y mi plan ideal es: *${planName}* (Presupuesto estimado: S/ ${basePrice}). Quiero empezar mi proyecto.`;
+            waEl.href = `https://wa.me/${MONTAWEB_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+        }
+
+        setQuizStep(4);
     }
 }
 
-// Reset calculator
-window.resetCalculator = function() {
-    console.log('resetCalculator called'); // Debug log
-    
-    document.getElementById('projectType').value = '';
-    document.getElementById('timeline').value = '';
-    
-    const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.checked = false;
-    });
+// ==========================================================================
+// 9. Contact Form Direct WhatsApp & Fallback Integration
+// ==========================================================================
+function initContactFormWhatsApp() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
 
-    document.getElementById('resultsSection').style.display = 'none';
-    
-    // Scroll back to top of form
-    document.querySelector('.calculator-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombre = (document.getElementById('nombre')?.value || '').trim();
+        const telefono = (document.getElementById('telefono')?.value || '').trim();
+        const email = (document.getElementById('email')?.value || '').trim();
+        const empresa = (document.getElementById('empresa')?.value || '').trim();
+        const servicio = (document.getElementById('servicio')?.value || '').trim();
+        const rubro = (document.getElementById('tipo-negocio')?.value || '').trim();
+        const presupuesto = (document.getElementById('presupuesto')?.value || '').trim();
+        const mensaje = (document.getElementById('mensaje')?.value || '').trim();
+
+        if (!nombre || !telefono || !mensaje) {
+            alert('Por favor completa tu nombre, teléfono y detalles del proyecto.');
+            return;
+        }
+
+        const waMessage = `Hola *MontaWeb*, solicito una cotización web:\n\n` +
+            `• *Nombre:* ${nombre}\n` +
+            `• *Teléfono:* ${telefono}\n` +
+            `• *Email:* ${email}\n` +
+            (empresa ? `• *Empresa:* ${empresa}\n` : '') +
+            (servicio ? `• *Servicio:* ${servicio}\n` : '') +
+            (rubro ? `• *Rubro:* ${rubro}\n` : '') +
+            (presupuesto ? `• *Presupuesto:* ${presupuesto}\n` : '') +
+            `• *Proyecto:* ${mensaje}`;
+
+        const waUrl = `https://wa.me/${MONTAWEB_CONFIG.whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
+        window.open(waUrl, '_blank');
+        window.location.href = '/gracias';
+    });
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initPriceCalculator();
-});
+// ==========================================================================
+// 10. Lead Magnet Instant Access
+// ==========================================================================
+function initLeadMagnetDownload() {
+    const leadForm = document.getElementById('mc-embedded-subscribe-form');
+    if (!leadForm) return;
+
+    leadForm.addEventListener('submit', function() {
+        const dlBox = document.getElementById('download-links');
+        if (dlBox) dlBox.style.display = 'block';
+        setTimeout(() => {
+            window.location.href = '/gracias-descarga';
+        }, 900);
+    });
+}
+

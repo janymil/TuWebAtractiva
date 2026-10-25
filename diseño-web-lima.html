@@ -1,244 +1,96 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diseño Web Lima | Páginas Web Profesionales desde S/99 | Tu Web Atractiva</title>
-    <meta name="description" content="Diseño web profesional en Lima, Perú. Creamos páginas web modernas para empresas limeñas desde S/99. Atención en Miraflores, San Isidro, Surco y toda Lima.">
-    <meta name="keywords" content="diseño web lima, páginas web lima, diseño web miraflores, páginas web san isidro, diseño web surco, sitios web lima centro, desarrollo web lima, diseñador web lima, páginas web profesionales lima, diseño web barato lima, crear página web lima">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Diseño Web Lima | Páginas Web Profesionales desde S/99">
-    <meta property="og:description" content="Especialistas en diseño web en Lima. Creamos páginas web profesionales para empresas limeñas con precios accesibles.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tuwebatractiva.com/diseño-web-lima.html">
-    <meta property="og:image" content="https://tuwebatractiva.com/images/diseño-web-lima.jpg">
-    
-    <!-- Local Business Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Tu Web Atractiva - Diseño Web Lima",
-      "description": "Especialistas en diseño web profesional en Lima, Perú",
-      "url": "https://tuwebatractiva.com",
-      "telephone": "+51938693848",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lima",
-        "addressRegion": "Lima",
-        "addressCountry": "PE"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "-12.0464",
-        "longitude": "-77.0428"
-      },
-      "areaServed": [
-        "Lima", "Miraflores", "San Isidro", "Surco", "La Molina", "Barranco", "San Borja"
-      ],
-      "serviceType": "Diseño Web",
-      "priceRange": "S/99 - S/999"
-    }
-    </script>
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://tuwebatractiva.com/diseño-web-lima.html">
-    
-    <!-- Fonts and CSS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Diseño Web en Lima | Páginas Web desde S/ 99 | MontaWeb</title>
+    <meta name="description" content="Diseño de páginas web profesionales en Lima, Perú por MontaWeb. Atención para Miraflores, San Isidro, Surco, La Molina y toda Lima desde S/ 99.">
+    <link rel="icon" type="image/svg+xml" href="images/modern/favicon.svg">
+    <meta name="theme-color" content="#060A13">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/montaweb.css?v=2026">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="/">
-                    <img src="attached_assets/tuwebatractiva-logo.png" alt="Tu Web Atractiva Logo" class="logo-light">
-                    <img src="attached_assets/tuwebatractiva-darktheme.png" alt="Tu Web Atractiva Logo" class="logo-dark">
-                </a>
+
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo" aria-label="MontaWeb Inicio">
+                <img src="images/modern/montaweb-logo-dark.svg" alt="MontaWeb" class="logo-light">
+                <img src="images/modern/montaweb-logo.svg" alt="MontaWeb" class="logo-dark">
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <a href="/" class="nav__link">Inicio</a>
+                <a href="/servicios" class="nav__link">Servicios</a>
+                <a href="/ejemplos" class="nav__link">Ejemplos</a>
+                <a href="/contacto" class="nav__link">Contacto</a>
+                <a href="https://wa.me/51965403196?text=Hola%20MontaWeb,%20quiero%20informaci%C3%B3n%20sobre%20dise%C3%B1o%20web%20en%20Lima" class="nav__cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> 965 403 196</a>
             </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="/" class="nav-link">Inicio</a>
-                <a href="/servicios" class="nav-link">Servicios</a>
-                <a href="/ejemplos" class="nav-link">Ejemplos</a>
-                <a href="/contacto" class="nav-link">Contacto</a>
-                <a href="https://wa.me/51938693848?text=Hola,%20quiero%20información%20sobre%20diseño%20web%20en%20Lima" class="nav-cta" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-            </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+                <i class="fas fa-moon moon-icon"></i>
+                <i class="fas fa-sun sun-icon"></i>
+            </button>
+            <button class="nav__burger" id="nav-burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-lima">
+    <header class="page-head">
         <div class="container">
-            <div class="hero-content">
-                <h1>Diseño Web Profesional en <span class="highlight">Lima</span></h1>
-                <p class="hero-subtitle">Creamos páginas web modernas y atractivas para empresas limeñas. Desde <strong>S/99</strong> con entrega rápida y garantía de satisfacción.</p>
-                
-                <div class="lima-districts">
-                    <h3>Atendemos en todos los distritos de Lima:</h3>
-                    <div class="districts-grid">
-                        <span><i class="fas fa-map-marker-alt"></i> Miraflores</span>
-                        <span><i class="fas fa-map-marker-alt"></i> San Isidro</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Surco</span>
-                        <span><i class="fas fa-map-marker-alt"></i> La Molina</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Barranco</span>
-                        <span><i class="fas fa-map-marker-alt"></i> San Borja</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Jesús María</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Lince</span>
-                    </div>
-                </div>
+            <span class="eyebrow"><i class="fas fa-location-dot"></i> Especialistas en Lima Metropolitana</span>
+            <h1>Diseño web profesional en <span class="text-gradient">Lima</span> desde S/ 99</h1>
+            <p>Impulsamos negocios limeños con sitios web modernos, ultrarrápidos y garantía de entrega en 3 a 7 días.</p>
+            <div class="chips">
+                <span><i class="fas fa-map-marker-alt"></i> Miraflores</span>
+                <span><i class="fas fa-map-marker-alt"></i> San Isidro</span>
+                <span><i class="fas fa-map-marker-alt"></i> Santiago de Surco</span>
+                <span><i class="fas fa-map-marker-alt"></i> La Molina</span>
+                <span><i class="fas fa-map-marker-alt"></i> San Borja</span>
+                <span><i class="fas fa-map-marker-alt"></i> Magdalena</span>
+                <span><i class="fas fa-map-marker-alt"></i> Jesús María</span>
+                <span><i class="fas fa-map-marker-alt"></i> Los Olivos</span>
+            </div>
+            <div class="btn-group" style="margin-top:2rem;">
+                <a href="https://wa.me/51965403196?text=Hola%20MontaWeb,%20quiero%20cotizar%20una%20web%20para%20mi%20empresa%20en%20Lima" class="btn btn--whatsapp btn--lg" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Cotización gratis Lima (965 403 196)</a>
+                <a href="/ejemplos" class="btn btn--ghost btn--lg">Ver portafolio</a>
+            </div>
+        </div>
+    </header>
 
-                <div class="hero-cta">
-                    <a href="https://wa.me/51938693848?text=Hola,%20quiero%20una%20cotización%20para%20diseño%20web%20en%20Lima" class="btn btn-primary" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Cotización Gratuita Lima
-                    </a>
-                    <a href="/ejemplos" class="btn btn-secondary">Ver Ejemplos</a>
+    <section class="section">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow"><i class="fas fa-mountain-city"></i> Cerca de ti</span>
+                <h2>¿Por qué elegir MontaWeb en Lima?</h2>
+                <p>Combinamos velocidad de entrega, precios accesibles y soporte directo por WhatsApp.</p>
+            </div>
+            <div class="cards-grid cards-grid--3">
+                <div class="f-card">
+                    <div class="f-card__icon"><i class="fas fa-clock"></i></div>
+                    <h3>Entrega en 3 a 7 días</h3>
+                    <p>Tu empresa limeña lista para recibir consultas y pedidos online en tiempo récord.</p>
+                </div>
+                <div class="f-card">
+                    <div class="f-card__icon"><i class="fas fa-mobile-screen"></i></div>
+                    <h3>Yape, Plin y WhatsApp</h3>
+                    <p>Adaptado a la forma real en que compran los clientes en Lima y todo el Perú.</p>
+                </div>
+                <div class="f-card">
+                    <div class="f-card__icon"><i class="fas fa-file-shield"></i></div>
+                    <h3>Trabajo formal</h3>
+                    <p>Alcance por escrito y comprobante de pago. Atención directa desde Magdalena del Mar.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us for Lima -->
-    <section class="why-lima">
-        <div class="container">
-            <h2>¿Por qué elegir Tu Web Atractiva para tu proyecto web en Lima?</h2>
-            
-            <div class="lima-benefits">
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Entrega Rápida en Lima</h3>
-                    <p>Tu página web estará lista en 3-7 días. Perfecto para empresas limeñas que necesitan presencia online urgente.</p>
-                </div>
-
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Atención Personalizada</h3>
-                    <p>Conocemos el mercado limeño. Adaptamos tu diseño web a las preferencias de tus clientes en Lima.</p>
-                </div>
-
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <h3>Precios Justos para Lima</h3>
-                    <p>Desde S/99. Precios competitivos diseñados para pequeñas y medianas empresas de Lima.</p>
-                </div>
-
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Optimizado para Mobile</h3>
-                    <p>El 85% de limeños navega desde móviles. Tu web se verá perfecta en cualquier dispositivo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lima Business Types -->
-    <section class="lima-businesses">
-        <div class="container">
-            <h2>Empresas en Lima que confían en nosotros</h2>
-            <p>Hemos creado páginas web exitosas para diversos sectores en Lima:</p>
-            
-            <div class="business-categories">
-                <div class="category-item">
-                    <h3><i class="fas fa-utensils"></i> Restaurantes en Lima</h3>
-                    <p>Páginas web para restaurantes en Miraflores, Barranco y toda Lima con menús digitales y delivery.</p>
-                </div>
-
-                <div class="category-item">
-                    <h3><i class="fas fa-user-md"></i> Consultorios Médicos</h3>
-                    <p>Sitios web para doctores y clínicas en San Isidro, La Molina y distritos de Lima.</p>
-                </div>
-
-                <div class="category-item">
-                    <h3><i class="fas fa-home"></i> Inmobiliarias Lima</h3>
-                    <p>Páginas web para inmobiliarias con propiedades en Surco, San Borja y toda Lima Metropolitana.</p>
-                </div>
-
-                <div class="category-item">
-                    <h3><i class="fas fa-briefcase"></i> Servicios Profesionales</h3>
-                    <p>Sitios web para abogados, contadores y consultores en el centro financiero de Lima.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lima Testimonials -->
-    <section class="lima-testimonials">
-        <div class="container">
-            <h2>Lo que dicen nuestros clientes en Lima</h2>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="stars">★★★★★</div>
-                        <p>"Excelente servicio de diseño web en Lima. Mi restaurante en Miraflores ahora recibe más pedidos online."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <strong>Carlos Mendoza</strong>
-                        <span>Restaurante El Limeño - Miraflores</span>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="stars">★★★★★</div>
-                        <p>"Muy profesionales. Mi consultorio en San Isidro ahora tiene más pacientes gracias a mi página web."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <strong>Dra. Ana García</strong>
-                        <span>Consultorio Dental - San Isidro</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-lima">
-        <div class="container">
-            <div class="cta-content">
-                <h2>¿Tu empresa en Lima necesita una página web?</h2>
-                <p>Únete a las más de 200+ empresas limeñas que han confiado en nosotros</p>
-                <a href="https://wa.me/51938693848?text=Hola,%20mi%20empresa%20está%20en%20Lima%20y%20quiero%20una%20cotización%20web" class="btn btn-primary" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Empezar Mi Proyecto Web
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="attached_assets/tuwebatractiva-darktheme.png" alt="Tu Web Atractiva Lima">
-                </div>
-                <div class="footer-links">
-                    <a href="/servicios">Servicios</a>
-                    <a href="/ejemplos">Ejemplos</a>
-                    <a href="/contacto">Contacto</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2025 Tu Web Atractiva - Diseño Web Lima. Todos los derechos reservados.
+            <div class="footer__bottom" style="border-top:none;">
+                <span>&copy; 2026 <strong>MontaWeb</strong> — Proveedor oficial: <strong>Servicios SAAS (RUC 10411592982)</strong>.</span>
+                <span>WhatsApp: <a href="https://wa.me/51965403196" target="_blank" rel="noopener">965 403 196</a></span>
+                <span><a href="/terminos">Términos y condiciones</a> · <a href="/privacidad">Política de privacidad</a></span>
             </div>
         </div>
     </footer>
-
-    <script src="js/main.js"></script>
+    <script src="js/app.js?v=2026"></script>
 </body>
 </html>

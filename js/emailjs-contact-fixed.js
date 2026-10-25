@@ -127,7 +127,7 @@
         
         // Open WhatsApp and redirect
         setTimeout(() => {
-            window.open(`https://wa.me/51938693848?text=${encodeURIComponent(message)}`, '_blank');
+            window.open(`https://wa.me/51965403196?text=${encodeURIComponent(message)}`, '_blank');
             window.location.href = '/gracias';
         }, 1000);
     }
@@ -149,7 +149,7 @@
 📋 Descripción:
 ${data.mensaje}
 
-Enviado desde: tuwebatractiva.com`;
+Enviado desde: MontaWeb.com`;
     }
     
     function showSuccess(submitBtn) {

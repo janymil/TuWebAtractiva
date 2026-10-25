@@ -1,167 +1,59 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>¡Gracias! - Tu Web Atractiva</title>
-    <meta name="description" content="Gracias por contactarnos. Te responderemos en menos de 24 horas.">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="¡Gracias por contactarnos! - Tu Web Atractiva">
-    <meta property="og:description" content="Tu solicitud ha sido enviada exitosamente. Te contactaremos en menos de 24 horas.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tuwebatractiva.com/gracias">
-    <meta property="og:image" content="https://tuwebatractiva.com/images/logo-new.svg">
-    <meta property="og:site_name" content="Tu Web Atractiva">
-    <meta property="og:locale" content="es_PE">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="¡Gracias por contactarnos! - Tu Web Atractiva">
-    <meta name="twitter:description" content="Tu solicitud ha sido enviada exitosamente. Te contactaremos en menos de 24 horas.">
-    <meta name="twitter:image" content="https://tuwebatractiva.com/images/logo-new.svg">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://tuwebatractiva.com/gracias">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <title>¡Solicitud recibida! | MontaWeb</title>
+    <link rel="icon" type="image/svg+xml" href="images/modern/favicon.svg">
+    <meta name="theme-color" content="#060A13">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/montaweb.css?v=2026">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="/">
-                    <img src="attached_assets/tuwebatractiva-logo.png" alt="Tu Web Atractiva Logo" class="logo-light">
-                    <img src="attached_assets/tuwebatractiva-darktheme.png" alt="Tu Web Atractiva Logo" class="logo-dark">
-                </a>
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo" aria-label="MontaWeb Inicio">
+                <img src="images/modern/montaweb-logo-dark.svg" alt="MontaWeb" class="logo-light">
+                <img src="images/modern/montaweb-logo.svg" alt="MontaWeb" class="logo-dark">
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <a href="/" class="nav__link">Inicio</a>
+                <a href="/servicios" class="nav__link">Servicios</a>
+                <a href="/ejemplos" class="nav__link">Ejemplos</a>
+                <a href="/contacto" class="nav__link">Contacto</a>
+                <a href="https://wa.me/51965403196" class="nav__cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> 965 403 196</a>
             </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="/" class="nav-link">Inicio</a>
-                <a href="/servicios" class="nav-link">Servicios</a>
-                <a href="/ejemplos" class="nav-link">Ejemplos</a>
-                <div class="nav-dropdown">
-                    <span class="nav-dropdown-toggle">App</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="https://micita.pe" class="nav-dropdown-link" target="_blank">Gestión de Clientes</a>
-                        <a href="https://finanzerpro.com/" class="nav-dropdown-link" target="_blank">FinanzerPro</a>
-                    </div>
-                </div>
-                <a href="/contacto" class="nav-link">Contacto</a>
-                <a href="https://blog.tuwebatractiva.com" class="nav-link" target="_blank">Blog</a>
-                <a href="https://wa.me/51938693848?text=Hola,%20quiero%20información%20sobre%20sus%20servicios%20web" class="nav-cta" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
-                    <i class="fas fa-moon moon-icon"></i>
-                    <i class="fas fa-sun sun-icon"></i>
-                </button>
-            </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+            <button class="nav__burger" id="nav-burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
-    <!-- Thank You Section -->
-    <section class="thank-you-section">
-        <div class="container">
-            <div class="thank-you-content">
-                <div class="thank-you-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <h1>¡Gracias por contactarnos!</h1>
-                <p class="lead">Tu solicitud ha sido enviada exitosamente</p>
-                
-                <div class="next-steps">
-                    <h2>¿Qué sigue ahora?</h2>
-                    <div class="steps-grid">
-                        <div class="step">
-                            <div class="step-number">1</div>
-                            <h3>Revisión</h3>
-                            <p>Revisaremos tu solicitud en detalle</p>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">2</div>
-                            <h3>Propuesta</h3>
-                            <p>Te enviaremos una propuesta personalizada</p>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">3</div>
-                            <h3>Contacto</h3>
-                            <p>Te contactaremos en menos de 24 horas</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-info">
-                    <h3>Mientras tanto, también puedes contactarnos directamente:</h3>
-                    <div class="contact-options">
-                        <a href="https://wa.me/51938693848?text=Hola,%20acabo%20de%20enviar%20mi%20solicitud%20por%20el%20formulario" class="btn btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            WhatsApp: +51 938 693 848
-                        </a>
-                        <a href="mailto:info@tuwebatractiva.com" class="btn btn-outline">
-                            <i class="fas fa-envelope"></i>
-                            info@tuwebatractiva.com
-                        </a>
-                    </div>
-                </div>
-
-                <div class="back-actions">
-                    <a href="/" class="btn btn-primary">
-                        <i class="fas fa-home"></i>
-                        Volver al Inicio
-                    </a>
-                    <a href="/ejemplos" class="btn btn-secondary">
-                        <i class="fas fa-eye"></i>
-                        Ver Ejemplos
-                    </a>
-                </div>
+    <main class="center-page">
+        <div class="center-box">
+            <div class="big-icon"><i class="fas fa-circle-check"></i></div>
+            <h1>¡Gracias por contactar a MontaWeb!</h1>
+            <p>Tu solicitud ya está en camino. Nuestro equipo la está revisando y prepara tu propuesta personalizada.</p>
+            <div class="mini-steps">
+                <div class="step"><div class="step__num">1</div><h3>Análisis</h3><p>Evaluamos tu rubro y requerimientos.</p></div>
+                <div class="step"><div class="step__num">2</div><h3>Cotización</h3><p>Preparamos tu propuesta a medida.</p></div>
+                <div class="step"><div class="step__num">3</div><h3>Contacto</h3><p>Te escribimos por WhatsApp en minutos.</p></div>
+            </div>
+            <div class="btn-group">
+                <a href="https://wa.me/51965403196?text=Hola%20MontaWeb,%20acabo%20de%20enviar%20mi%20solicitud%20por%20la%20web" class="btn btn--whatsapp btn--lg" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Chatear ahora: 965 403 196</a>
+                <a href="/" class="btn btn--ghost btn--lg"><i class="fas fa-home"></i> Volver al inicio</a>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="attached_assets/tuwebatractiva-darktheme.png" alt="Tu Web Atractiva">
-                </div>
-                
-                <div class="footer-links">
-                    <a href="/">Inicio</a>
-                    <a href="/ejemplos">Ejemplos</a>
-                    <a href="/contacto">Contacto</a>
-                </div>
-                
-                <div class="footer-social">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/51938693848" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                &copy; 2024 Tu Web Atractiva. Todos los derechos reservados.
+            <div class="footer__bottom" style="border-top:none;">
+                <span>&copy; 2026 <strong>MontaWeb</strong> — Proveedor oficial: <strong>Servicios SAAS (RUC 10411592982)</strong>.</span>
+                <span>WhatsApp: <a href="https://wa.me/51965403196" target="_blank" rel="noopener">965 403 196</a></span>
+                <span><a href="/terminos">Términos y condiciones</a> · <a href="/privacidad">Política de privacidad</a></span>
             </div>
         </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script src="js/app.js?v=2026"></script>
 </body>
 </html>
