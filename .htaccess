@@ -32,3 +32,14 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
     Header always set X-XSS-Protection "1; mode=block"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
+
+# Internal docs (README / mail setup) must not be served over HTTP
+<FilesMatch "^.*\.md$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

@@ -1,0 +1,21 @@
+# MontaWeb — /api
+# El endpoint es público (POST), pero la configuración y los leads NO.
+
+Options -Indexes
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+</IfModule>
+
+# Bloquea credenciales, logs y copias de los briefs
+<FilesMatch "^(config\.php|config\.example\.php|.*\.log|.*\.json|.*\.md)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Solo POST al endpoint (el propio PHP también lo valida)

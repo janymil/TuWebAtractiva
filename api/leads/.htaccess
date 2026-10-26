@@ -1,0 +1,10 @@
+# Los briefs guardados nunca deben servirse por HTTP
+Options -Indexes
+
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

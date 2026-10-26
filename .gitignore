@@ -48,3 +48,11 @@ build/
 
 # Server files
 .htaccess.backup
+
+# Brief / mail secrets (NUNCA subir al repo)
+api/config.php
+api/vendor/
+api/leads/*
+!api/leads/.htaccess
+montaweb-mail-config.php
+*.env

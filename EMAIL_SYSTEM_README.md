@@ -1,5 +1,14 @@
 # Tu Web Atractiva - Email Collection & Secure Download System
 
+> ## ⚠️ Security warning (2026-10-25)
+> This file was published with a **real SMTP password in plain text** (commit `16d466f`, still present on
+> `origin/main` of a public repository). Treat that password as **compromised**:
+> 1. Change it now in the mailbox control panel (and revoke any "app password" that was used).
+> 2. Never write credentials in README/docs or any tracked file.
+> 3. Put mail credentials **outside the website folder**, as explained in `BRIEF_SETUP.md`.
+>
+> Removing the text here does **not** remove it from git history, forks or search-engine caches.
+
 ## 📧 Email Collection & Marketing
 
 ### Current Setup
@@ -37,7 +46,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-2. Update SMTP credentials in `.env` file (already configured with your Hostinger settings)
+2. Update SMTP credentials in `.env` file (never commit this file; keep it out of the repository)
 
 3. Convert HTML to PDF:
    - Option 1: Use browser Print → Save as PDF
@@ -87,7 +96,7 @@ The system logs:
 SMTP_HOST=smtp.hostinger.com
 SMTP_PORT=465
 SMTP_USERNAME=info@tuwebatractiva.com
-SMTP_PASSWORD=Madalbal1*
+SMTP_PASSWORD=CAMBIAR_ESTA_CONTRASENA
 ```
 
 ### Email Marketing Integration

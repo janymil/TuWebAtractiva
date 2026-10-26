@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario de inicio de proyecto | MontaWeb</title>
+    <meta name="description" content="Completa el brief de tu proyecto web en 6 pasos: negocio, objetivos, contenido, diseño, funciones y presupuesto. Así preparamos tu web sin idas y vueltas.">
+    <meta name="keywords" content="brief diseño web peru, cuestionario página web, onboarding cliente diseño web, MontaWeb">
+    <meta name="author" content="MontaWeb">
+    <meta property="og:title" content="Cuestionario de inicio | MontaWeb">
+    <meta property="og:description" content="Cuéntanos tu negocio en 6 pasos y diseñamos tu web con todo claro desde el día uno.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="images/modern/favicon.svg">
+    <meta name="theme-color" content="#060A13">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/montaweb.css?v=2026">
+    <link rel="stylesheet" href="css/brief.css?v=2026">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo" aria-label="MontaWeb Inicio">
+                <img src="images/modern/montaweb-logo-dark.svg" alt="MontaWeb" class="logo-light">
+                <img src="images/modern/montaweb-logo.svg" alt="MontaWeb" class="logo-dark">
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <a href="/" class="nav__link">Inicio</a>
+                <a href="/servicios" class="nav__link">Servicios</a>
+                <a href="/ejemplos" class="nav__link">Ejemplos</a>
+                <a href="/#cotizador" class="nav__link">Cotizador</a>
+                <a href="/contacto" class="nav__link">Contacto</a>
+                <a href="https://wa.me/51965403196" class="nav__cta" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> 965 403 196
+                </a>
+            </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+                <i class="fas fa-moon moon-icon"></i>
+                <i class="fas fa-sun sun-icon"></i>
+            </button>
+            <button class="nav__burger" id="nav-burger" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-head brief-head">
+        <div class="container">
+            <span class="eyebrow"><i class="fas fa-clipboard-list"></i> Brief de proyecto · 6 pasos</span>
+            <h1>Cuéntanos tu negocio y armamos <span class="text-gradient">tu web</span></h1>
+            <p>Esto es lo mismo que preguntamos en una reunión, pero por escrito: nos permite diseñar, escribir y lanzar tu web sin idas y vueltas. Puedes dejar en blanco lo que no sepas — lo completamos juntos por WhatsApp.</p>
+            <div class="brief-badges">
+                <span><i class="fas fa-clock"></i> 4 a 6 minutos</span>
+                <span><i class="fas fa-floppy-disk"></i> Se guarda solo</span>
+                <span><i class="fas fa-lock"></i> Datos confidenciales</span>
+                <a href="https://wa.me/51965403196?text=Hola%20MontaWeb%2C%20prefiero%20contar%20mi%20proyecto%20por%20WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Prefiero WhatsApp</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section brief-section">
+        <div class="container">
+            <form id="brief-form" class="brief-form" novalidate>
+                <!-- Spam trap: real users never see or fill this -->
+                <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                    <label for="_honey">No completar</label>
+                    <input type="text" id="_honey" name="_honey" tabindex="-1" autocomplete="off">
+                </div>
+                <input type="hidden" id="brief-ts" name="_ts" value="">
+
+                <div class="brief-progress">
+                    <div class="brief-progress__track">
+                        <span class="brief-progress__fill" id="brief-progress-fill"></span>
+                    </div>
+                    <div class="brief-progress__meta">
+                        <span id="brief-step-label">Paso 1 de 6 · Tu negocio</span>
+                        <span id="brief-save-state" class="is-dirty">Borrador sin guardar</span>
+                    </div>
+                </div>
+
+                <ol class="brief-steps" id="brief-steps" aria-label="Pasos del cuestionario"></ol>
+
+                <div class="brief-card">
+                    <p class="brief-alert" id="brief-alert" role="alert" hidden></p>
+
+                    <!-- PASO 1 -->
+                    <section class="brief-step active" data-step="1" data-title="Tu negocio">
+                        <h2 class="brief-step__title"><i class="fas fa-store"></i> Tu negocio</h2>
+                        <p class="brief-step__hint">Lo básico para saber a quién le estamos diseñando. Los campos con <span class="req">*</span> son obligatorios.</p>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="nombre_contacto">Tu nombre y apellido <span class="req">*</span></label>
+                                <input type="text" id="nombre_contacto" name="nombre_contacto" placeholder="Ej: María Torres" autocomplete="name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="cargo">Tu cargo en el negocio</label>
+                                <input type="text" id="cargo" name="cargo" placeholder="Ej: dueña, administrador, marketing">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="whatsapp">WhatsApp <span class="req">*</span></label>
+                                <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej: 987 654 321" autocomplete="tel" inputmode="tel" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="email">Correo electrónico <span class="req">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="negocio">Nombre comercial del negocio <span class="req">*</span></label>
+                                <input type="text" id="negocio" name="negocio" placeholder="Ej: Restaurante El Buen Sabor" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="rubro">Rubro <span class="req">*</span></label>
+                                <select id="rubro" name="rubro" required>
+                                    <option value="">Selecciona una opción...</option>
+                                    <option value="Restaurante, cafetería o bar">Restaurante, cafetería o bar</option>
+                                    <option value="Tienda / retail / bodega">Tienda / retail / bodega</option>
+                                    <option value="Salud, clínica o consultorio">Salud, clínica o consultorio</option>
+                                    <option value="Belleza, barbería o spa">Belleza, barbería o spa</option>
+                                    <option value="Servicios profesionales">Servicios profesionales</option>
+                                    <option value="Educación, academia o instituto">Educación, academia o instituto</option>
+                                    <option value="Inmobiliaria o construcción">Inmobiliaria o construcción</option>
+                                    <option value="Turismo, hospedaje o viajes">Turismo, hospedaje o viajes</option>
+                                    <option value="Transporte, delivery o logística">Transporte, delivery o logística</option>
+                                    <option value="Fitness, gimnasio o deporte">Fitness, gimnasio o deporte</option>
+                                    <option value="Otro rubro">Otro rubro (lo detallo abajo)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="ciudad">Ciudad y distrito <span class="req">*</span></label>
+                                <input type="text" id="ciudad" name="ciudad" placeholder="Ej: Lima, Surco" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="atencion">¿Cómo atiendes hoy?</label>
+                                <select id="atencion" name="atencion">
+                                    <option value="">Selecciona una opción...</option>
+                                    <option value="Solo local físico">Solo local físico</option>
+                                    <option value="Delivery / a domicilio">Delivery / a domicilio</option>
+                                    <option value="Online (WhatsApp o redes)">Online (WhatsApp o redes)</option>
+                                    <option value="Local + delivery + online">Local + delivery + online</option>
+                                    <option value="A todo el Perú (envíos)">A todo el Perú (envíos)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="razon_ruc">Razón social y RUC (para tu boleta o factura)</label>
+                                <input type="text" id="razon_ruc" name="razon_ruc" placeholder="Ej: Servicios SAAS · RUC 10411592982">
+                            </div>
+                            <div class="form-field">
+                                <label for="antiguedad">¿Hace cuánto está tu negocio en el mercado?</label>
+                                <select id="antiguedad" name="antiguedad">
+                                    <option value="">Selecciona una opción...</option>
+                                    <option value="Aún no empiezo (idea o negocio nuevo)">Aún no empiezo (idea o negocio nuevo)</option>
+                                    <option value="Menos de 1 año">Menos de 1 año</option>
+                                    <option value="De 1 a 3 años">De 1 a 3 años</option>
+                                    <option value="De 3 a 5 años">De 3 a 5 años</option>
+                                    <option value="Más de 5 años">Más de 5 años</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="web_actual">¿Ya tienes página web o redes sociales?</label>
+                            <textarea id="web_actual" name="web_actual" rows="3" placeholder="Pega los enlaces de tu web actual, Instagram, Facebook, TikTok o Google Maps. Si no tienes, escribe &quot;no tengo&quot;."></textarea>
+                        </div>
+                    </section>
+
+                    <!-- PASO 2 -->
+                    <section class="brief-step" data-step="2" data-title="Objetivos y clientes">
+                        <h2 class="brief-step__title"><i class="fas fa-bullseye"></i> Objetivos y clientes</h2>
+                        <p class="brief-step__hint">Aquí definimos qué debe lograr tu web. Si aún no lo tienes claro, marca lo que más te suene: lo afinamos contigo.</p>
+
+                        <fieldset class="brief-fieldset" data-required-group="objetivos">
+                            <legend>¿Para qué necesitas la web? <span class="req">*</span></legend>
+                            <p class="brief-help">Marca todas las que apliquen.</p>
+                            <div class="choice-grid">
+                                <label class="choice"><input type="checkbox" name="objetivos[]" value="Que me encuentren en Google"><span class="box"><i class="fas fa-check"></i></span><span>Que me encuentren en Google</span></label>
+                                <label class="choice"><input type="checkbox" name="objetivos[]" value="Vender online"><span class="box"><i class="fas fa-check"></i></span><span>Vender online</span></label>
+                                <label class="choice"><input type="checkbox" name="objetivos[]" value="Recibir pedidos por WhatsApp"><span class="box"><i class="fas fa-check"></i></span><span>Recibir pedidos por WhatsApp</span></label>
+                                <label class="choice"><input type="checkbox" name="objetivos[]" value="Reservas o citas"><span class="box"><i class="fas fa-check"></i></span><span>Reservas o citas</span></label>
+                                <label class="choice"><input type="checkbox" name="objetivos[]" value="Mostrar catálogo o menú"><span class="box"><i class="fas fa-check"></i></span><span>Mostrar catálogo o menú</span></label>
+                                <label class="choice"><input type="checkbox" name="objetivos[]" value="Dar credibilidad y confianza"><span class="box"><i class="fas fa-check"></i></span><span>Dar credibilidad y confianza</span></label>
+                                <label class="choice"><input type="checkbox" name="objetivos[]" value="Captar clientes potenciales"><span class="box"><i class="fas fa-check"></i></span><span>Captar clientes potenciales</span></label>
+                                <label class="choice"><input type="checkbox" name="objetivos[]" value="Reemplazar mis redes sociales"><span class="box"><i class="fas fa-check"></i></span><span>Reemplazar mis redes sociales</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-field">
+                            <label for="meta">¿Cómo sabrás que la web funcionó? Meta a 3 o 6 meses</label>
+                            <textarea id="meta" name="meta" rows="3" placeholder="Ej: recibir 20 pedidos por WhatsApp al mes, llenar mi agenda de citas, vender 50 productos online..."></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="publico">¿Quién es tu cliente ideal?</label>
+                            <textarea id="publico" name="publico" rows="3" placeholder="Edad, zona, género, poder adquisitivo, qué busca. Ej: familias de Surco y San Borja, 25 a 45 años, buscan almuerzos saludables para llevar."></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="problema">¿Qué duda o miedo tiene antes de comprarte?</label>
+                            <textarea id="problema" name="problema" rows="3" placeholder="Ej: no sabe si el delivery llega a su zona, teme que la atención sea lenta, duda de los precios..."></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="diferencial">¿Qué te hace diferente de la competencia?</label>
+                            <textarea id="diferencial" name="diferencial" rows="3" placeholder="Ej: preparo todo al momento, tengo 15 años en el barrio, entrego en 30 minutos, garantía escrita..."></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="competencia">Nombra 2 o 3 competidores (con link si puedes)</label>
+                            <textarea id="competencia" name="competencia" rows="3" placeholder="Ej: Pollería El Rico (link), Restaurante La Sazón (link). ¿Qué hacen bien y qué no?"></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="temporada">¿Tienes temporada alta, promociones o fechas clave?</label>
+                            <input type="text" id="temporada" name="temporada" placeholder="Ej: Navidad, Día de la Madre, campaña escolar, Fiestas Patrias...">
+                        </div>
+                    </section>
+
+                    <!-- PASO 3 -->
+                    <section class="brief-step" data-step="3" data-title="Contenido y marca">
+                        <h2 class="brief-step__title"><i class="fas fa-images"></i> Contenido y marca</h2>
+                        <p class="brief-step__hint">Para no bloquearte: si no tienes textos, logo o fotos, nosotros los creamos (servicio de Creación de Contenido desde S/ 40).</p>
+
+                        <fieldset class="brief-fieldset">
+                            <legend>¿Ya tienes los textos de tu web?</legend>
+                            <div class="choice-grid">
+                                <label class="choice choice--radio"><input type="radio" name="textos" value="Sí, los tengo listos"><span class="box"></span><span>Sí, los tengo listos</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="textos" value="Tengo algunos, faltan secciones"><span class="box"></span><span>Tengo algunos, faltan secciones</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="textos" value="No tengo, necesito redacción"><span class="box"></span><span>No tengo, necesito redacción</span></label>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="brief-fieldset">
+                            <legend>¿Tienes tu logo?</legend>
+                            <div class="choice-grid">
+                                <label class="choice choice--radio"><input type="radio" name="logo" value="Sí, en vectores (AI, SVG, PDF, EPS)"><span class="box"></span><span>Sí, en vectores (AI, SVG, PDF)</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="logo" value="Sí, pero solo en imagen (PNG o JPG)"><span class="box"></span><span>Solo en imagen (PNG o JPG)</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="logo" value="No tengo logo"><span class="box"></span><span>No tengo logo</span></label>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="brief-fieldset">
+                            <legend>¿Tienes fotos y videos de tu negocio o productos?</legend>
+                            <div class="choice-grid">
+                                <label class="choice choice--radio"><input type="radio" name="fotos" value="Sí, profesionales"><span class="box"></span><span>Sí, profesionales</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="fotos" value="Sí, tomadas con celular"><span class="box"></span><span>Sí, tomadas con celular</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="fotos" value="No tengo, necesito imágenes"><span class="box"></span><span>No tengo, necesito imágenes</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-field">
+                            <label for="colores">¿Qué colores o estilo de marca usas?</label>
+                            <input type="text" id="colores" name="colores" placeholder="Ej: rojo y crema como mi toldo; no tengo colores definidos">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="catalogo">Lista de servicios o productos con precios</label>
+                            <textarea id="catalogo" name="catalogo" rows="5" placeholder="Escribe uno por línea. Ej:&#10;- Menú del día: S/ 12&#10;- Pollo a la brasa 1/4: S/ 18&#10;- Gaseosa 500 ml: S/ 5"></textarea>
+                            <p class="brief-help">Si tienes muchos productos, escribe “te envío el catálogo por WhatsApp” y coordinamos.</p>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="datos_clave">Datos que deben aparecer en la web</label>
+                            <textarea id="datos_clave" name="datos_clave" rows="4" placeholder="Dirección, horarios, teléfonos, correo, redes, zonas de delivery, métodos de pago (Yape, Plin, transferencia, tarjeta), estacionamiento, referencias..."></textarea>
+                        </div>
+
+                        <fieldset class="brief-fieldset">
+                            <legend>¿Qué secciones quieres en tu web?</legend>
+                            <p class="brief-help">Marca las que te interesen. Te recomendamos las esenciales si tienes dudas.</p>
+                            <div class="choice-grid choice-grid--3">
+                                <label class="choice"><input type="checkbox" name="secciones[]" value="Inicio"><span class="box"><i class="fas fa-check"></i></span><span>Inicio</span></label>
+                                <label class="choice"><input type="checkbox" name="secciones[]" value="Servicios / productos"><span class="box"><i class="fas fa-check"></i></span><span>Servicios / productos</span></label>
+                                <label class="choice"><input type="checkbox" name="secciones[]" value="Catálogo o tienda"><span class="box"><i class="fas fa-check"></i></span><span>Catálogo o tienda</span></label>
+                                <label class="choice"><input type="checkbox" name="secciones[]" value="Nosotros / historia"><span class="box"><i class="fas fa-check"></i></span><span>Nosotros / historia</span></label>
+                                <label class="choice"><input type="checkbox" name="secciones[]" value="Testimonios / reseñas"><span class="box"><i class="fas fa-check"></i></span><span>Testimonios / reseñas</span></label>
+                                <label class="choice"><input type="checkbox" name="secciones[]" value="Preguntas frecuentes"><span class="box"><i class="fas fa-check"></i></span><span>Preguntas frecuentes</span></label>
+                                <label class="choice"><input type="checkbox" name="secciones[]" value="Blog / consejos"><span class="box"><i class="fas fa-check"></i></span><span>Blog / consejos</span></label>
+                                <label class="choice"><input type="checkbox" name="secciones[]" value="Contacto y ubicación"><span class="box"><i class="fas fa-check"></i></span><span>Contacto y ubicación</span></label>
+                                <label class="choice"><input type="checkbox" name="secciones[]" value="Libro de reclamaciones"><span class="box"><i class="fas fa-check"></i></span><span>Libro de reclamaciones</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-field">
+                            <label for="testimonios">¿Tienes reseñas o testimonios de clientes?</label>
+                            <select id="testimonios" name="testimonios">
+                                <option value="">Selecciona una opción...</option>
+                                <option value="Sí, en Google Maps">Sí, en Google Maps</option>
+                                <option value="Sí, en redes sociales o capturas">Sí, en redes sociales o capturas</option>
+                                <option value="No tengo todavía">No tengo todavía</option>
+                            </select>
+                        </div>
+                    </section>
+
+                    <!-- PASO 4 -->
+                    <section class="brief-step" data-step="4" data-title="Diseño y funciones">
+                        <h2 class="brief-step__title"><i class="fas fa-palette"></i> Diseño y funciones</h2>
+                        <p class="brief-step__hint">Con esto definimos el look de tu web y lo que debe saber hacer. Puedes elegir “no sé” y te guiamos.</p>
+
+                        <div class="form-field">
+                            <label for="estilo">¿Qué estilo visual te gusta?</label>
+                            <select id="estilo" name="estilo">
+                                <option value="">Selecciona una opción...</option>
+                                <option value="Moderno y minimalista">Moderno y minimalista (limpio, mucho aire)</option>
+                                <option value="Elegante y premium">Elegante y premium (oscuro, dorado, sobrio)</option>
+                                <option value="Colorido y cercano">Colorido y cercano (fotos grandes, cálido)</option>
+                                <option value="Corporativo y serio">Corporativo y serio (azul, ordenado)</option>
+                                <option value="Igual a mi marca / logo">Igual a mi marca / logo</option>
+                                <option value="No sé, quiero recomendación">No sé, quiero recomendación</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="referencias">3 webs que te gusten (de tu rubro o no)</label>
+                            <textarea id="referencias" name="referencias" rows="4" placeholder="Pega los links y dime qué te gusta de cada una: colores, fotos, cómo se ven los productos, el menú..."></textarea>
+                        </div>
+
+                        <fieldset class="brief-fieldset">
+                            <legend>¿Qué debe poder hacer tu web?</legend>
+                            <p class="brief-help">Marca todo lo que te interese. Si algo no está en tu plan, te decimos cuánto cuesta.</p>
+                            <div class="choice-grid">
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Botón flotante de WhatsApp"><span class="box"><i class="fas fa-check"></i></span><span>Botón flotante de WhatsApp</span></label>
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Formulario de contacto"><span class="box"><i class="fas fa-check"></i></span><span>Formulario de contacto</span></label>
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Catálogo con carrito"><span class="box"><i class="fas fa-check"></i></span><span>Catálogo con carrito</span></label>
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Pagos online (tarjeta, Yape)"><span class="box"><i class="fas fa-check"></i></span><span>Pagos online (tarjeta, Yape)</span></label>
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Reservas o agenda de citas"><span class="box"><i class="fas fa-check"></i></span><span>Reservas o agenda de citas</span></label>
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Menú digital con QR"><span class="box"><i class="fas fa-check"></i></span><span>Menú digital con QR</span></label>
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Google Maps y ubicación"><span class="box"><i class="fas fa-check"></i></span><span>Google Maps y ubicación</span></label>
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Google Analytics / Pixel de Meta"><span class="box"><i class="fas fa-check"></i></span><span>Analytics / Pixel de Meta</span></label>
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Blog o sección de noticias"><span class="box"><i class="fas fa-check"></i></span><span>Blog o noticias</span></label>
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Chat en vivo"><span class="box"><i class="fas fa-check"></i></span><span>Chat en vivo</span></label>
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Varios idiomas"><span class="box"><i class="fas fa-check"></i></span><span>Varios idiomas</span></label>
+                                <label class="choice"><input type="checkbox" name="funcionalidades[]" value="Área de clientes o members"><span class="box"><i class="fas fa-check"></i></span><span>Área de clientes</span></label>
+                            </div>
+                        </fieldset>
+
+
+
+                        <fieldset class="brief-fieldset">
+                            <legend>Dominio (tu dirección web, ej. tunegocio.pe)</legend>
+                            <div class="choice-grid">
+                                <label class="choice choice--radio"><input type="radio" name="dominio" value="Necesito dominio nuevo"><span class="box"></span><span>Necesito uno nuevo</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="dominio" value="Ya tengo dominio"><span class="box"></span><span>Ya tengo dominio</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="dominio" value="No sé / necesito asesoría"><span class="box"></span><span>No sé, necesito asesoría</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="dominio_deseado">Dominio que te gustaría (si ya lo tienes, pégalo)</label>
+                                <input type="text" id="dominio_deseado" name="dominio_deseado" placeholder="Ej: elbuensabor.pe">
+                            </div>
+                            <div class="form-field">
+                                <label for="hosting">Hosting</label>
+                                <select id="hosting" name="hosting">
+                                    <option value="">Selecciona una opción...</option>
+                                    <option value="No tengo hosting">No tengo hosting</option>
+                                    <option value="Ya tengo hosting">Ya tengo hosting</option>
+                                    <option value="No sé qué es / necesito asesoría">No sé qué es / necesito asesoría</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <fieldset class="brief-fieldset">
+                            <legend>¿A qué tienes acceso hoy?</legend>
+                            <p class="brief-help">Solo marca lo que tengas. No escribas contraseñas aquí: te pedimos los accesos de forma segura cuando toque.</p>
+                            <div class="choice-grid">
+                                <label class="choice"><input type="checkbox" name="accesos[]" value="Hosting"><span class="box"><i class="fas fa-check"></i></span><span>Hosting</span></label>
+                                <label class="choice"><input type="checkbox" name="accesos[]" value="Dominio"><span class="box"><i class="fas fa-check"></i></span><span>Dominio</span></label>
+                                <label class="choice"><input type="checkbox" name="accesos[]" value="WordPress / panel de la web"><span class="box"><i class="fas fa-check"></i></span><span>WordPress / panel</span></label>
+                                <label class="choice"><input type="checkbox" name="accesos[]" value="Redes sociales"><span class="box"><i class="fas fa-check"></i></span><span>Redes sociales</span></label>
+                                <label class="choice"><input type="checkbox" name="accesos[]" value="Google Mi Negocio"><span class="box"><i class="fas fa-check"></i></span><span>Google Mi Negocio</span></label>
+                                <label class="choice"><input type="checkbox" name="accesos[]" value="Ninguno / no sé"><span class="box"><i class="fas fa-check"></i></span><span>Ninguno / no sé</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-field">
+                            <label for="accesos_nota">¿Algo que debamos saber sobre tu web actual?</label>
+                            <textarea id="accesos_nota" name="accesos_nota" rows="3" placeholder="Ej: la hice en Wix hace 3 años, no tengo el correo con que la registré, quiero mantener el blog..."></textarea>
+                        </div>
+                    </section>
+
+
+                    <!-- PASO 5 -->
+                    <section class="brief-step" data-step="5" data-title="Proyecto y presupuesto">
+                        <h2 class="brief-step__title"><i class="fas fa-handshake"></i> Proyecto y presupuesto</h2>
+                        <p class="brief-step__hint">Último paso. Con esto te enviamos una propuesta con precio exacto y fecha de entrega.</p>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="plan">¿Qué plan te interesa?</label>
+                                <select id="plan" name="plan">
+                                    <option value="">Aún no lo tengo claro</option>
+                                    <option value="Landing Page (S/ 50)">Landing Page (S/ 50)</option>
+                                    <option value="Web Simple Profesional (S/ 99)">Web Simple Profesional (S/ 99)</option>
+                                    <option value="Rediseño Web (S/ 199)">Rediseño Web (S/ 199)</option>
+                                    <option value="Web Corporativa (S/ 249)">Web Corporativa (S/ 249)</option>
+                                    <option value="Tienda Starter (S/ 299)">Tienda Starter (S/ 299)</option>
+                                    <option value="Tienda Pro con pasarela (S/ 499)">Tienda Pro con pasarela (S/ 499)</option>
+                                    <option value="Catálogo WhatsApp (S/ 59)">Catálogo WhatsApp (S/ 59)</option>
+                                    <option value="Menú Digital QR (S/ 69)">Menú Digital QR (S/ 69)</option>
+                                    <option value="Google Mi Negocio (S/ 79)">Google Mi Negocio (S/ 79)</option>
+                                    <option value="Pack Presencia (S/ 149)">Pack Presencia (S/ 149)</option>
+                                    <option value="Pack Vende (S/ 399)">Pack Vende (S/ 399)</option>
+                                    <option value="Soporte mensual (S/ 49-99)">Soporte mensual (S/ 49–99)</option>
+                                    <option value="Auditoría gratis de mi web">Auditoría gratis de mi web actual</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label for="presupuesto">Presupuesto aproximado</label>
+                                <select id="presupuesto" name="presupuesto">
+                                    <option value="">Selecciona un rango...</option>
+                                    <option value="Hasta S/ 100">Hasta S/ 100</option>
+                                    <option value="S/ 100 - S/ 200">S/ 100 - S/ 200</option>
+                                    <option value="S/ 200 - S/ 300">S/ 200 - S/ 300</option>
+                                    <option value="S/ 300 - S/ 500">S/ 300 - S/ 500</option>
+                                    <option value="Más de S/ 500">Más de S/ 500</option>
+                                    <option value="Por definir">Por definir</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <fieldset class="brief-fieldset">
+                            <legend>¿Cuándo te gustaría lanzar tu web?</legend>
+                            <div class="choice-grid">
+                                <label class="choice choice--radio"><input type="radio" name="plazo" value="Esta semana"><span class="box"></span><span>Esta semana</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="plazo" value="En 2 semanas"><span class="box"></span><span>En 2 semanas</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="plazo" value="Este mes"><span class="box"></span><span>Este mes</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="plazo" value="En 1 a 3 meses"><span class="box"></span><span>En 1 a 3 meses</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="plazo" value="Sin prisa, quiero cotizar"><span class="box"></span><span>Sin prisa, quiero cotizar</span></label>
+                            </div>
+                        </fieldset>
+
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="aprueba">¿Quién aprueba el proyecto y los cambios?</label>
+                                <input type="text" id="aprueba" name="aprueba" placeholder="Ej: yo misma; yo y mi socio">
+                            </div>
+                            <div class="form-field">
+                                <label for="pago">¿Cómo prefieres pagar?</label>
+                                <select id="pago" name="pago">
+                                    <option value="">Selecciona una opción...</option>
+                                    <option value="Yape">Yape</option>
+                                    <option value="Plin">Plin</option>
+                                    <option value="Transferencia bancaria">Transferencia bancaria</option>
+                                    <option value="Tarjeta">Tarjeta</option>
+                                    <option value="Por definir">Por definir</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <fieldset class="brief-fieldset">
+                            <legend>¿Cómo prefieres que te contactemos?</legend>
+                            <div class="choice-grid choice-grid--3">
+                                <label class="choice choice--radio"><input type="radio" name="canal" value="WhatsApp"><span class="box"></span><span>WhatsApp</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="canal" value="Llamada"><span class="box"></span><span>Llamada</span></label>
+                                <label class="choice choice--radio"><input type="radio" name="canal" value="Correo electrónico"><span class="box"></span><span>Correo</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-field">
+                            <label for="como_nos_conocio">¿Cómo nos encontraste?</label>
+                            <select id="como_nos_conocio" name="como_nos_conocio">
+                                <option value="">Selecciona una opción...</option>
+                                <option value="Google">Google</option>
+                                <option value="Instagram o Facebook">Instagram o Facebook</option>
+                                <option value="TikTok">TikTok</option>
+                                <option value="Recomendación de alguien">Recomendación de alguien</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="extra">¿Algo más que debamos saber?</label>
+                            <textarea id="extra" name="extra" rows="4" placeholder="Cualquier detalle, idea, miedo o requisito que no te hayamos preguntado."></textarea>
+                        </div>
+
+
+                        <div class="form-check">
+                            <input type="checkbox" id="acepto" name="acepto" required>
+                            <label for="acepto" style="font-weight:400;">Autorizo a MontaWeb (Servicios SAAS) a usar estos datos para preparar mi propuesta y desarrollar mi web, según la <a href="/privacidad" style="color:var(--brand-2);text-decoration:underline;">Política de privacidad</a>. <span class="req">*</span></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="promos" name="promos" value="Sí">
+                            <label for="promos" style="font-weight:400;">Quiero recibir consejos y promociones por WhatsApp o correo (opcional).</label>
+                        </div>
+                    </section>
+
+                    <!-- PASO 6 -->
+                    <section class="brief-step" data-step="6" data-title="Revisión y envío">
+                        <h2 class="brief-step__title"><i class="fas fa-circle-check"></i> Revisa y envía</h2>
+                        <p class="brief-step__hint">Revisa que todo esté bien: puedes volver a cualquier paso para corregir. Al enviar, tu brief llega a <strong>hola@montaweb.pe</strong> y te respondemos en menos de 24 horas hábiles.</p>
+
+                        <div class="brief-summary" id="brief-summary"></div>
+
+                        <div class="brief-fallback" id="brief-fallback" hidden>
+                            <h3><i class="fas fa-triangle-exclamation"></i> No pudimos enviar el correo</h3>
+                            <p id="brief-fallback-msg">Tus respuestas siguen guardadas en este navegador. Envíalas por WhatsApp, descárgalas o escríbenos a hola@montaweb.pe.</p>
+                            <div class="brief-fallback__actions">
+                                <a href="#" class="btn btn--whatsapp" id="brief-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</a>
+                                <button type="button" class="btn btn--ghost" id="brief-download"><i class="fas fa-download"></i> Descargar respuestas</button>
+                                <a href="mailto:hola@montaweb.pe" class="btn btn--ghost" id="brief-mailto"><i class="fas fa-envelope"></i> hola@montaweb.pe</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="brief-nav">
+                        <button type="button" class="btn btn--ghost" id="brief-prev" hidden>
+                            <i class="fas fa-arrow-left"></i> Atrás
+                        </button>
+                        <div class="brief-nav__right">
+                            <button type="button" class="btn btn--primary" id="brief-next">
+                                Continuar <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button type="submit" class="btn btn--primary btn--lg" id="brief-submit" hidden>
+                                <i class="fas fa-paper-plane"></i> Enviar mi brief
+                            </button>
+                        </div>
+                    </div>
+
+                    <p class="brief-note"><i class="fas fa-lock"></i> Tus respuestas son confidenciales y solo se usan para tu proyecto. Nunca te pediremos contraseñas por este formulario.</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- What happens next -->
+    <section class="section section--alt">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow"><i class="fas fa-route"></i> Después de enviar</span>
+                <h2>Qué pasa con tus respuestas</h2>
+                <p>Nada queda en el aire: cada paso tiene fecha y responsable.</p>
+            </div>
+            <div class="brief-after">
+                <div class="step">
+                    <div class="step__num">1</div>
+                    <h3>Revisión (hoy)</h3>
+                    <p>Leemos tu brief y te escribimos por el canal que elegiste para confirmar dos o tres detalles.</p>
+                </div>
+                <div class="step">
+                    <div class="step__num">2</div>
+                    <h3>Propuesta (24 h)</h3>
+                    <p>Recibes alcance, precio exacto, fecha de entrega y la forma de pago 50% / 50%.</p>
+                </div>
+                <div class="step">
+                    <div class="step__num">3</div>
+                    <h3>Diseño y lanzamiento</h3>
+                    <p>Con el adelanto empezamos el diseño; cuando apruebas, publicamos y te entregamos todos los accesos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <img src="images/modern/montaweb-logo-dark.svg" alt="MontaWeb">
+                    <p>Diseño y desarrollo de páginas web modernas, rápidas y enfocadas en ventas para emprendedores y empresas en todo el Perú.</p>
+                    <div class="footer__provider">
+                        <span>Un servicio operado por <strong>Servicios SAAS</strong></span>
+                        <span><strong>RUC:</strong> 10411592982 • Lima, Perú</span>
+                    </div>
+                </div>
+                <div>
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/servicios">Servicios y planes</a></li>
+                        <li><a href="/ejemplos">Portafolio</a></li>
+                        <li><a href="/diseño-web-lima">Diseño web en Lima</a></li>
+                        <li><a href="/brief">Cuestionario de inicio</a></li>
+                        <li><a href="/contacto">Solicitar cotización</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Soluciones</h4>
+                    <ul>
+                        <li><a href="/servicios#landing-pages">Landing Pages (S/ 50)</a></li>
+                        <li><a href="/servicios#web-simple">Web Simple (S/ 99)</a></li>
+                        <li><a href="/servicios#rediseno-web">Rediseño Web (S/ 199)</a></li>
+                        <li><a href="/servicios#tienda-online">Tienda Starter (S/ 299)</a></li>
+                        <li><a href="/servicios#google-mi-negocio">Google Mi Negocio (S/ 79)</a></li>
+                        <li><a href="/servicios#hosting-dominio">Hosting + dominio (GRATIS)</a></li>
+                        <li><a href="/servicios#packs">Packs desde S/ 149</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contacto directo</h4>
+                    <div class="footer__contact-item"><i class="fab fa-whatsapp"></i><a href="https://wa.me/51965403196" target="_blank" rel="noopener">+51 965 403 196</a></div>
+                    <div class="footer__contact-item"><i class="fas fa-envelope"></i><a href="mailto:hola@montaweb.pe">hola@montaweb.pe</a></div>
+                    <div class="footer__contact-item"><i class="fas fa-file-invoice"></i><span>Servicios SAAS • RUC 10411592982</span></div>
+                    <div class="footer__contact-item"><i class="fas fa-location-dot"></i><span>Lima, Perú — atención nacional</span></div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>&copy; 2026 <strong>MontaWeb</strong> — Proveedor oficial: <strong>Servicios SAAS (RUC 10411592982)</strong>. Todos los derechos reservados.</span>
+                <span>WhatsApp &amp; Teléfono: <a href="https://wa.me/51965403196" target="_blank" rel="noopener">965 403 196</a></span>
+                <span><a href="/terminos">Términos y condiciones</a> · <a href="/privacidad">Política de privacidad</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js?v=2026"></script>
+    <script src="js/brief.js?v=2026"></script>
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+# MontaWeb — Caddyfile para VPS Linux
+# Copiar a /etc/caddy/Caddyfile y ajustar dominio / ruta / versión de PHP.
+# ⚠️ Caddy NO lee .htaccess: el bloqueo de secretos, las URLs limpias y los
+#    headers de seguridad se definen aquí (no en el .htaccess del proyecto).
+{
+	email admin@montaweb.pe
+}
+
+montaweb.pe, www.montaweb.pe {
+	root * /var/www/montaweb/public_html
+
+	encode zstd gzip
+
+	# ---------- 1. Nunca servir secretos, logs ni documentación ----------
+	@private path /api/config.php /api/config.example.php /api/leads /api/leads/* /api/*.log
+	respond @private 404
+
+	@docs path *.md
+	respond @docs 404
+
+	@dotfiles path /.git/* /.env /.env.* /.htaccess /api/.htaccess /.user.ini
+	respond @dotfiles 404
+
+	# ---------- 2. /pagina.html → /pagina (igual que el .htaccess antiguo) ----------
+	@htmlFile path_regexp html ^/(?P<clean>.+)\.html$
+	redir @htmlFile /{re.clean} 301
+
+	# ---------- 3. URLs limpias: /brief → /brief.html ----------
+	@cleanUrl {
+		not path /api/* /downloads/*
+		not file {path}
+		file {path}.html
+	}
+	rewrite @cleanUrl {path}.html
+
+	# ---------- 4. PHP (solo /api/*.php) ----------
+	# Comprueba el socket real con: ls /run/php/  (p.ej. php8.3-fpm.sock)
+	php_fastcgi unix//run/php/php8.3-fpm.sock
+
+	# ---------- 5. Archivos estáticos ----------
+	file_server
+
+	# ---------- 6. Headers ----------
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options SAMEORIGIN
+		X-XSS-Protection "1; mode=block"
+		Referrer-Policy strict-origin-when-cross-origin
+		Permissions-Policy "geolocation=(), microphone=(), camera=()"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		-Server
+	}
+
+	# ---------- 7. Página 404 propia (opcional) ----------
+	handle_errors {
+		@404 expression {err.status_code} == 404
+		rewrite @404 /404.html
+		file_server
+	}
+}
